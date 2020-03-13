@@ -67,7 +67,7 @@ from paramiko.message import Message
 from paramiko.packet import Packetizer, NeedRekeyException
 from paramiko.primes import ModulusPack
 from paramiko.py3compat import string_types, long, byte_ord, b, input, PY2
-from paramiko.rsakey import RSAKey
+from paramiko.rsakey import RSAKey, RSASHA256Key, RSASHA512Key
 from paramiko.ecdsakey import ECDSAKey
 from paramiko.server import ServerInterface
 from paramiko.sftp_client import SFTPClient
@@ -128,6 +128,8 @@ class Transport(threading.Thread, ClosingContextManager):
         'ecdsa-sha2-nistp256',
         'ecdsa-sha2-nistp384',
         'ecdsa-sha2-nistp521',
+        'rsa-sha2-256',
+        'rsa-sha2-512',
         'ssh-rsa',
     )
     if Ed25519Key.is_supported():
@@ -216,6 +218,10 @@ class Transport(threading.Thread, ClosingContextManager):
     _key_info = {
         'ssh-rsa': RSAKey,
         'ssh-rsa-cert-v01@openssh.com': RSAKey,
+        'rsa-sha2-256': RSASHA256Key,
+        'rsa-sha2-256-cert-v01@openssh.com': RSASHA256Key,
+        'rsa-sha2-512': RSASHA512Key,
+        'rsa-sha2-512-cert-v01@openssh.com': RSASHA512Key,
         'ssh-dss': DSSKey,
         'ssh-dss-cert-v01@openssh.com': DSSKey,
         'ecdsa-sha2-nistp256': ECDSAKey,

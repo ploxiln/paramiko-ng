@@ -33,7 +33,7 @@ from paramiko.ssh_exception import (
     ProxyCommandFailure,
 )
 from paramiko.server import ServerInterface, SubsystemHandler, InteractiveQuery
-from paramiko.rsakey import RSAKey
+from paramiko.rsakey import RSAKey, RSASHA256Key, RSASHA512Key
 from paramiko.dsskey import DSSKey
 from paramiko.ecdsakey import ECDSAKey
 from paramiko.ed25519key import Ed25519Key
@@ -92,8 +92,10 @@ __all__ = [
     'ChannelStderrFile',
     'ChannelStdinFile',
     'PKey',
-    'RSAKey',
     'DSSKey',
+    'RSAKey',
+    'RSASHA256Key',
+    'RSASHA512Key',
     'ECDSAKey',
     'Ed25519Key',
     'PublicBlob',

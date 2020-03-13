@@ -40,6 +40,8 @@ class RSAKey(PKey):
 
     LEGACY_TYPE = "RSA"
     OPENSSH_TYPE_PREFIX = "ssh-rsa"
+    _signature_digest_algorithm = hashes.SHA1
+    _signature_algorithm_name = "ssh-rsa"
 
     def __init__(self, msg=None, data=None, filename=None, password=None,
                  key=None, file_obj=None, _raw=None):
@@ -101,7 +103,7 @@ class RSAKey(PKey):
                      self.public_numbers.n))
 
     def get_name(self):
-        return 'ssh-rsa'
+        return self._signature_algorithm_name
 
     def get_bits(self):
         return self.size
@@ -113,24 +115,27 @@ class RSAKey(PKey):
         sig = self.key.sign(
             data,
             padding=padding.PKCS1v15(),
-            algorithm=hashes.SHA1(),
+            algorithm=self._signature_digest_algorithm(),
         )
-
         m = Message()
-        m.add_string('ssh-rsa')
+        m.add_string(self._signature_algorithm_name)
         m.add_string(sig)
         return m
 
     def verify_ssh_sig(self, data, msg):
-        if msg.get_text() != 'ssh-rsa':
+        if msg.get_text() != self._signature_algorithm_name:
             return False
+
         key = self.key
         if isinstance(key, rsa.RSAPrivateKey):
             key = key.public_key()
 
         try:
             key.verify(
-                msg.get_binary(), data, padding.PKCS1v15(), hashes.SHA1()
+                msg.get_binary(),
+                data,
+                padding.PKCS1v15(),
+                self._signature_digest_algorithm(),
             )
         except InvalidSignature:
             return False
@@ -205,3 +210,21 @@ class RSAKey(PKey):
             raise SSHException("Invalid key type")
 
         self.key = key
+
+
+class RSASHA256Key(RSAKey):
+    """
+    A special RSAKey that uses SHA-256 digest for sign/verify.
+    """
+
+    _signature_digest_algorithm = hashes.SHA256
+    _signature_algorithm_name = "rsa-sha2-256"
+
+
+class RSASHA512Key(RSAKey):
+    """
+    A special RSAKey that uses SHA-256 digest for sign/verify.
+    """
+
+    _signature_digest_algorithm = hashes.SHA512
+    _signature_algorithm_name = "rsa-sha2-512"
