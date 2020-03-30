@@ -37,10 +37,10 @@
   <div class="section" id="module-paramiko.pipe">
 <span id="cross-platform-pipe-implementations"></span><h1>Cross-platform pipe implementations<a class="headerlink" href="#module-paramiko.pipe" title="Permalink to this headline">¶</a></h1>
 <p>Abstraction of a one-way pipe where the read end can be used in
-<a class="reference external" href="https://docs.python.org/2.7/library/select.html#select.select" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a>. Normally this is trivial, but Windows makes it nearly
+<a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a>. Normally this is trivial, but Windows makes it nearly
 impossible.</p>
 <p>The pipe acts like an Event, which can be set or cleared. When set, the pipe
-will trigger as readable in <a class="reference external" href="https://docs.python.org/2.7/library/select.html#select.select" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a>.</p>
+will trigger as readable in <a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a>.</p>
 <dl class="class">
 <dt id="paramiko.pipe.WindowsPipe">
 <em class="property">class </em><code class="descclassname">paramiko.pipe.</code><code class="descname">WindowsPipe</code><a class="headerlink" href="#paramiko.pipe.WindowsPipe" title="Permalink to this definition">¶</a></dt>
@@ -138,6 +138,7 @@ is set. when both are cleared, the wrapped pipe is cleared.</p>
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 

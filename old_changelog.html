@@ -984,7 +984,7 @@ Paul Kapp for the fix.</li>
 <div class="section" id="2.0.1">
 <h2 style="margin-bottom: 0.3em;"><a class="reference external" href="https://github.com/paramiko/paramiko/tree/2.0.1">2.0.1</a> <span style="font-size: 75%;">2016-06-21</span></h2><ul class="simple">
 <li>[<span style="color: #A04040;">Bug</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/537">#537</a><span>:</span> Fix a bug in <a class="reference internal" href="api/buffered_pipe.html#paramiko.buffered_pipe.BufferedPipe.set_event" title="paramiko.buffered_pipe.BufferedPipe.set_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BufferedPipe.set_event</span></code></a> which could cause
-deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/2.7/library/select.html#select.select" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
+deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
 <a class="reference internal" href="api/channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> objects (or otherwise calls <a class="reference internal" href="api/channel.html#paramiko.channel.Channel.fileno" title="paramiko.channel.Channel.fileno"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileno</span></code></a> after the channel has closed). Thanks to
 Przemysław Strzelczak for the report &amp; reproduction case, and to Krzysztof
 Rusek for the fix.</li>
@@ -996,7 +996,7 @@ docs update as well - always make sure to <code class="docutils literal notransl
 <div class="section" id="1.17.1">
 <h2 style="margin-bottom: 0.3em;"><a class="reference external" href="https://github.com/paramiko/paramiko/tree/1.17.1">1.17.1</a> <span style="font-size: 75%;">2016-06-21</span></h2><ul class="simple">
 <li>[<span style="color: #A04040;">Bug</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/537">#537</a><span>:</span> Fix a bug in <a class="reference internal" href="api/buffered_pipe.html#paramiko.buffered_pipe.BufferedPipe.set_event" title="paramiko.buffered_pipe.BufferedPipe.set_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BufferedPipe.set_event</span></code></a> which could cause
-deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/2.7/library/select.html#select.select" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
+deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
 <a class="reference internal" href="api/channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> objects (or otherwise calls <a class="reference internal" href="api/channel.html#paramiko.channel.Channel.fileno" title="paramiko.channel.Channel.fileno"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileno</span></code></a> after the channel has closed). Thanks to
 Przemysław Strzelczak for the report &amp; reproduction case, and to Krzysztof
 Rusek for the fix.</li>
@@ -1008,7 +1008,7 @@ docs update as well - always make sure to <code class="docutils literal notransl
 <div class="section" id="1.16.2">
 <h2 style="margin-bottom: 0.3em;"><a class="reference external" href="https://github.com/paramiko/paramiko/tree/1.16.2">1.16.2</a> <span style="font-size: 75%;">2016-06-21</span></h2><ul class="simple">
 <li>[<span style="color: #A04040;">Bug</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/537">#537</a><span>:</span> Fix a bug in <a class="reference internal" href="api/buffered_pipe.html#paramiko.buffered_pipe.BufferedPipe.set_event" title="paramiko.buffered_pipe.BufferedPipe.set_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BufferedPipe.set_event</span></code></a> which could cause
-deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/2.7/library/select.html#select.select" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
+deadlocks/hangs when one uses <a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select.select</span></code></a> against
 <a class="reference internal" href="api/channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> objects (or otherwise calls <a class="reference internal" href="api/channel.html#paramiko.channel.Channel.fileno" title="paramiko.channel.Channel.fileno"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileno</span></code></a> after the channel has closed). Thanks to
 Przemysław Strzelczak for the report &amp; reproduction case, and to Krzysztof
 Rusek for the fix.</li>
@@ -1388,7 +1388,7 @@ handshakes. Credit to <code class="docutils literal notranslate"><span class="pr
 to Olle Lundberg for reimplementation.</li>
 <li>[<span style="color: #A04040;">Bug</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/496">#496</a><span>:</span> Fix a handful of small but critical bugs in Paramiko’s
 GSSAPI support (note: this includes switching from PyCrypo’s Random to
-<a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.urandom" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.urandom</span></code></a>). Thanks to Anselm Kruis for catch &amp; patch.</li>
+<a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.urandom" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.urandom</span></code></a>). Thanks to Anselm Kruis for catch &amp; patch.</li>
 <li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/516">#516</a><span>:</span> Document <a class="reference internal" href="api/agent.html#paramiko.agent.AgentRequestHandler" title="paramiko.agent.AgentRequestHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AgentRequestHandler</span></code></a>.
 Thanks to <code class="docutils literal notranslate"><span class="pre">&#64;toejough</span></code> for report &amp; suggestions.</li>
 <li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/554">#554</a><span>:</span> Fix inaccuracies in the docstring for the ECDSA key
@@ -1700,8 +1700,8 @@ to Alex Gaynor for catch &amp; patch.</li>
 (Python 2+3 compatible) wheel files during the release process. Courtesy of
 Alex Gaynor.</li>
 <li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/295">#295</a><span>:</span> Swap out a bunch of PyCrypto hash functions with use of
-<a class="reference external" href="https://docs.python.org/2.7/library/hashlib.html#module-hashlib" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hashlib</span></code></a>. Thanks to Alex Gaynor.</li>
-<li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/297">#297</a><span>:</span> Replace PyCrypto’s <code class="docutils literal notranslate"><span class="pre">Random</span></code> with <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.urandom" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.urandom</span></code></a> for improved
+<a class="reference external" href="https://docs.python.org/3.7/library/hashlib.html#module-hashlib" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hashlib</span></code></a>. Thanks to Alex Gaynor.</li>
+<li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/297">#297</a><span>:</span> Replace PyCrypto’s <code class="docutils literal notranslate"><span class="pre">Random</span></code> with <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.urandom" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.urandom</span></code></a> for improved
 speed and security. Thanks again to Alex.</li>
 <li>[<span style="color: #4070A0;">Support</span>]<span> </span><a class="reference external" href="https://github.com/paramiko/paramiko/issues/299">#299</a><span>:</span> Use deterministic signatures for ECDSA keys for improved
 security. Thanks to Alex Gaynor.</li>
@@ -2070,6 +2070,541 @@ Lundberg for the catch.</li>
 </ul>
 </div>
 </div>
+<div class="section" id="very-old-changelog">
+<h1>Very Old Changelog<a class="headerlink" href="#very-old-changelog" title="Permalink to this headline">¶</a></h1>
+<p>Moved here from <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> in the repo root.</p>
+<p>Issues noted as “‘ssh’ #NN” can be found at <a class="reference external" href="https://github.com/bitprophet/ssh/">https://github.com/bitprophet/ssh/</a>.</p>
+<p>Issues noted as “Fabric #NN” can be found at <a class="reference external" href="https://github.com/fabric/fabric/">https://github.com/fabric/fabric/</a>.</p>
+<div class="section" id="v1-9-0-6th-nov-2012">
+<h2>v1.9.0 (6th Nov 2012)<a class="headerlink" href="#v1-9-0-6th-nov-2012" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>#97 (with a little #93): Improve config parsing of <code class="xref py py-obj docutils literal notranslate"><span class="pre">ProxyCommand</span></code> directives
+and provide a wrapper class to allow subprocess-driven proxy commands to be
+used as <code class="xref py py-obj docutils literal notranslate"><span class="pre">sock=</span></code> arguments for <code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient.connect</span></code>.</li>
+<li>#77: Allow <code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient.connect()</span></code> to take an explicit <code class="xref py py-obj docutils literal notranslate"><span class="pre">sock</span></code> parameter
+overriding creation of an internal, implicit socket object.</li>
+<li>Thanks in no particular order to Erwin Bolwidt, Oskari Saarenmaa, Steven
+Noonan, Vladimir Lazarenko, Lincoln de Sousa, Valentino Volonghi, Olle
+Lundberg, and Github user <code class="xref py py-obj docutils literal notranslate"><span class="pre">&#64;acrish</span></code> for the various and sundry patches
+leading to the above changes.</li>
+</ul>
+</div>
+<div class="section" id="v1-8-1-6th-nov-2012">
+<h2>v1.8.1 (6th Nov 2012)<a class="headerlink" href="#v1-8-1-6th-nov-2012" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>#90: Ensure that callbacks handed to <code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient.get()</span></code> always fire at least
+once, even for zero-length files downloaded. Thanks to Github user <code class="xref py py-obj docutils literal notranslate"><span class="pre">&#64;enB</span></code> for
+the catch.</li>
+<li>#85: Paramiko’s test suite overrides
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">unittest.TestCase.assertTrue/assertFalse</span></code> to provide these modern assertions
+to Python 2.2/2.3, which lacked them. However on newer Pythons such as 2.7,
+this now causes deprecation warnings. The overrides have been patched to only
+execute when necessary. Thanks to <code class="xref py py-obj docutils literal notranslate"><span class="pre">&#64;Arfrever</span></code> for catch &amp; patch.</li>
+</ul>
+</div>
+<div class="section" id="v1-8-0-3rd-oct-2012">
+<h2>v1.8.0 (3rd Oct 2012)<a class="headerlink" href="#v1-8-0-3rd-oct-2012" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>#17 (‘ssh’ 28): Fix spurious <code class="xref py py-obj docutils literal notranslate"><span class="pre">NoneType</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'error'</span></code> and similar
+exceptions that crop up on interpreter exit.</li>
+<li>‘ssh’ 32: Raise a more useful error explaining which <code class="xref py py-obj docutils literal notranslate"><span class="pre">known_hosts</span></code> key line was
+problematic, when encountering <a class="reference external" href="https://docs.python.org/3.7/library/binascii.html#module-binascii" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binascii</span></code></a> issues decoding known host keys.
+Thanks to <code class="xref py py-obj docutils literal notranslate"><span class="pre">&#64;thomasvs</span></code> for catch &amp; patch.</li>
+<li>‘ssh’ 33: Bring <code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_config</span></code> parsing more in line with OpenSSH spec, re: order of
+setting overrides by <code class="xref py py-obj docutils literal notranslate"><span class="pre">Host</span></code> specifiers. Specifically, the overrides now go by
+file order instead of automatically sorting by <code class="xref py py-obj docutils literal notranslate"><span class="pre">Host</span></code> value length. In
+addition, the first value found per config key (e.g. <code class="xref py py-obj docutils literal notranslate"><span class="pre">Port</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">User</span></code> etc)
+wins, instead of the last. Thanks to Jan Brauer for the contribution.</li>
+<li>‘ssh’ 36: Support new server two-factor authentication option
+(<code class="xref py py-obj docutils literal notranslate"><span class="pre">RequiredAuthentications2</span></code>), at least re: combining key-based &amp; password
+auth. Thanks to Github user <code class="xref py py-obj docutils literal notranslate"><span class="pre">bninja</span></code>.</li>
+<li>‘ssh’ 11: When raising an exception for hosts not listed in
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">known_hosts</span></code> (when <code class="xref py py-obj docutils literal notranslate"><span class="pre">RejectPolicy</span></code> is in effect) the exception message was
+confusing/vague. This has been improved somewhat. Thanks to Cal Leeming for
+highlighting the issue.</li>
+<li>‘ssh’ 40: Fixed up &amp; expanded EINTR signal handling. Thanks to Douglas Turk.</li>
+<li>‘ssh’ 15: Implemented parameter substitution in SSHConfig, matching the
+implementation of <code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_config(5)</span></code>. Thanks to Olle Lundberg for the patch.</li>
+<li>‘ssh’ 24: Switch some internal type checking to use <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#isinstance" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isinstance</span></code></a> to help prevent
+problems with client libraries using subclasses of builtin types. Thanks to
+Alex Morega for the patch.</li>
+<li>Fabric #562: Agent forwarding would error out (with <code class="xref py py-obj docutils literal notranslate"><span class="pre">Authentication</span> <span class="pre">response</span>
+<span class="pre">too</span> <span class="pre">long</span></code>) or freeze, when more than one remote connection to the local agent
+was active at the same time.  This has been fixed. Thanks to Steven McDonald
+for assisting in troubleshooting/patching, and to GitHub user <code class="xref py py-obj docutils literal notranslate"><span class="pre">&#64;lynxis</span></code> for
+providing the final version of the patch.</li>
+<li>‘ssh’ 5: Moved a <a class="reference external" href="https://docs.python.org/3.7/library/fcntl.html#module-fcntl" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fcntl</span></code></a> import closer to where it’s used to help avoid
+<a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#ImportError" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImportError</span></code></a> problems on Windows platforms. Thanks to Jason Coombs for the
+catch + suggested fix.</li>
+<li>‘ssh’ 4: Updated implementation of WinPageant integration to work on 64-bit
+Windows. Thanks again to Jason Coombs for the patch.</li>
+<li>Added an IO loop sleep() call to avoid needless CPU usage when agent
+forwarding is in use.</li>
+<li>Handful of internal tweaks to version number storage.</li>
+<li>Updated <code class="xref py py-obj docutils literal notranslate"><span class="pre">setup.py</span></code> with <code class="xref py py-obj docutils literal notranslate"><span class="pre">==dev</span></code> install URL for <code class="xref py py-obj docutils literal notranslate"><span class="pre">pip</span></code> users.</li>
+<li>Updated <code class="xref py py-obj docutils literal notranslate"><span class="pre">setup.py</span></code> to account for packaging problems in PyCrypto 2.4.0</li>
+<li>Added an extra <code class="xref py py-obj docutils literal notranslate"><span class="pre">atfork()</span></code> call to help prevent spurious RNG errors when
+running under high parallel (multiprocess) load.</li>
+<li>Merge PR #28: <a class="reference external" href="https://github.com/paramiko/paramiko/pull/28">https://github.com/paramiko/paramiko/pull/28</a> which adds a
+ssh-keygen like demo module. (Sofian Brabez)</li>
+</ul>
+</div>
+<div class="section" id="v1-7-7-2-16may12">
+<h2>v1.7.7.2 16may12<a class="headerlink" href="#v1-7-7-2-16may12" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Merge pull request #63: <a class="reference external" href="https://github.com/paramiko/paramiko/pull/63">https://github.com/paramiko/paramiko/pull/63</a> which
+fixes exceptions that occur when re-keying over fast connections. (Dwayne
+Litzenberger)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-7-1-george-21may11">
+<h2>v1.7.7.1 (George) 21may11<a class="headerlink" href="#v1-7-7-1-george-21may11" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Make the verification phase of SFTP.put optional (Larry Wright)</li>
+<li>Patches to fix AIX support (anonymous)</li>
+<li>Patch from Michele Bertoldi to allow compression to be turned on in the
+client constructor.</li>
+<li>Patch from Shad Sharma to raise an exception if the transport isn’t active
+when you try to open a new channel.</li>
+<li>Stop leaking file descriptors in the SSH agent (John Adams)</li>
+<li>More fixes for Windows address family support (Andrew Bennetts)</li>
+<li>Use Crypto.Random rather than Crypto.Util.RandomPool
+(Gary van der Merwe, #271791)</li>
+<li>Support for openssl keys (tehfink)</li>
+<li>Fix multi-process support by calling Random.atfork (sugarc0de)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-6-fanny-1nov09">
+<h2>v1.7.6 (Fanny) 1nov09<a class="headerlink" href="#v1-7-6-fanny-1nov09" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed bugs 411099 (sftp chdir isn’t unicode-safe), 363163 &amp; 411910 (more
+IPv6 problems on windows), 413850 (race when server closes the channel),
+426925 (support port numbers in host keys)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-5-ernest-19jul09">
+<h2>v1.7.5 (Ernest) 19jul09<a class="headerlink" href="#v1-7-5-ernest-19jul09" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added support for ARC4 cipher and CTR block chaining (Denis Bernard)</li>
+<li>made transport threads daemonize, to fix python 2.6 atexit behavior</li>
+<li>support unicode hostnames, and IP6 addresses (Maxime Ripard, Shikhar
+Bhushan)</li>
+<li>various small bug fixes</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-4-desmond-06jul08">
+<h2>v1.7.4 (Desmond) 06jul08<a class="headerlink" href="#v1-7-4-desmond-06jul08" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>more randpool fixes for windows, from Dwayne Litzenberger
+(NOTE: this may require a pycrypto upgrade on windows)</li>
+<li>fix potential deadlock during key exchange (Dwayne Litzenberger)</li>
+<li>remove MFC dependency from windows (Mark Hammond)</li>
+<li>added some optional API improvements for SFTPClient get() and put()</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-3-clara-23mar08">
+<h2>v1.7.3 (Clara) 23mar08<a class="headerlink" href="#v1-7-3-clara-23mar08" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>SSHClient can be asked not to use an SSH agent now, and not to search
+for private keys</li>
+<li>added WarningPolicy option for SSHClient (warn, but allow, on unknown
+server keys)</li>
+<li>added Channel.exit_status_ready to poll if a channel has received an
+exit status yet</li>
+<li>new demo for reverse port forwarding</li>
+<li>(bug 177117) fix UTF-8 passwords</li>
+<li>(bug 189466) fix typo in osrandom.py</li>
+<li>(bug 191657) potentially fix a race at channel shutdown</li>
+<li>(bug 192749) document that SSHClient.connect may raise socket.error</li>
+<li>(bug 193779) translate EOFError into AuthException during authentication</li>
+<li>(bug 200416) don’t create a new logger object for each channel</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-2-basil-21jan08">
+<h2>v1.7.2 (Basil) 21jan08<a class="headerlink" href="#v1-7-2-basil-21jan08" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>(bug 137219) catch EINTR and handle correctly</li>
+<li>(bug 157205) fix select() to trigger on stderr for a channel too</li>
+<li>added SSHClient.get_transport()</li>
+<li>added Channel.send_ready()</li>
+<li>added direct-tcpip forwarding [patch from david guerizec]</li>
+<li>fixed the PRNG to be more secure on windows and in cases where fork() is
+called [patch from dwayne litzenberger]</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-1-amy-10jun07">
+<h2>v1.7.1 (Amy) 10jun07<a class="headerlink" href="#v1-7-1-amy-10jun07" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>windows SSH agent support can use the ‘ctypes’ module now if ‘win32all’ is
+not available [patch from alexander belchenko]</li>
+<li>SFTPClient.listdir_attr() now preserves the ‘longname’ field [patch from
+wesley augur]</li>
+<li>SFTPClient.get_channel() API added</li>
+<li>SSHClient constuctor takes an optional ‘timeout’ parameter [patch from
+james bardin]</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-7-zubat-18feb07">
+<h2>v1.7 (zubat) 18feb07<a class="headerlink" href="#v1-7-zubat-18feb07" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added x11 channel support (patch from david guerizec)</li>
+<li>added reverse port forwarding support</li>
+<li>(bug 75370) raise an exception when contacting a broken SFTP server</li>
+<li>(bug 80295) SSHClient shouldn’t expand the user directory twice when reading
+RSA/DSS keys</li>
+<li>(bug 82383) typo in DSS key in SSHClient</li>
+<li>(bug 83523) python 2.5 warning when encoding a file’s modification time</li>
+<li>if connecting to an SSH agent fails, silently fallback instead of raising
+an exception</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-6-4-yanma-19nov06">
+<h2>v1.6.4 (yanma) 19nov06<a class="headerlink" href="#v1-6-4-yanma-19nov06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fix setup.py on osx (oops!)</li>
+<li>(bug 69330) check for the existence of RSA/DSA keys before trying to open
+them in SFTPClient</li>
+<li>(bug 69222) catch EAGAIN in socket code to workaround a bug in recent
+Linux 2.6 kernels</li>
+<li>(bug 70398) improve dict emulation in HostKeys objects</li>
+<li>try harder to make sure all worker threads are joined on Transport.close()</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-6-3-xatu-14oct06">
+<h2>v1.6.3 (xatu) 14oct06<a class="headerlink" href="#v1-6-3-xatu-14oct06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed bug where HostKeys.__setitem__ wouldn’t always do the right thing</li>
+<li>fixed bug in SFTPClient.chdir and SFTPAttributes.__str__ [patch from
+mike barber]</li>
+<li>try harder not to raise EOFError from within SFTPClient</li>
+<li>fixed bug where a thread waiting in accept() could block forever if the
+transport dies [patch from mike looijmans]</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-6-2-weedle-16aug06">
+<h2>v1.6.2 (weedle) 16aug06<a class="headerlink" href="#v1-6-2-weedle-16aug06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added support for “old” group-exchange server mode, for compatibility
+with the windows putty client</li>
+<li>fixed some more interactions with SFTP file readv() and prefetch()</li>
+<li>when saving the known_hosts file, preserve the original order [patch from
+warren young]</li>
+<li>fix a couple of broken lines when exporting classes (bug 55946)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-6-1-vulpix-10jul06">
+<h2>v1.6.1 (vulpix) 10jul06<a class="headerlink" href="#v1-6-1-vulpix-10jul06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>more unit tests fixed for windows/cygwin (thanks to alexander belchenko)</li>
+<li>a couple of fixes related to exceptions leaking out of SFTPClient</li>
+<li>added ability to set items in HostKeys via __setitem__</li>
+<li>HostKeys now retains order and has a save() method</li>
+<li>added PKey.write_private_key and PKey.from_private_key</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-6-umbreon-10may06">
+<h2>v1.6 (umbreon) 10may06<a class="headerlink" href="#v1-6-umbreon-10may06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>pageant support on Windows thanks to john arbash meinel and todd whiteman</li>
+<li>fixed unit tests to work under windows and cygwin (thanks to alexander
+belchenko for debugging)</li>
+<li>various bugfixes/tweaks to SFTP file prefetch</li>
+<li>added SSHClient for a higher-level API</li>
+<li>SFTP readv() now yields results as it gets them</li>
+<li>several APIs changed to throw an exception instead of “False” on failure</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-5-4-tentacool-11mar06">
+<h2>v1.5.4 (tentacool) 11mar06<a class="headerlink" href="#v1-5-4-tentacool-11mar06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed HostKeys to more correctly emulate a python dict</li>
+<li>fixed a bug where file read buffering was too aggressive</li>
+<li>improved prefetching so that out-of-order reads still use the prefetch
+buffer</li>
+<li>added experimental SFTPFile.readv() call</li>
+<li>more unit tests</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-5-3-squirtle-19feb06">
+<h2>v1.5.3 (squirtle) 19feb06<a class="headerlink" href="#v1-5-3-squirtle-19feb06" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>a few performance enhancements</li>
+<li>added HostKeys, for dealing with openssh style “known_hosts” files, and
+added support for hashed hostnames</li>
+<li>added Transport.atfork() for dealing with forked children</li>
+<li>added SFTPClient.truncate, SFTPFile.chmod, SFTPFile.chown, SFTPFile.utime,
+and SFTPFile.truncate</li>
+<li>improved windows demos [patch from mike looijmans], added an sftp demo, and
+moved demos to the demos/ folder</li>
+<li>fixed a few interoperability bugs</li>
+<li>cleaned up logging a bit</li>
+<li>fixed a bug where EOF on a Channel might not be detected by select [found
+by thomas steinacher]</li>
+<li>fixed python 2.4-ism that crept in [patch by jan hudec]</li>
+<li>fixed a few reference loops that could have interacted badly with the python
+garbage collector</li>
+<li>fixed a bunch of pychecker warnings, some of which were bugs</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-5-2-rhydon-04dec05">
+<h2>v1.5.2 (rhydon) 04dec05<a class="headerlink" href="#v1-5-2-rhydon-04dec05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>compression support (opt-in via Transport.use_compression)</li>
+<li>sftp files may be opened with mode flag ‘x’ for O_EXCL (exclusive-open)
+behavior, which has no direct python equivalent</li>
+<li>added experimental util functions for parsing openssh config files</li>
+<li>fixed a few bugs (and potential deadlocks) with key renegotiation</li>
+<li>fixed a bug that caused SFTPFile.prefetch to occasionally lock up</li>
+<li>fixed an sftp bug which affected van dyke sftp servers</li>
+<li>fixed the behavior of select()ing on a closed channel, such that it will
+always trigger as readable</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-5-1-quilava-31oct05">
+<h2>v1.5.1 (quilava) 31oct05<a class="headerlink" href="#v1-5-1-quilava-31oct05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>SFTPFile.prefetch() added to dramatically speed up downloads (automatically
+turned on in SFTPClient.get())</li>
+<li>fixed bug where garbage-collected Channels could trigger the Transport to
+close the session (reported by gordon good)</li>
+<li>fixed a deadlock in rekeying (reported by wendell wood)</li>
+<li>fixed some windows bugs and SFTPAttributes.__str__() (reported by grzegorz
+makarewicz)</li>
+<li>better sftp error reporting by adding fake “errno” info to IOErrors</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-5-paras-02oct05">
+<h2>v1.5 (paras) 02oct05<a class="headerlink" href="#v1-5-paras-02oct05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added support for “keyboard-interactive” authentication</li>
+<li>added mode (on by default) where password authentication will try to
+fallback to “keyboard-interactive” if it’s supported</li>
+<li>added pipelining to SFTPFile.write and SFTPClient.put</li>
+<li>fixed bug with SFTPFile.close() not guarding against being called more
+than once (thanks to Nathaniel Smith)</li>
+<li>fixed broken ‘a’ flag in SFTPClient.file() (thanks to Nathaniel Smith)</li>
+<li>fixed up epydocs to look nicer</li>
+<li>reorganized auth_transport into auth_handler, which seems to be a cleaner
+separation</li>
+<li>demo scripts fixed to have a better chance of loading the host keys
+correctly on windows/cygwin</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-4-oddish-17jul05">
+<h2>v1.4 (oddish) 17jul05<a class="headerlink" href="#v1-4-oddish-17jul05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added SSH-agent support (for posix) from john rochester</li>
+<li>added chdir() and getcwd() to SFTPClient, to emulate a “working directory”</li>
+<li>added get() and put() to SFTPClient, to emulate ftp whole-file transfers</li>
+<li>added check() to SFTPFile (a file hashing protocol extension)</li>
+<li>fixed Channels and SFTPFiles (among others) to auto-close when GC’d</li>
+<li>fixed Channel.fileno() for Windows, this time really</li>
+<li>don’t log socket errors as “unknown exception”</li>
+<li>some misc. backward-compatible API improvements (like allowing
+Transport.start_client() and start_server() to be called in a blocking way)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-3-1-nidoran-28jun05">
+<h2>v1.3.1 (nidoran) 28jun05<a class="headerlink" href="#v1-3-1-nidoran-28jun05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added SFTPClient.close()</li>
+<li>fixed up some outdated documentation</li>
+<li>made SFTPClient.file() an alias for open()</li>
+<li>added Transport.open_sftp_client() for convenience</li>
+<li>refactored packetizing out of Transport</li>
+<li>fixed bug (reported by alain s.) where connecting to a non-SSH host could
+cause paramiko to freeze up</li>
+<li>fixed Channel.fileno() for Windows (again)</li>
+<li>some more unit tests</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-3-marowak-09apr05">
+<h2>v1.3 (marowak) 09apr05<a class="headerlink" href="#v1-3-marowak-09apr05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed a bug where packets larger than about 12KB would cause the session
+to die on all platforms except osx</li>
+<li>added a potential workaround for windows to let Channel.fileno() (and
+therefore the select module) work!</li>
+<li>changed API for subsystem handlers (sorry!) to pass more info and make it
+easier to write a functional SFTP server</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-2-lapras-28feb05">
+<h2>v1.2 (lapras) 28feb05<a class="headerlink" href="#v1-2-lapras-28feb05" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>added SFTPClient.listdir_attr() for fetching a list of files and their
+attributes in one call</li>
+<li>added Channel.recv_exit_status() and Channel.send_exit_status() for
+manipulating the exit status of a command from either client or server
+mode</li>
+<li>moved check_global_request into ServerInterface, where it should’ve been
+all along (oops)</li>
+<li>SFTPHandle’s default implementations are fleshed out more</li>
+<li>made logging a bit more consistent, and started logging thread ids</li>
+<li>fixed a few race conditions, one of which would sometimes cause a Transport
+to fail to start on slow machines</li>
+<li>more unit tests</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-1-kabuto-12dec04">
+<h2>v1.1 (kabuto) 12dec04<a class="headerlink" href="#v1-1-kabuto-12dec04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>server-side SFTP support</li>
+<li>added support for stderr streams on client &amp; server channels</li>
+<li>added a new distinct exception for failed client authentication
+when caused by the server rejecting that <em>type</em> of auth</li>
+<li>added support for multi-part authentication</li>
+<li>fixed bug where get_username() wasn’t working in server mode</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v1-0-jigglypuff-06nov04">
+<h2>v1.0 (jigglypuff) 06nov04<a class="headerlink" href="#v1-0-jigglypuff-06nov04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed bug that broke server-mode authentication by private key</li>
+<li>fixed bug where closing a Channel could end up killing the entire
+Transport</li>
+<li>actually include demo_windows.py this time (oops!)</li>
+<li>fixed recently-introduced bug in group-exchange key negotiation that
+would generate the wrong hash (and therefore fail the initial handshake)</li>
+<li>server-mode subsystem handler is a bit more flexible</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v0-9-ivysaur-22oct04">
+<h2>v0.9 (ivysaur) 22oct04<a class="headerlink" href="#v0-9-ivysaur-22oct04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>new ServerInterface class for implementing server policy, so it’s no
+longer necessary to subclass Transport or Channel – server code will
+need to be updated to follow this new API!  (see demo_server.py)</li>
+<li>some bugfixes for re-keying an active session</li>
+<li>Transport.get_security_options() allows fine-tuned control over the
+crypto negotiation on a new session</li>
+<li>Transport.connect() takes a single hostkey object now instead of two
+string parameters</li>
+<li>the Channel request methods (like ‘exec_command’) now return True on
+success or False on failure</li>
+<li>added a mechanism for providing subsystems in server mode (and a new
+class to be subclassed: SubsystemHandler)</li>
+<li>renamed SFTP -&gt; SFTPClient (but left an alias for existing code)</li>
+<li>added SFTPClient.normalize() to resolve paths on the server</li>
+<li>fleshed out the API a bit more for SFTPClient and private keys</li>
+<li>a bunch of new unit tests!</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v0-9-horsea-27jun04">
+<h2>v0.9 (horsea) 27jun04<a class="headerlink" href="#v0-9-horsea-27jun04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fixed a lockup that could happen if the channel was closed while the
+send window was full</li>
+<li>better checking of maximum packet sizes</li>
+<li>better line buffering for file objects</li>
+<li>now chops sftp requests into smaller packets for some older servers</li>
+<li>more sftp unit tests</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v0-9-gyarados-31may04">
+<h2>v0.9 (gyarados) 31may04<a class="headerlink" href="#v0-9-gyarados-31may04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Transport.open_channel() – supports local &amp; remote port forwarding now</li>
+<li>now imports UTF-8 encodings explicitly as a hint to “freeze” utilities</li>
+<li>no longer rejects older SFTP servers</li>
+<li>default packet size bumped to 8kB</li>
+<li>fixed deadlock in closing a channel</li>
+<li>Transport.connect() – fixed bug where it would always fail when given a
+host key to verify</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v0-9-fearow-23apr04">
+<h2>v0.9 (fearow) 23apr04<a class="headerlink" href="#v0-9-fearow-23apr04" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Transport.send_ignore() – send random ignored bytes</li>
+<li>RSAKey/DSSKey added from_private_key_file() as a factory constructor;
+write_private_key_file() &amp; generate() to create and save ssh2 keys;
+get_base64() to retrieve the exported public key</li>
+<li>Transport added global_request() [client] and check_global_request()
+[server]</li>
+<li>Transport.get_remove_server_key() now returns a PKey object instead of a
+tuple of strings</li>
+<li>Transport.get_username() – return the username you auth’d as [client]</li>
+<li>Transport.set_keepalive() – makes paramiko send periodic junk packets
+to the remote host, to keep the session active</li>
+<li>python 2.2 support (thanks to Roger Binns)</li>
+<li>misc. bug fixes</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="v0-9-eevee-08mar04">
+<h2>v0.9 (eevee) 08mar04<a class="headerlink" href="#v0-9-eevee-08mar04" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="v0-9-doduo-04jan04">
+<h2>v0.9 (doduo) 04jan04<a class="headerlink" href="#v0-9-doduo-04jan04" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="v0-1-charmander-10nov03">
+<h2>v0.1 (charmander) 10nov03<a class="headerlink" href="#v0-1-charmander-10nov03" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="v0-1-bulbasaur-18sep03">
+<h2>v0.1 (bulbasaur) 18sep03<a class="headerlink" href="#v0-1-bulbasaur-18sep03" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="v0-1-aerodactyl-13sep03">
+<h2>v0.1 (aerodactyl) 13sep03<a class="headerlink" href="#v0-1-aerodactyl-13sep03" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
 
 
           </div>
@@ -2139,6 +2674,46 @@ Lundberg for the catch.</li>
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#very-old-changelog">Very Old Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-9-0-6th-nov-2012">v1.9.0 (6th Nov 2012)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-8-1-6th-nov-2012">v1.8.1 (6th Nov 2012)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-8-0-3rd-oct-2012">v1.8.0 (3rd Oct 2012)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-7-2-16may12">v1.7.7.2 16may12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-7-1-george-21may11">v1.7.7.1 (George) 21may11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-6-fanny-1nov09">v1.7.6 (Fanny) 1nov09</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-5-ernest-19jul09">v1.7.5 (Ernest) 19jul09</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-4-desmond-06jul08">v1.7.4 (Desmond) 06jul08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-3-clara-23mar08">v1.7.3 (Clara) 23mar08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-2-basil-21jan08">v1.7.2 (Basil) 21jan08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-1-amy-10jun07">v1.7.1 (Amy) 10jun07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-zubat-18feb07">v1.7 (zubat) 18feb07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-4-yanma-19nov06">v1.6.4 (yanma) 19nov06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-3-xatu-14oct06">v1.6.3 (xatu) 14oct06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-2-weedle-16aug06">v1.6.2 (weedle) 16aug06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-1-vulpix-10jul06">v1.6.1 (vulpix) 10jul06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-umbreon-10may06">v1.6 (umbreon) 10may06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-4-tentacool-11mar06">v1.5.4 (tentacool) 11mar06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-3-squirtle-19feb06">v1.5.3 (squirtle) 19feb06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-2-rhydon-04dec05">v1.5.2 (rhydon) 04dec05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-1-quilava-31oct05">v1.5.1 (quilava) 31oct05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-paras-02oct05">v1.5 (paras) 02oct05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-4-oddish-17jul05">v1.4 (oddish) 17jul05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-1-nidoran-28jun05">v1.3.1 (nidoran) 28jun05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-marowak-09apr05">v1.3 (marowak) 09apr05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-lapras-28feb05">v1.2 (lapras) 28feb05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-kabuto-12dec04">v1.1 (kabuto) 12dec04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-0-jigglypuff-06nov04">v1.0 (jigglypuff) 06nov04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-ivysaur-22oct04">v0.9 (ivysaur) 22oct04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-horsea-27jun04">v0.9 (horsea) 27jun04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-gyarados-31may04">v0.9 (gyarados) 31may04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-fearow-23apr04">v0.9 (fearow) 23apr04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-eevee-08mar04">v0.9 (eevee) 08mar04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-doduo-04jan04">v0.9 (doduo) 04jan04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-charmander-10nov03">v0.1 (charmander) 10nov03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-bulbasaur-18sep03">v0.1 (bulbasaur) 18sep03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-aerodactyl-13sep03">v0.1 (aerodactyl) 13sep03</a></li>
+</ul>
+</li>
 </ul>
 
 

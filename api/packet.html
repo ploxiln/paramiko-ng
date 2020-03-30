@@ -76,13 +76,13 @@
 <code class="descname">handshake_timed_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.handshake_timed_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the handshake has timed out.</p>
 <p>If <a class="reference internal" href="#paramiko.packet.Packetizer.start_handshake" title="paramiko.packet.Packetizer.start_handshake"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_handshake</span></code></a> wasn’t called before the call to this function,
-the return value will always be <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>. If the handshake completed
-before a timeout was reached, the return value will be <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+the return value will always be <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>. If the handshake completed
+before a timeout was reached, the return value will be <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">handshake time out status, as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">handshake time out status, as a <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -104,9 +104,9 @@ checked after every read or write, or at least after every few.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – number of bytes to read</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of bytes to read</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the data read, as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the data read, as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">EOFError</span></code> – if the socket was closed before all the bytes could
 be read</td>
@@ -183,7 +183,7 @@ handshake process.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – amount of seconds to wait before timing out</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – amount of seconds to wait before timing out</td>
 </tr>
 </tbody>
 </table>
@@ -261,6 +261,7 @@ handshake process.</p>
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 

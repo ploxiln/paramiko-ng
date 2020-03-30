@@ -68,14 +68,14 @@ its own iterator.</p>
 <code class="descname">__next__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.__next__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the next line from the input, or raises <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code>
 when EOF is hit.  Unlike python file objects, it’s okay to mix
-calls to <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#next" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">next</span></code></a> and <a class="reference internal" href="#paramiko.file.BufferedFile.readline" title="paramiko.file.BufferedFile.readline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readline</span></code></a>.</p>
+calls to <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#next" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">next</span></code></a> and <a class="reference internal" href="#paramiko.file.BufferedFile.readline" title="paramiko.file.BufferedFile.readline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readline</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> – when the end of the file is reached.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a line (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) read from the file.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a line (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) read from the file.</td>
 </tr>
 </tbody>
 </table>
@@ -111,7 +111,7 @@ text data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – maximum number of bytes to read</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data read from the file (as bytes), or an empty string if EOF was
 encountered immediately</td>
@@ -128,7 +128,7 @@ encountered immediately</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.read" title="paramiko.file.BufferedFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.read" title="paramiko.file.BufferedFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
 an exception.</td>
 </tr>
 </tbody>
@@ -168,12 +168,12 @@ characters (<code class="docutils literal notranslate"><span class="pre">'\0'</s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – maximum length of returned string.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum length of returned string.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">next line of the file, or an empty string if the end of the
 file has been reached.<p>If the file was opened in binary (<code class="docutils literal notranslate"><span class="pre">'b'</span></code>) mode: bytes are returned
 Else: the encoding of the file is assumed to be UTF-8 and character
-strings (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) are returned</p>
+strings (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) are returned</p>
 </td>
 </tr>
 </tbody>
@@ -191,7 +191,7 @@ after rounding up to an internal buffer size) are read.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – desired maximum number of bytes to read.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired maximum number of bytes to read.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of lines read from the file.</td>
 </tr>
@@ -215,8 +215,8 @@ will move back to the end of the file).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – position to move to within the file, relative to <code class="docutils literal notranslate"><span class="pre">whence</span></code>.</li>
-<li><strong>whence</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – type of movement: 0 = absolute; 1 = relative to the current
+<li><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – position to move to within the file, relative to <code class="docutils literal notranslate"><span class="pre">whence</span></code>.</li>
+<li><strong>whence</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – type of movement: 0 = absolute; 1 = relative to the current
 position; 2 = relative to the end of the file.</li>
 </ul>
 </td>
@@ -236,7 +236,7 @@ position; 2 = relative to the end of the file.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.seek" title="paramiko.file.BufferedFile.seek"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seek</span></code></a> will
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.seek" title="paramiko.file.BufferedFile.seek"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seek</span></code></a> will
 raise an exception.</td>
 </tr>
 </tbody>
@@ -253,7 +253,7 @@ opened in append mode.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">file position (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">file position (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</td>
 </tr>
 </tbody>
 </table>
@@ -267,7 +267,7 @@ opened in append mode.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.write" title="paramiko.file.BufferedFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.write" title="paramiko.file.BufferedFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
 raise an exception.</td>
 </tr>
 </tbody>
@@ -387,6 +387,7 @@ predates Python iterator support.</p>
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 

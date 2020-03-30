@@ -84,9 +84,9 @@ battle tested.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>sock</strong> (<em>socket</em>) – a socket or socket-like object to create the session over.</li>
-<li><strong>default_window_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – sets the default window size on the transport. (defaults to
+<li><strong>default_window_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sets the default window size on the transport. (defaults to
 2097152)</li>
-<li><strong>default_max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – sets the default max packet size on the transport. (defaults to
+<li><strong>default_max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – sets the default max packet size on the transport. (defaults to
 32768)</li>
 </ul>
 </td>
@@ -136,15 +136,15 @@ of preference for them.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The explicitly requested GSS-oriented hostname to connect to (i.e.
+<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The explicitly requested GSS-oriented hostname to connect to (i.e.
 what the host’s name is in the Kerberos database.) Defaults to
 <code class="docutils literal notranslate"><span class="pre">self.hostname</span></code> (which will be the ‘real’ target hostname and/or
 host portion of given socket object.)</li>
-<li><strong>trust_dns</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Indicates whether or not DNS is trusted; if true, DNS will be used
+<li><strong>trust_dns</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Indicates whether or not DNS is trusted; if true, DNS will be used
 to canonicalize the GSS hostname (which again will either be
 <code class="docutils literal notranslate"><span class="pre">gss_host</span></code> or the transport’s default hostname.)
 (Defaults to True due to backwards compatibility.)</li>
-<li><strong>gssapi_requested</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether GSSAPI key exchange or authentication was even requested.
+<li><strong>gssapi_requested</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether GSSAPI key exchange or authentication was even requested.
 If not, this is a no-op and nothing happens
 (and <code class="docutils literal notranslate"><span class="pre">self.gss_host</span></code> is not set.)
 (Defaults to True due to backwards compatibility.)</li>
@@ -188,8 +188,8 @@ object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/threading.html#threading.Event" title="(in Python v2.7)"><em>threading.Event</em></a>) – an event to trigger when negotiation is complete (optional)</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – a timeout, in seconds, for SSH2 session negotiation (optional)</li>
+<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – an event to trigger when negotiation is complete (optional)</li>
+<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – a timeout, in seconds, for SSH2 session negotiation (optional)</li>
 </ul>
 </td>
 </tr>
@@ -230,7 +230,7 @@ object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/threading.html#threading.Event" title="(in Python v2.7)"><em>threading.Event</em></a>) – an event to trigger when negotiation is complete.</li>
+<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – an event to trigger when negotiation is complete.</li>
 <li><strong>server</strong> (<a class="reference internal" href="server.html#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><em>ServerInterface</em></a>) – an object used to perform authentication and create <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">channels</span></code></a></li>
 </ul>
 </td>
@@ -304,7 +304,7 @@ support that method of key negotiation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – optional path to the moduli file, if you happen to know that it’s
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – optional path to the moduli file, if you happen to know that it’s
 not in a standard location.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if a moduli file was successfully loaded; False otherwise.</td>
@@ -377,8 +377,8 @@ as in the OpenSSH code base and have been battle tested.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional window size for this session.</li>
-<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional max packet size for this session.</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional window size for this session.</li>
+<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional max packet size for this session.</li>
 </ul>
 </td>
 </tr>
@@ -408,7 +408,7 @@ is just an alias for <code class="docutils literal notranslate"><span class="pre
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src_addr</strong> (<em>tuple</em>) – the source address (<code class="docutils literal notranslate"><span class="pre">(str,</span> <span class="pre">int)</span></code>) of the x11 server (port is the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src_addr</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – the source address (<code class="docutils literal notranslate"><span class="pre">(str,</span> <span class="pre">int)</span></code>) of the x11 server (port is the
 x11 port, ie. 6010)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a></td>
@@ -477,16 +477,16 @@ as in the OpenSSH code base and have been battle tested.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the kind of channel requested (usually <code class="docutils literal notranslate"><span class="pre">&quot;session&quot;</span></code>,
+<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the kind of channel requested (usually <code class="docutils literal notranslate"><span class="pre">&quot;session&quot;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&quot;forwarded-tcpip&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;direct-tcpip&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;x11&quot;</span></code>)</li>
-<li><strong>dest_addr</strong> (<em>tuple</em>) – the destination address (address + port tuple) of this port
+<li><strong>dest_addr</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – the destination address (address + port tuple) of this port
 forwarding, if <code class="docutils literal notranslate"><span class="pre">kind</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;forwarded-tcpip&quot;</span></code> or
 <code class="docutils literal notranslate"><span class="pre">&quot;direct-tcpip&quot;</span></code> (ignored for other channel types)</li>
 <li><strong>src_addr</strong> – the source address of this port forwarding, if
 <code class="docutils literal notranslate"><span class="pre">kind</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;forwarded-tcpip&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;direct-tcpip&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;x11&quot;</span></code></li>
-<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional window size for this session.</li>
-<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional max packet size for this session.</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – optional timeout opening a channel, default 3600s (1h)</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional window size for this session.</li>
+<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional max packet size for this session.</li>
+<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – optional timeout opening a channel, default 3600s (1h)</li>
 </ul>
 </td>
 </tr>
@@ -528,14 +528,14 @@ forwarded connections into the accept queue, to be picked up via
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the address to bind when forwarding</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the port to forward, or 0 to ask the server to allocate any port</li>
+<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the address to bind when forwarding</li>
+<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the port to forward, or 0 to ask the server to allocate any port</li>
 <li><strong>handler</strong> (<em>callable</em>) – optional handler for incoming forwarded connections, of the form
 <code class="docutils literal notranslate"><span class="pre">func(Channel,</span> <span class="pre">(str,</span> <span class="pre">int),</span> <span class="pre">(str,</span> <span class="pre">int))</span></code>.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the port number (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) allocated by the server</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the port number (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) allocated by the server</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the server refused the TCP forward request</p>
@@ -556,8 +556,8 @@ ssh connection.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the address to stop forwarding</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the port to stop forwarding</li>
+<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the address to stop forwarding</li>
+<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the port to stop forwarding</li>
 </ul>
 </td>
 </tr>
@@ -593,7 +593,7 @@ firewalls.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>byte_count</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the number of random bytes to send in the payload of the ignored
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>byte_count</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the number of random bytes to send in the payload of the ignored
 packet – defaults to a random number from 10 to 41.</td>
 </tr>
 </tbody>
@@ -631,7 +631,7 @@ can be useful to keep connections alive over a NAT, for example.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>interval</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – seconds to wait before sending a keepalive packet (or
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>interval</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – seconds to wait before sending a keepalive packet (or
 0 to disable keepalives).</td>
 </tr>
 </tbody>
@@ -648,10 +648,10 @@ extensions to the SSH2 protocol.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the request.</li>
-<li><strong>data</strong> (<em>tuple</em>) – an optional tuple containing additional data to attach to the
+<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the request.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – an optional tuple containing additional data to attach to the
 request.</li>
-<li><strong>wait</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if this method should not return until a response is
+<li><strong>wait</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if this method should not return until a response is
 received; <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</li>
 </ul>
 </td>
@@ -675,7 +675,7 @@ server mode.  If no channel is opened before the given timeout,
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – seconds to wait for a channel, or <code class="docutils literal notranslate"><span class="pre">None</span></code> to wait forever</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – seconds to wait for a channel, or <code class="docutils literal notranslate"><span class="pre">None</span></code> to wait forever</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> opened by the client</td>
 </tr>
@@ -711,15 +711,15 @@ can call auth methods manually after this).</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>hostkey</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the host key expected from the server, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if you don’t
 want to do host key verification.</li>
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as.</li>
-<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – a password to use for authentication, if you want to use password
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as.</li>
+<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a password to use for authentication, if you want to use password
 authentication; otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code>.</li>
 <li><strong>pkey</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – a private key to use for authentication, if you want to use private
 key authentication; otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code>.</li>
-<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The target’s name in the kerberos database. Default: hostname</li>
-<li><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to use GSS-API authentication.</li>
-<li><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication.</li>
-<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to delegate GSS-API client credentials.</li>
+<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The target’s name in the kerberos database. Default: hostname</li>
+<li><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to use GSS-API authentication.</li>
+<li><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication.</li>
+<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to delegate GSS-API client credentials.</li>
 <li><strong>gss_trust_dns</strong> – Indicates whether or not the DNS is trusted to securely
 canonicalize the name of the host being connected to (default
 <code class="docutils literal notranslate"><span class="pre">True</span></code>).</li>
@@ -771,7 +771,7 @@ passed to the <a class="reference internal" href="server.html#paramiko.server.Su
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the subsystem.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the subsystem.</li>
 <li><strong>handler</strong> – subclass of <a class="reference internal" href="server.html#paramiko.server.SubsystemHandler" title="paramiko.server.SubsystemHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubsystemHandler</span></code></a> that handles this subsystem.</li>
 </ul>
 </td>
@@ -806,7 +806,7 @@ returns <code class="docutils literal notranslate"><span class="pre">None</span>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">username that was authenticated (a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>), or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">username that was authenticated (a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>), or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -822,7 +822,7 @@ supplied, this method returns <code class="docutils literal notranslate"><span c
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">server supplied banner (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>), or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">server supplied banner (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>), or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -842,7 +842,7 @@ list of authentication types supported by the server, by catching the
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of auth types permissible for the next stage of
 authentication (normally empty)</td>
@@ -888,11 +888,11 @@ step.  Otherwise, in the normal case, an empty list is returned.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as</li>
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as</li>
 <li><strong>password</strong> (<em>basestring</em>) – the password to authenticate with</li>
-<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/threading.html#threading.Event" title="(in Python v2.7)"><em>threading.Event</em></a>) – an event to trigger when the authentication attempt is complete
+<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – an event to trigger when the authentication attempt is complete
 (whether it was successful or not)</li>
-<li><strong>fallback</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if an attempt at an automated “interactive” password auth
+<li><strong>fallback</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if an attempt at an automated “interactive” password auth
 should be made if the server doesn’t support normal password auth</li>
 </ul>
 </td>
@@ -936,9 +936,9 @@ step.  Otherwise, in the normal case, an empty list is returned.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as</li>
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as</li>
 <li><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the private key to authenticate with</li>
-<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/threading.html#threading.Event" title="(in Python v2.7)"><em>threading.Event</em></a>) – an event to trigger when the authentication attempt is complete
+<li><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – an event to trigger when the authentication attempt is complete
 (whether it was successful or not)</li>
 </ul>
 </td>
@@ -991,9 +991,9 @@ step.  Otherwise, in the normal case, an empty list is returned.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as</li>
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as</li>
 <li><strong>handler</strong> (<em>callable</em>) – a handler for responding to server questions</li>
-<li><strong>submethods</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – a string list of desired submethods (optional)</li>
+<li><strong>submethods</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a string list of desired submethods (optional)</li>
 </ul>
 </td>
 </tr>
@@ -1036,9 +1036,9 @@ achieved by key and then the user has to enter a 2fac token.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The username to authenticate as</li>
-<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The target host</li>
-<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Delegate credentials or not</li>
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username to authenticate as</li>
+<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The target host</li>
+<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Delegate credentials or not</li>
 </ul>
 </td>
 </tr>
@@ -1069,7 +1069,7 @@ event was passed in)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The username to authenticate as.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username to authenticate as.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of auth types permissible for the next stage of
 authentication (normally empty)</td>
@@ -1092,13 +1092,13 @@ if the authentication failed (and no event was passed in)</td>
 <code class="descname">set_log_channel</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.transport.Transport.set_log_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the channel for this transport’s logging.  The default is
 <code class="docutils literal notranslate"><span class="pre">&quot;paramiko.transport&quot;</span></code> but it can be set to anything you want. (See
-the <a class="reference external" href="https://docs.python.org/2.7/library/logging.html#module-logging" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a> module for more info.)  SSH Channels will log to a
+the <a class="reference external" href="https://docs.python.org/3.7/library/logging.html#module-logging" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a> module for more info.)  SSH Channels will log to a
 sub-channel of the one specified.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – new channel name for logging</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new channel name for logging</td>
 </tr>
 </tbody>
 </table>
@@ -1115,7 +1115,7 @@ sub-channel of the one specified.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">channel name as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">channel name as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1134,7 +1134,7 @@ but if you are debugging something, it may be useful.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hexdump</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to log protocol traffix (in hex) to the log; <code class="docutils literal notranslate"><span class="pre">False</span></code>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hexdump</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to log protocol traffix (in hex) to the log; <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</td>
 </tr>
 </tbody>
@@ -1169,7 +1169,7 @@ compression is off since it negatively affects interactive sessions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to ask the remote client/server to compress traffic;
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to ask the remote client/server to compress traffic;
 <code class="docutils literal notranslate"><span class="pre">False</span></code> to refuse compression</td>
 </tr>
 </tbody>
@@ -1334,6 +1334,7 @@ tuple to one of the fields, <code class="docutils literal notranslate"><span cla
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 

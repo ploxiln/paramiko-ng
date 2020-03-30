@@ -92,7 +92,7 @@ directory.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – new current working directory</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new current working directory</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the requested path doesn’t exist on the server</td>
 </tr>
@@ -107,15 +107,15 @@ directory.</p>
 <dt id="paramiko.sftp_client.SFTPClient.chmod">
 <code class="descname">chmod</code><span class="sig-paren">(</span><em>path</em>, <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_client.SFTPClient.chmod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the mode (permissions) of a file.  The permissions are
-unix-style and identical to those used by Python’s <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.chmod" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chmod</span></code></a>
+unix-style and identical to those used by Python’s <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.chmod" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chmod</span></code></a>
 function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the file to change the permissions of</li>
-<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new permissions</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the file to change the permissions of</li>
+<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new permissions</li>
 </ul>
 </td>
 </tr>
@@ -127,7 +127,7 @@ function.</p>
 <dt id="paramiko.sftp_client.SFTPClient.chown">
 <code class="descname">chown</code><span class="sig-paren">(</span><em>path</em>, <em>uid</em>, <em>gid</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_client.SFTPClient.chown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the owner (<code class="docutils literal notranslate"><span class="pre">uid</span></code>) and group (<code class="docutils literal notranslate"><span class="pre">gid</span></code>) of a file.  As with
-Python’s <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.chown" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chown</span></code></a> function, you must pass both arguments, so if you
+Python’s <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.chown" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chown</span></code></a> function, you must pass both arguments, so if you
 only want to change one, use <a class="reference internal" href="#paramiko.sftp_client.SFTPClient.stat" title="paramiko.sftp_client.SFTPClient.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a> first to retrieve the current
 owner and group.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -135,9 +135,9 @@ owner and group.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the file to change the owner and group of</li>
-<li><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new owner’s uid</li>
-<li><strong>gid</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new group id</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the file to change the owner and group of</li>
+<li><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new owner’s uid</li>
+<li><strong>gid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new group id</li>
 </ul>
 </td>
 </tr>
@@ -158,7 +158,7 @@ owner and group.</p>
 <dt id="paramiko.sftp_client.SFTPClient.file">
 <code class="descname">file</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>bufsize=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_client.SFTPClient.file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a file on the remote server.  The arguments are the same as for
-Python’s built-in <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> (aka <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#open" title="(in Python v2.7)"><code class="docutils literal notranslate"><span class="pre">open</span></code></a>).  A file-like
+Python’s built-in <code class="xref py py-obj docutils literal notranslate"><span class="pre">file</span></code> (aka <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#open" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">open</span></code></a>).  A file-like
 object is returned, which closely mimics the behavior of a normal
 Python file object, including the ability to be used as a context
 manager.</p>
@@ -181,9 +181,9 @@ buffering, <code class="docutils literal notranslate"><span class="pre">1</span>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the file to open</li>
-<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – mode (Python-style) to open in</li>
-<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – desired buffering (-1 = default buffer size)</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to open</li>
+<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – mode (Python-style) to open in</li>
+<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired buffering (-1 = default buffer size)</li>
 </ul>
 </td>
 </tr>
@@ -212,8 +212,8 @@ interactive sessions.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>t</strong> (<a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><em>Transport</em></a>) – an open <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> which is already
 authenticated</li>
-<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional window size for the <a class="reference internal" href="#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session.</li>
-<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional max packet size for the <a class="reference internal" href="#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session..</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional window size for the <a class="reference internal" href="#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session.</li>
+<li><strong>max_packet_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional max packet size for the <a class="reference internal" href="#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session..</li>
 </ul>
 </td>
 </tr>
@@ -239,8 +239,8 @@ passed through.  This method is primarily provided as a convenience.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the remote file to copy</li>
-<li><strong>localpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the destination path on the local host</li>
+<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the remote file to copy</li>
+<li><strong>localpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the destination path on the local host</li>
 <li><strong>callback</strong> (<em>callable</em>) – optional callback function (form: <code class="docutils literal notranslate"><span class="pre">func(int,</span> <span class="pre">int)</span></code>) that accepts
 the bytes transferred so far and the total bytes to be transferred</li>
 </ul>
@@ -289,14 +289,14 @@ as a convenience.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – opened file or file-like object to copy to</li>
-<li><strong>fl</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the destination path on the local host or open file object</li>
+<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – opened file or file-like object to copy to</li>
+<li><strong>fl</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the destination path on the local host or open file object</li>
 <li><strong>callback</strong> (<em>callable</em>) – optional callback function (form: <code class="docutils literal notranslate"><span class="pre">func(int,</span> <span class="pre">int)</span></code>) that accepts
 the bytes transferred so far and the total bytes to be transferred</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes written to the opened file object</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes written to the opened file object</p>
 </td>
 </tr>
 </tbody>
@@ -319,7 +319,7 @@ For a list of full <a class="reference internal" href="#paramiko.sftp_attr.SFTPA
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path to list (defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code>)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path to list (defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code>)</td>
 </tr>
 </tbody>
 </table>
@@ -340,7 +340,7 @@ depend on the SFTP server implementation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path to list (defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code>)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path to list (defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code>)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> objects</td>
 </tr>
@@ -376,7 +376,7 @@ the same as <a class="reference internal" href="#paramiko.sftp_client.SFTPClient
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename to stat</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to stat</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> object containing attributes about the given
 file</td>
@@ -396,8 +396,8 @@ Where it is used, the current umask value is first masked out.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the folder to create</li>
-<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – permissions (posix-style) for the newly-created folder</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the folder to create</li>
+<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – permissions (posix-style) for the newly-created folder</li>
 </ul>
 </td>
 </tr>
@@ -416,9 +416,9 @@ as <code class="docutils literal notranslate"><span class="pre">path</span></cod
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path to be normalized</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path to be normalized</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">normalized form of the given path (as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">normalized form of the given path (as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>)</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the path can’t be resolved on the server</td>
 </tr>
@@ -430,7 +430,7 @@ as <code class="docutils literal notranslate"><span class="pre">path</span></cod
 <dt id="paramiko.sftp_client.SFTPClient.open">
 <code class="descname">open</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>bufsize=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_client.SFTPClient.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a file on the remote server.  The arguments are the same as for
-Python’s built-in <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> (aka <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#open" title="(in Python v2.7)"><code class="docutils literal notranslate"><span class="pre">open</span></code></a>).  A file-like
+Python’s built-in <code class="xref py py-obj docutils literal notranslate"><span class="pre">file</span></code> (aka <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#open" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">open</span></code></a>).  A file-like
 object is returned, which closely mimics the behavior of a normal
 Python file object, including the ability to be used as a context
 manager.</p>
@@ -453,9 +453,9 @@ buffering, <code class="docutils literal notranslate"><span class="pre">1</span>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the file to open</li>
-<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – mode (Python-style) to open in</li>
-<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – desired buffering (-1 = default buffer size)</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to open</li>
+<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – mode (Python-style) to open in</li>
+<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired buffering (-1 = default buffer size)</li>
 </ul>
 </td>
 </tr>
@@ -479,8 +479,8 @@ posix conventions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – existing name of the file or folder</li>
-<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – new name for the file or folder, will be
+<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – existing name of the file or folder</li>
+<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new name for the file or folder, will be
 overwritten if it already exists</li>
 </ul>
 </td>
@@ -508,13 +508,13 @@ method is primarily provided as a convenience.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>localpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the local file to copy</li>
-<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the destination path on the SFTP server. Note
+<li><strong>localpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the local file to copy</li>
+<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the destination path on the SFTP server. Note
 that the filename should be included. Only specifying a directory
 may result in an error.</li>
 <li><strong>callback</strong> (<em>callable</em>) – optional callback function (form: <code class="docutils literal notranslate"><span class="pre">func(int,</span> <span class="pre">int)</span></code>) that accepts
 the bytes transferred so far and the total bytes to be transferred</li>
-<li><strong>confirm</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – whether to do a stat() on the file afterwards to confirm the file
+<li><strong>confirm</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – whether to do a stat() on the file afterwards to confirm the file
 size</li>
 </ul>
 </td>
@@ -549,13 +549,13 @@ through.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fl</strong> – opened file or file-like object to copy</li>
-<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the destination path on the SFTP server</li>
-<li><strong>file_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional size parameter passed to callback. If none is specified,
+<li><strong>remotepath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the destination path on the SFTP server</li>
+<li><strong>file_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional size parameter passed to callback. If none is specified,
 size defaults to 0</li>
 <li><strong>callback</strong> (<em>callable</em>) – optional callback function (form: <code class="docutils literal notranslate"><span class="pre">func(int,</span> <span class="pre">int)</span></code>) that accepts
 the bytes transferred so far and the total bytes to be transferred
 (since 1.7.4)</li>
-<li><strong>confirm</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – whether to do a stat() on the file afterwards to confirm the file
+<li><strong>confirm</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – whether to do a stat() on the file afterwards to confirm the file
 size (since 1.7.7)</li>
 </ul>
 </td>
@@ -581,9 +581,9 @@ relative pathname.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the symbolic link file</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the symbolic link file</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">target path, as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">target path, as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -598,7 +598,7 @@ removing folders (directories), use <a class="reference internal" href="#paramik
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path (absolute or relative) of the file to remove</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path (absolute or relative) of the file to remove</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the path refers to a folder (directory)</td>
 </tr>
@@ -621,8 +621,8 @@ seeking the OpenSSH “POSIX rename” extension behavior should use
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – existing name of the file or folder</li>
-<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – new name for the file or folder, must not exist already</li>
+<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – existing name of the file or folder</li>
+<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new name for the file or folder, must not exist already</li>
 </ul>
 </td>
 </tr>
@@ -642,7 +642,7 @@ wrong</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the folder to remove</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the folder to remove</td>
 </tr>
 </tbody>
 </table>
@@ -656,7 +656,7 @@ value is an object whose attributes correspond to the attributes of
 Python’s <code class="docutils literal notranslate"><span class="pre">stat</span></code> structure as returned by <code class="docutils literal notranslate"><span class="pre">os.stat</span></code>, except that it
 contains fewer fields.  An SFTP server may return as much or as little
 info as it wants, so the results may vary from server to server.</p>
-<p>Unlike a Python <a class="reference external" href="https://docs.python.org/2.7/library/stat.html#module-stat" title="(in Python v2.7)"><code class="docutils literal notranslate"><span class="pre">stat</span></code></a> object, the result may not be accessed as
+<p>Unlike a Python <a class="reference external" href="https://docs.python.org/3.7/library/stat.html#module-stat" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">stat</span></code></a> object, the result may not be accessed as
 a tuple.  This is mostly due to the author’s slack factor.</p>
 <p>The fields supported are: <code class="docutils literal notranslate"><span class="pre">st_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">st_size</span></code>, <code class="docutils literal notranslate"><span class="pre">st_uid</span></code>,
 <code class="docutils literal notranslate"><span class="pre">st_gid</span></code>, <code class="docutils literal notranslate"><span class="pre">st_atime</span></code>, and <code class="docutils literal notranslate"><span class="pre">st_mtime</span></code>.</p>
@@ -664,7 +664,7 @@ a tuple.  This is mostly due to the author’s slack factor.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename to stat</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to stat</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> object containing attributes about the given
 file</td>
@@ -682,8 +682,8 @@ file</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>source</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the original file</li>
-<li><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the newly created symlink</li>
+<li><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the original file</li>
+<li><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the newly created symlink</li>
 </ul>
 </td>
 </tr>
@@ -695,15 +695,15 @@ file</td>
 <dt id="paramiko.sftp_client.SFTPClient.truncate">
 <code class="descname">truncate</code><span class="sig-paren">(</span><em>path</em>, <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_client.SFTPClient.truncate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the size of the file specified by <code class="docutils literal notranslate"><span class="pre">path</span></code>.  This usually
-extends or shrinks the size of the file, just like the <a class="reference external" href="https://docs.python.org/2.7/library/stdtypes.html#file.truncate" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code></a>
+extends or shrinks the size of the file, just like the <code class="xref py py-obj docutils literal notranslate"><span class="pre">truncate</span></code>
 method on Python file objects.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the file to modify</li>
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the new size of the file</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the file to modify</li>
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the new size of the file</li>
 </ul>
 </td>
 </tr>
@@ -720,7 +720,7 @@ removing folders (directories), use <a class="reference internal" href="#paramik
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path (absolute or relative) of the file to remove</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path (absolute or relative) of the file to remove</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the path refers to a folder (directory)</td>
 </tr>
@@ -742,8 +742,8 @@ from Python for the sake of consistency – I apologize.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path of the file to modify</li>
-<li><strong>times</strong> (<em>tuple</em>) – <code class="docutils literal notranslate"><span class="pre">None</span></code> or a tuple of (access time, modified time) in standard
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path of the file to modify</li>
+<li><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – <code class="docutils literal notranslate"><span class="pre">None</span></code> or a tuple of (access time, modified time) in standard
 internet epoch time (seconds since 01 January 1970 GMT)</li>
 </ul>
 </td>
@@ -774,7 +774,7 @@ parameters or keyword parameters are passed from the original call to
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – channel passed from the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the requested subsystem.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</li>
 <li><strong>server</strong> (<a class="reference internal" href="server.html#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><em>ServerInterface</em></a>) – the server object associated with this channel and subsystem</li>
 <li><strong>sftp_si</strong> – a subclass of <a class="reference internal" href="#paramiko.sftp_si.SFTPServerInterface" title="paramiko.sftp_si.SFTPServerInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPServerInterface</span></code></a> to use for handling individual
 requests.</li>
@@ -795,9 +795,9 @@ exceptions in server code and returning an appropriate result.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – an errno code, as from <code class="docutils literal notranslate"><span class="pre">OSError.errno</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – an errno code, as from <code class="docutils literal notranslate"><span class="pre">OSError.errno</span></code>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> SFTP error code like <code class="docutils literal notranslate"><span class="pre">SFTP_NO_SUCH_FILE</span></code>.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> SFTP error code like <code class="docutils literal notranslate"><span class="pre">SFTP_NO_SUCH_FILE</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -827,7 +827,7 @@ requests into local file operations.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the file to alter (should usually be an absolute path).</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to alter (should usually be an absolute path).</li>
 <li><strong>attr</strong> (<a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><em>SFTPAttributes</em></a>) – attributes to change.</li>
 </ul>
 </td>
@@ -860,7 +860,7 @@ still be running.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – name of the requested subsystem.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</li>
 <li><strong>transport</strong> (<a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><em>Transport</em></a>) – the server-mode <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</li>
 <li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the channel associated with this subsystem
 request.</li>
@@ -878,8 +878,8 @@ request.</li>
 <em class="property">class </em><code class="descclassname">paramiko.sftp_attr.</code><code class="descname">SFTPAttributes</code><a class="headerlink" href="#paramiko.sftp_attr.SFTPAttributes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of the attributes of a file (or proxied file) for SFTP in
 client or server mode.  It attemps to mirror the object returned by
-<a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.stat" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> as closely as possible, so it may have the following fields,
-with the same meanings as those returned by an <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.stat" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> object:</p>
+<a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.stat" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> as closely as possible, so it may have the following fields,
+with the same meanings as those returned by an <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.stat" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> object:</p>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">st_size</span></code></li>
@@ -921,14 +921,14 @@ stored, in <code class="docutils literal notranslate"><span class="pre">filename
 <dt id="paramiko.sftp_attr.SFTPAttributes.from_stat">
 <em class="property">classmethod </em><code class="descname">from_stat</code><span class="sig-paren">(</span><em>obj</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_attr.SFTPAttributes.from_stat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> object from an existing <code class="docutils literal notranslate"><span class="pre">stat</span></code> object (an
-object returned by <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.stat" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a>).</p>
+object returned by <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.stat" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>obj</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – an object returned by <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.stat" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> (or equivalent).</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename associated with this file.</li>
+<li><strong>obj</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – an object returned by <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.stat" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.stat</span></code></a> (or equivalent).</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename associated with this file.</li>
 </ul>
 </td>
 </tr>
@@ -974,17 +974,17 @@ bytes.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>hash_algorithm</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the name of the hash algorithm to use (normally <code class="docutils literal notranslate"><span class="pre">&quot;sha1&quot;</span></code> or
+<li><strong>hash_algorithm</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the name of the hash algorithm to use (normally <code class="docutils literal notranslate"><span class="pre">&quot;sha1&quot;</span></code> or
 <code class="docutils literal notranslate"><span class="pre">&quot;md5&quot;</span></code>)</li>
 <li><strong>offset</strong> – offset into the file to begin hashing (0 means to start from the
 beginning)</li>
 <li><strong>length</strong> – number of bytes to hash (0 means continue to the end of the file)</li>
-<li><strong>block_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – number of bytes to hash per result (must not be less than 256; 0
+<li><strong>block_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of bytes to hash per result (must not be less than 256; 0
 means to compute only one hash of the entire segment)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> of bytes representing the hash of each block, concatenated
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> of bytes representing the hash of each block, concatenated
 together</p>
 </td>
 </tr>
@@ -1007,13 +1007,13 @@ extension, or possibly doesn’t support the hash algorithm requested</p>
 <dt id="paramiko.sftp_file.SFTPFile.chmod">
 <code class="descname">chmod</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_file.SFTPFile.chmod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the mode (permissions) of this file.  The permissions are
-unix-style and identical to those used by Python’s <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.chmod" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chmod</span></code></a>
+unix-style and identical to those used by Python’s <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.chmod" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chmod</span></code></a>
 function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new permissions</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new permissions</td>
 </tr>
 </tbody>
 </table>
@@ -1023,7 +1023,7 @@ function.</p>
 <dt id="paramiko.sftp_file.SFTPFile.chown">
 <code class="descname">chown</code><span class="sig-paren">(</span><em>uid</em>, <em>gid</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_file.SFTPFile.chown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the owner (<code class="docutils literal notranslate"><span class="pre">uid</span></code>) and group (<code class="docutils literal notranslate"><span class="pre">gid</span></code>) of this file.  As with
-Python’s <a class="reference external" href="https://docs.python.org/2.7/library/os.html#os.chown" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chown</span></code></a> function, you must pass both arguments, so if you
+Python’s <a class="reference external" href="https://docs.python.org/3.7/library/os.html#os.chown" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.chown</span></code></a> function, you must pass both arguments, so if you
 only want to change one, use <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.stat" title="paramiko.sftp_file.SFTPFile.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a> first to retrieve the current
 owner and group.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1031,8 +1031,8 @@ owner and group.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new owner’s uid</li>
-<li><strong>gid</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – new group id</li>
+<li><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new owner’s uid</li>
+<li><strong>gid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – new group id</li>
 </ul>
 </td>
 </tr>
@@ -1056,7 +1056,7 @@ buffering is not turned on.</p>
 <dl class="method">
 <dt id="paramiko.sftp_file.SFTPFile.gettimeout">
 <code class="descname">gettimeout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_file.SFTPFile.gettimeout" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the timeout in seconds (as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) associated with the
+<dd><p>Returns the timeout in seconds (as a <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) associated with the
 socket or ssh <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> used for this file.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -1079,7 +1079,7 @@ buffer that haven’t been read will continue to be buffered.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – When this is <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), this method calls <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.stat" title="paramiko.sftp_file.SFTPFile.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a> to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – When this is <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), this method calls <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.stat" title="paramiko.sftp_file.SFTPFile.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a> to
 determine the remote file size. In some situations, doing so can
 cause exceptions or hangs (see <a class="reference external" href="https://github.com/paramiko/paramiko/pull/562">#562</a>); as a
 workaround, one may call <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.stat" title="paramiko.sftp_file.SFTPFile.stat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat</span></code></a> explicitly and pass its value in
@@ -1116,7 +1116,7 @@ text data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – maximum number of bytes to read</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data read from the file (as bytes), or an empty string if EOF was
 encountered immediately</td>
@@ -1133,7 +1133,7 @@ encountered immediately</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.read" title="paramiko.sftp_file.SFTPFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.read" title="paramiko.sftp_file.SFTPFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
 an exception.</td>
 </tr>
 </tbody>
@@ -1173,12 +1173,12 @@ characters (<code class="docutils literal notranslate"><span class="pre">'\0'</s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – maximum length of returned string.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum length of returned string.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">next line of the file, or an empty string if the end of the
 file has been reached.<p>If the file was opened in binary (<code class="docutils literal notranslate"><span class="pre">'b'</span></code>) mode: bytes are returned
 Else: the encoding of the file is assumed to be UTF-8 and character
-strings (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) are returned</p>
+strings (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) are returned</p>
 </td>
 </tr>
 </tbody>
@@ -1196,7 +1196,7 @@ after rounding up to an internal buffer size) are read.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – desired maximum number of bytes to read.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired maximum number of bytes to read.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of lines read from the file.</td>
 </tr>
@@ -1231,7 +1231,7 @@ the file to read</td>
 <dt id="paramiko.sftp_file.SFTPFile.seek">
 <code class="descname">seek</code><span class="sig-paren">(</span><em>offset</em>, <em>whence=0</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.sftp_file.SFTPFile.seek" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the file’s current position.</p>
-<p>See <a class="reference external" href="https://docs.python.org/2.7/library/stdtypes.html#file.seek" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file.seek</span></code></a> for details.</p>
+<p>See <code class="xref py py-obj docutils literal notranslate"><span class="pre">file.seek</span></code> for details.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1242,7 +1242,7 @@ the file to read</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>,
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>,
 <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.seek" title="paramiko.sftp_file.SFTPFile.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a> will raise an exception</td>
 </tr>
 </tbody>
@@ -1264,7 +1264,7 @@ with one of your later writes, an exception might be thrown from within
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pipelined</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if pipelining should be turned on for this file; <code class="docutils literal notranslate"><span class="pre">False</span></code>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pipelined</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if pipelining should be turned on for this file; <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise</td>
 </tr>
 </tbody>
@@ -1283,7 +1283,7 @@ otherwise</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – 0 to set non-blocking mode; non-0 to set blocking mode.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – 0 to set non-blocking mode; non-0 to set blocking mode.</td>
 </tr>
 </tbody>
 </table>
@@ -1302,7 +1302,7 @@ ssh <a class="reference internal" href="channel.html#paramiko.channel.Channel" t
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – seconds to wait for a pending read/write operation before raising
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – seconds to wait for a pending read/write operation before raising
 <code class="docutils literal notranslate"><span class="pre">socket.timeout</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for no timeout</td>
 </tr>
 </tbody>
@@ -1339,7 +1339,7 @@ opened in append mode.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">file position (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">file position (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</td>
 </tr>
 </tbody>
 </table>
@@ -1374,7 +1374,7 @@ from Python for the sake of consistency – I apologize.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>times</strong> (<em>tuple</em>) – <code class="docutils literal notranslate"><span class="pre">None</span></code> or a tuple of (access time, modified time) in standard
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – <code class="docutils literal notranslate"><span class="pre">None</span></code> or a tuple of (access time, modified time) in standard
 internet epoch time (seconds since 01 January 1970 GMT)</td>
 </tr>
 </tbody>
@@ -1389,7 +1389,7 @@ internet epoch time (seconds since 01 January 1970 GMT)</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.write" title="paramiko.sftp_file.SFTPFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.sftp_file.SFTPFile.write" title="paramiko.sftp_file.SFTPFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
 raise an exception.</td>
 </tr>
 </tbody>
@@ -1459,7 +1459,7 @@ is open in append mode.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – optional flags as passed to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – optional flags as passed to
 <a class="reference internal" href="#paramiko.sftp_si.SFTPServerInterface.open" title="paramiko.sftp_si.SFTPServerInterface.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPServerInterface.open</span></code></a></td>
 </tr>
 </tbody>
@@ -1478,7 +1478,7 @@ check for the presence of fields before using them.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>attr</strong> (<a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><em>SFTPAttributes</em></a>) – the attributes to change on this file.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> error code like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> error code like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1515,11 +1515,11 @@ common case where you are wrapping a Python file object.)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>offset</strong> – position in the file to start reading from.</li>
-<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – number of bytes to attempt to read.</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of bytes to attempt to read.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">data read from the file, or an SFTP error code, as a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">data read from the file, or an SFTP error code, as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -1564,7 +1564,7 @@ refer to the same file.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>offset</strong> – position in the file to start reading from.</li>
-<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – data to write into the file.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – data to write into the file.</li>
 </ul>
 </td>
 </tr>
@@ -1636,13 +1636,13 @@ should check for the presence of fields before using them.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – requested path (relative or absolute) of the file to change.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – requested path (relative or absolute) of the file to change.</li>
 <li><strong>attr</strong> – requested attributes to change on the file (an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a>
 object)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -1667,7 +1667,7 @@ codes, such as <code class="docutils literal notranslate"><span class="pre">SFTP
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) to be
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) to be
 listed.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of the files in the given folder, using <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a>
@@ -1677,7 +1677,7 @@ objects.</td>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You should normalize the given <code class="docutils literal notranslate"><span class="pre">path</span></code> first (see the <a class="reference external" href="https://docs.python.org/2.7/library/os.path.html#module-os.path" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.path</span></code></a>
+<p class="last">You should normalize the given <code class="docutils literal notranslate"><span class="pre">path</span></code> first (see the <a class="reference external" href="https://docs.python.org/3.7/library/os.path.html#module-os.path" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.path</span></code></a>
 module) and check appropriate permissions before returning the list
 of files.  Be careful of malicious clients attempting to use
 relative paths to escape restricted folders, if you’re doing a
@@ -1698,7 +1698,7 @@ corresponding call that follows symlinks/aliases.)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) to fetch file statistics
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) to fetch file statistics
 for.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> object for the given file, or an SFTP error
@@ -1722,12 +1722,12 @@ object may be completely empty.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – requested path (relative or absolute) of the new folder.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – requested path (relative or absolute) of the new folder.</li>
 <li><strong>attr</strong> (<a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><em>SFTPAttributes</em></a>) – requested attributes of the new folder.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an SFTP error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an SFTP error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -1770,8 +1770,8 @@ There is no equivalent to Python’s “text” mode.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) of the file to be opened.</li>
-<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – flags or’d together from the <code class="docutils literal notranslate"><span class="pre">os</span></code> module indicating the requested
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) of the file to be opened.</li>
+<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – flags or’d together from the <code class="docutils literal notranslate"><span class="pre">os</span></code> module indicating the requested
 mode for opening the file.</li>
 <li><strong>attr</strong> (<a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><em>SFTPAttributes</em></a>) – requested attributes of the file if it is newly created.</li>
 </ul>
@@ -1794,12 +1794,12 @@ already exists, it will be overwritten.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) of the existing file.</li>
-<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested new path of the file.</li>
+<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) of the existing file.</li>
+<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested new path of the file.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an SFTP error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an SFTP error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Versionadded:</th><td class="field-body"><p class="first last">2.2</p>
@@ -1819,9 +1819,9 @@ should be returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path (relative or absolute) of the symbolic link.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path (relative or absolute) of the symbolic link.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the target <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of the symbolic link, or an error code like
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the target <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of the symbolic link, or an error code like
 <code class="docutils literal notranslate"><span class="pre">SFTP_NO_SUCH_FILE</span></code>.</td>
 </tr>
 </tbody>
@@ -1836,9 +1836,9 @@ should be returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) of the file to delete.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) of the file to delete.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an SFTP error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an SFTP error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1869,12 +1869,12 @@ seeking the OpenSSH “POSIX rename” extension behavior should use
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) of the existing file.</li>
-<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested new path of the file.</li>
+<li><strong>oldpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) of the existing file.</li>
+<li><strong>newpath</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested new path of the file.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an SFTP error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an SFTP error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -1891,9 +1891,9 @@ error.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – requested path (relative or absolute) of the folder to remove.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – requested path (relative or absolute) of the folder to remove.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an SFTP error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an SFTP error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1927,7 +1927,7 @@ call that doesn’t follow symlinks/aliases.)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the requested path (relative or absolute) to fetch file statistics
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested path (relative or absolute) to fetch file statistics
 for.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an <a class="reference internal" href="#paramiko.sftp_attr.SFTPAttributes" title="paramiko.sftp_attr.SFTPAttributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPAttributes</span></code></a> object for the given file, or an SFTP error
@@ -1947,13 +1947,13 @@ with <code class="docutils literal notranslate"><span class="pre">target_path</s
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>target_path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path (relative or absolute) of the target for this new symbolic
+<li><strong>target_path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path (relative or absolute) of the target for this new symbolic
 link.</li>
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path (relative or absolute) of the symbolic link to create.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path (relative or absolute) of the symbolic link to create.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an error code <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an error code <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> like <code class="docutils literal notranslate"><span class="pre">SFTP_OK</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -2032,6 +2032,7 @@ link.</li>
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 

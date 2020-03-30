@@ -78,7 +78,7 @@ probably only useful on posix.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename to read, or <code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read, or <code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> –
 if a filename was provided and the file could not be read</td>
@@ -102,7 +102,7 @@ conflicts).  When automatically saving, the last hostname is used.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename to read</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the filename could not be read</td>
 </tr>
@@ -120,7 +120,7 @@ host keys loaded with <a class="reference internal" href="#paramiko.client.SSHCl
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename to save to</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to save to</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the file could not be written</td>
 </tr>
@@ -152,7 +152,7 @@ but it can be set to anything you want.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – new channel name for logging</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new channel name for logging</td>
 </tr>
 </tbody>
 </table>
@@ -223,33 +223,33 @@ passed in, that password will be used to attempt to unlock the key.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the server to connect to</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the server port to connect to</li>
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the username to authenticate as (defaults to the current local
+<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the server to connect to</li>
+<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the server port to connect to</li>
+<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as (defaults to the current local
 username)</li>
-<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Used for password authentication; is also used for private key
+<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for password authentication; is also used for private key
 decryption if <code class="docutils literal notranslate"><span class="pre">passphrase</span></code> is not given.</li>
-<li><strong>passphrase</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Used for decrypting private keys.</li>
+<li><strong>passphrase</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for decrypting private keys.</li>
 <li><strong>pkey</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – an optional private key to use for authentication</li>
-<li><strong>key_filename</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the filename, or list of filenames, of optional private key(s)
+<li><strong>key_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename, or list of filenames, of optional private key(s)
 and/or certs to try for authentication</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – an optional timeout (in seconds) for the TCP connect</li>
-<li><strong>allow_agent</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – set to False to disable connecting to the SSH agent</li>
-<li><strong>look_for_keys</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – set to False to disable searching for discoverable private key
+<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) for the TCP connect</li>
+<li><strong>allow_agent</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable connecting to the SSH agent</li>
+<li><strong>look_for_keys</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable searching for discoverable private key
 files in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code></li>
-<li><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – set to True to turn on compression</li>
+<li><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to True to turn on compression</li>
 <li><strong>sock</strong> (<em>socket</em>) – an open socket or socket-like object (such as a <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>) to use
 for communication to the target host</li>
-<li><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to use GSS-API authentication</li>
-<li><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication</li>
-<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Delegate GSS-API client credentials or not</li>
-<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The targets name in the kerberos database. default: hostname</li>
-<li><strong>gss_trust_dns</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Indicates whether or not the DNS is trusted to securely
+<li><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to use GSS-API authentication</li>
+<li><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication</li>
+<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Delegate GSS-API client credentials or not</li>
+<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The targets name in the kerberos database. default: hostname</li>
+<li><strong>gss_trust_dns</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Indicates whether or not the DNS is trusted to securely
 canonicalize the name of the host being connected to (default
 <code class="docutils literal notranslate"><span class="pre">True</span></code>).</li>
-<li><strong>banner_timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait
+<li><strong>banner_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait
 for the SSH banner to be presented.</li>
-<li><strong>auth_timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait for
+<li><strong>auth_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait for
 an authentication response.</li>
 </ul>
 </td>
@@ -265,7 +265,7 @@ verified</p>
 establishing an SSH session</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2.7/library/socket.html#socket.error" title="(in Python v2.7)"><strong>socket.error</strong></a> – if a socket error occurred while connecting</p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.7/library/socket.html#socket.error" title="(in Python v3.7)"><strong>socket.error</strong></a> – if a socket error occurred while connecting</p>
 </td>
 </tr>
 </tbody>
@@ -307,13 +307,13 @@ stdin, stdout, and stderr.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>command</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the command to execute</li>
-<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – interpreted the same way as by the built-in <code class="docutils literal notranslate"><span class="pre">file()</span></code> function in
+<li><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command to execute</li>
+<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – interpreted the same way as by the built-in <code class="docutils literal notranslate"><span class="pre">file()</span></code> function in
 Python</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – set command’s channel timeout. See <a class="reference internal" href="channel.html#paramiko.channel.Channel.settimeout" title="paramiko.channel.Channel.settimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.settimeout</span></code></a></li>
-<li><strong>get_pty</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Request a pseudo-terminal from the server (default <code class="docutils literal notranslate"><span class="pre">False</span></code>).
+<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – set command’s channel timeout. See <a class="reference internal" href="channel.html#paramiko.channel.Channel.settimeout" title="paramiko.channel.Channel.settimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.settimeout</span></code></a></li>
+<li><strong>get_pty</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Request a pseudo-terminal from the server (default <code class="docutils literal notranslate"><span class="pre">False</span></code>).
 See <a class="reference internal" href="channel.html#paramiko.channel.Channel.get_pty" title="paramiko.channel.Channel.get_pty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.get_pty</span></code></a></li>
-<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – <p>a dict of shell environment variables, to be merged into the
+<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – <p>a dict of shell environment variables, to be merged into the
 default environment that the remote command executes within.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -349,12 +349,12 @@ terminal type and size.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>term</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – the terminal type to emulate (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>)</li>
-<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the width (in characters) of the terminal window</li>
-<li><strong>height</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the height (in characters) of the terminal window</li>
-<li><strong>width_pixels</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the width (in pixels) of the terminal window</li>
-<li><strong>height_pixels</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – the height (in pixels) of the terminal window</li>
-<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – the command’s environment</li>
+<li><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the terminal type to emulate (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>)</li>
+<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in characters) of the terminal window</li>
+<li><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in characters) of the terminal window</li>
+<li><strong>width_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in pixels) of the terminal window</li>
+<li><strong>height_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in pixels) of the terminal window</li>
+<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – the command’s environment</li>
 </ul>
 </td>
 </tr>
@@ -544,6 +544,7 @@ be passed to the calling application).</p>
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked/Answered Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_changelog.html">Old Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_changelog.html#very-old-changelog">Very Old Changelog</a></li>
 </ul>
 
 
