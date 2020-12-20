@@ -690,7 +690,7 @@ class KeyTest(unittest.TestCase):
         for cls, filename, errmsg in testcases:
             with self.assertRaises(SSHException) as ctx:
                 cls(filename=filename, password=b"television")
-            self.assertEqual(str(ctx.exception), errmsg)
+            assert str(ctx.exception).startswith(errmsg)
 
 
 class ParseTest(unittest.TestCase):
