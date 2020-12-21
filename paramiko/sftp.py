@@ -57,6 +57,8 @@ SFTP_FLAG_EXCL = 0x20
 
 _VERSION = 3
 
+# used by getfo and putfo in sftp_client
+SFTP_FILE_OBJECT_BLOCK_SIZE = 32768
 
 # for debugging
 CMD_NAMES = {
