@@ -656,7 +656,10 @@ class SSHClient (ClosingContextManager):
         # possible two_factor second factors
         # (allowed_types could have been updated, only if two_factor)
 
-        if password is not None and 'password' in allowed_types:
+        if password is not None and (
+            'password' in allowed_types or
+            'keyboard-interactive' in allowed_types
+        ):
             try:
                 self._log(DEBUG, 'Trying password')
                 allowed_types = set(
