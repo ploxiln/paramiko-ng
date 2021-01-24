@@ -436,6 +436,8 @@ class Packetizer (object):
         """
         header = self.read_all(self.__block_size_in, check_rekey=True)
         if self.__etm_in:
+            if self.__dump_packets:
+                self._log(DEBUG, util.format_binary(header[:4], 'IN: '))
             packet_size = struct.unpack(">I", header[:4])[0]
             remaining = packet_size - self.__block_size_in + 4
             packet = header[4:] + self.read_all(remaining, check_rekey=False)
@@ -450,13 +452,15 @@ class Packetizer (object):
 
         if self.__block_engine_in is not None:
             header = self.__block_engine_in.update(header)
-        if self.__dump_packets:
-            self._log(DEBUG, util.format_binary(header, 'IN: '))
 
         if self.__etm_in:
             # already decrypted everything above
             packet = header
+            if self.__dump_packets:
+                self._log(DEBUG, util.format_binary(packet, 'IN: '))
         else:
+            if self.__dump_packets:
+                self._log(DEBUG, util.format_binary(header[:4], 'IN: '))
             packet_size = struct.unpack(">I", header[:4])[0]
             # leftover contains decrypted bytes from the first block (after the length field)
             leftover = header[4:]
@@ -469,9 +473,8 @@ class Packetizer (object):
             if self.__block_engine_in is not None:
                 packet = self.__block_engine_in.update(packet)
             packet = leftover + packet
-
-        if self.__dump_packets:
-            self._log(DEBUG, util.format_binary(packet, 'IN: '))
+            if self.__dump_packets:
+                self._log(DEBUG, util.format_binary(packet, 'IN: '))
 
         if self.__mac_size_in > 0 and not self.__etm_in:
             mac = post_packet[:self.__mac_size_in]
