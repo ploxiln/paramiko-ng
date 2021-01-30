@@ -80,8 +80,6 @@ class KexCurve25519(object):
         """
         Check if the openssl version pyca/cryptography is linked against
         supports curve25519 key agreement.
-
-        Returns True if cryptography and OpenSSL both support x25519 keys.
         """
         try:
             x25519.X25519PublicKey.from_public_bytes(b"\x00" * 32)

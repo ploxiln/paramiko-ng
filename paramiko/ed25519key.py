@@ -14,11 +14,9 @@
 # along with Paramiko; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
-try:
-    import nacl.signing
-    import nacl.exceptions
-except ImportError:
-    nacl = None
+from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import ed25519
 
 from paramiko.message import Message
 from paramiko.pkey import PKey, register_pkey_type
@@ -44,12 +42,18 @@ class Ed25519Key(PKey):
 
     @staticmethod
     def is_supported():
-        return nacl is not None
+        """
+        Check if the openssl version pyca/cryptography is linked against
+        supports Ed25519 keys.
+        """
+        try:
+            ed25519.Ed25519PublicKey.from_public_bytes(b"\x00" * 32)
+        except UnsupportedAlgorithm:
+            return False  # openssl < 1.1.0
+        return True
 
     def __init__(self, msg=None, data=None, filename=None, password=None,
                  file_obj=None, _raw=None):
-        if nacl is None:
-            raise SSHException("Missing dependency PyNaCl")
         self.public_blob = None
         verifying_key = None
         signing_key = None
@@ -62,7 +66,7 @@ class Ed25519Key(PKey):
                 key_type="ssh-ed25519",
                 cert_type="ssh-ed25519-cert-v01@openssh.com",
             )
-            verifying_key = nacl.signing.VerifyKey(msg.get_binary())
+            verifying_key = ed25519.Ed25519PublicKey.from_public_bytes(msg.get_binary())
         elif filename is not None:
             _raw = self._from_private_key_file(filename, password)
         elif file_obj is not None:
@@ -84,29 +88,32 @@ class Ed25519Key(PKey):
         public = message.get_binary()
         key_data = message.get_binary()
         # The second half of the key data is yet another copy of the public key...
-        signing_key = nacl.signing.SigningKey(key_data[:32])
+        signing_key = ed25519.Ed25519PrivateKey.from_private_bytes(key_data[:32])
         # Verify that all the public keys are the same...
-        if not signing_key.verify_key.encode() == public == key_data[32:]:
+        if not signing_key.public_key().public_bytes(
+            serialization.Encoding.Raw,
+            serialization.PublicFormat.Raw,
+        ) == public == key_data[32:]:
             raise SSHException("Invalid key public part mis-match")
         comment = message.get_binary()  # noqa: F841
         return signing_key
 
     def asbytes(self):
         if self.can_sign():
-            v = self._signing_key.verify_key
+            v = self._signing_key.public_key()
         else:
             v = self._verifying_key
+
         m = Message()
         m.add_string("ssh-ed25519")
-        m.add_string(v.encode())
+        m.add_string(v.public_bytes(
+            serialization.Encoding.Raw,
+            serialization.PublicFormat.Raw,
+        ))
         return m.asbytes()
 
     def __hash__(self):
-        if self.can_sign():
-            v = self._signing_key.verify_key
-        else:
-            v = self._verifying_key
-        return hash((self.get_name(), v))
+        return hash((self.get_name(), self.asbytes()))
 
     def get_name(self):
         return "ssh-ed25519"
@@ -120,16 +127,15 @@ class Ed25519Key(PKey):
     def sign_ssh_data(self, data):
         m = Message()
         m.add_string("ssh-ed25519")
-        m.add_string(self._signing_key.sign(data).signature)
+        m.add_string(self._signing_key.sign(data))
         return m
 
     def verify_ssh_sig(self, data, msg):
         if msg.get_text() != "ssh-ed25519":
             return False
-
         try:
-            self._verifying_key.verify(data, msg.get_binary())
-        except nacl.exceptions.BadSignatureError:
+            self._verifying_key.verify(msg.get_binary(), data)
+        except InvalidSignature:
             return False
         else:
             return True
