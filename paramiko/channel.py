@@ -649,12 +649,9 @@ class Channel (ClosingContextManager):
 
             if not self.active or self.closed:
                 return
-            msgs = self._close_internal()
+            self._close_internal()
         finally:
             self.lock.release()
-        for m in msgs:
-            if m is not None:
-                self.transport._send_user_message(m)
 
     def recv_ready(self):
         """
@@ -946,11 +943,9 @@ class Channel (ClosingContextManager):
         if (how == 1) or (how == 2):
             self.lock.acquire()
             try:
-                m = self._send_eof()
+                self._send_eof()
             finally:
                 self.lock.release()
-            if m is not None:
-                self.transport._send_user_message(m)
 
     def shutdown_read(self):
         """
@@ -1016,12 +1011,9 @@ class Channel (ClosingContextManager):
     def _request_failed(self, m):
         self.lock.acquire()
         try:
-            msgs = self._close_internal()
+            self._close_internal()
         finally:
             self.lock.release()
-        for m in msgs:
-            if m is not None:
-                self.transport._send_user_message(m)
 
     def _feed(self, m):
         if isinstance(m, bytes):
@@ -1169,13 +1161,10 @@ class Channel (ClosingContextManager):
     def _handle_close(self, m):
         self.lock.acquire()
         try:
-            msgs = self._close_internal()
+            self._close_internal()
             self.transport._unlink_channel(self.chanid)
         finally:
             self.lock.release()
-        for m in msgs:
-            if m is not None:
-                self.transport._send_user_message(m)
 
     # ...internals...
 
@@ -1231,26 +1220,26 @@ class Channel (ClosingContextManager):
     def _send_eof(self):
         # you are holding the lock.
         if self.eof_sent:
-            return None
+            return
         m = Message()
         m.add_byte(cMSG_CHANNEL_EOF)
         m.add_int(self.remote_chanid)
         self.eof_sent = True
         self._log(DEBUG, 'EOF sent ({})'.format(self._name))
-        return m
+        self.transport._send_user_message(m)
 
     def _close_internal(self):
         # you are holding the lock.
         if not self.active or self.closed:
-            return None, None
-        m1 = self._send_eof()
+            return
+        self._send_eof()
         m2 = Message()
         m2.add_byte(cMSG_CHANNEL_CLOSE)
         m2.add_int(self.remote_chanid)
         self._set_closed()
+        self.transport._send_user_message(m2)
         # can't unlink from the Transport yet -- the remote side may still
         # try to send meta-data (exit-status, etc)
-        return m1, m2
 
     def _unlink(self):
         # server connection could die before we become active:
