@@ -944,7 +944,6 @@ class Channel (ClosingContextManager):
             # feign "read" shutdown
             self.eof_received = 1
         if (how == 1) or (how == 2):
-            m = None
             self.lock.acquire()
             try:
                 m = self._send_eof()
@@ -1231,7 +1230,7 @@ class Channel (ClosingContextManager):
 
     def _send_eof(self):
         # you are holding the lock.
-        if self.eof_sent or self.closed:
+        if self.eof_sent:
             return None
         m = Message()
         m.add_byte(cMSG_CHANNEL_EOF)
