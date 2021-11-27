@@ -26,6 +26,7 @@ import time
 import weakref
 
 from paramiko import util
+from paramiko import sftp
 from paramiko.channel import Channel
 from paramiko.message import Message
 from paramiko.common import INFO, DEBUG, o777
@@ -37,7 +38,6 @@ from paramiko.sftp import (
     CMD_RENAME, CMD_MKDIR, CMD_RMDIR, CMD_STAT, CMD_ATTRS, CMD_LSTAT,
     CMD_SYMLINK, CMD_SETSTAT, CMD_READLINK, CMD_REALPATH, CMD_STATUS,
     CMD_EXTENDED, SFTP_OK, SFTP_EOF, SFTP_NO_SUCH_FILE, SFTP_PERMISSION_DENIED,
-    SFTP_FILE_OBJECT_BLOCK_SIZE,
 )
 from paramiko.sftp_attr import SFTPAttributes
 from paramiko.ssh_exception import SSHException
@@ -618,7 +618,7 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
     def _transfer_with_callback(self, reader, writer, file_size, callback):
         size = 0
         while True:
-            data = reader.read(SFTP_FILE_OBJECT_BLOCK_SIZE)
+            data = reader.read(sftp.SFTP_FILE_OBJECT_BLOCK_SIZE)
             writer.write(data)
             size += len(data)
             if len(data) == 0:
@@ -653,6 +653,9 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
             file.
 
         .. versionadded:: 1.10
+        .. versionchanged:: 2.9.0
+            You can modify `paramiko.sftp.SFTP_FILE_OBJECT_BLOCK_SIZE` to
+            tune the performance and compatibility of this method.
         """
         with self.file(remotepath, 'wb') as fr:
             fr.set_pipelined(True)
@@ -703,6 +706,9 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
             ``callback`` and rich attribute return value added.
         .. versionchanged:: 1.7.7
             ``confirm`` param added.
+        .. versionchanged:: 2.9.0
+            You can modify `paramiko.sftp.SFTP_FILE_OBJECT_BLOCK_SIZE` to
+            tune the performance and compatibility of this method.
         """
         file_size = os.stat(localpath).st_size
         with open(localpath, 'rb') as fl:
@@ -724,6 +730,9 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
         :return: the `number <int>` of bytes written to the opened file object
 
         .. versionadded:: 1.10
+        .. versionchanged:: 2.9.0
+            You can modify `paramiko.sftp.SFTP_FILE_OBJECT_BLOCK_SIZE` to
+            tune the performance and compatibility of this method.
         """
         file_size = self.stat(remotepath).st_size
         with self.open(remotepath, 'rb') as fr:
@@ -747,6 +756,9 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
         .. versionadded:: 1.4
         .. versionchanged:: 1.7.4
             Added the ``callback`` param
+        .. versionchanged:: 2.9.0
+            You can modify `paramiko.sftp.SFTP_FILE_OBJECT_BLOCK_SIZE` to
+            tune the performance and compatibility of this method.
         """
         with open(localpath, 'wb') as fl:
             size = self.getfo(remotepath, fl, callback)
