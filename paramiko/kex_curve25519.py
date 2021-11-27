@@ -25,15 +25,10 @@ from hashlib import sha256
 from paramiko.message import Message
 from paramiko.py3compat import byte_chr, long
 from paramiko.ssh_exception import SSHException
+from cryptography.hazmat.primitives.asymmetric import x25519
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 from cryptography.exceptions import UnsupportedAlgorithm
 from binascii import hexlify
-
-# x25519 was added in cryptography 2.0, but we support down to cryptography 1.5
-try:
-    from cryptography.hazmat.primitives.asymmetric import x25519
-except ImportError:
-    x25519 = None
 
 _MSG_KEXC25519_INIT, _MSG_KEXC25519_REPLY = range(30, 32)
 c_MSG_KEXC25519_INIT, c_MSG_KEXC25519_REPLY = [
@@ -83,19 +78,11 @@ class KexCurve25519(object):
     @staticmethod
     def is_supported():
         """
-        Check if the openssl version pyca-cryptography is linked against
-        supports curve25519 key agreement, and if cryptography itself is of a
-        sufficient version for x25519 support.
+        Check if the openssl version pyca/cryptography is linked against
+        supports curve25519 key agreement.
 
-        Returns True if cryptography and OpenSSL both support x25519 keys, and
-        False otherwise.
+        Returns True if cryptography and OpenSSL both support x25519 keys.
         """
-        if x25519 is None:
-            return False  # cryptography < 2.0
-
-        if not hasattr(Encoding, 'Raw'):
-            return False  # cryptography < 2.5
-
         try:
             x25519.X25519PublicKey.from_public_bytes(b"\x00" * 32)
         except UnsupportedAlgorithm:
