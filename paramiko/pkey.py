@@ -20,14 +20,13 @@
 Common API for all public and private keys.
 """
 
+import os
+import re
 import base64
 from binascii import unhexlify
-import os
-from hashlib import md5
-import re
+from hashlib import md5, sha256
 
 import bcrypt
-
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.ciphers import algorithms, modes, Cipher
@@ -254,16 +253,40 @@ class PKey(object):
         """
         return False
 
-    def get_fingerprint(self):
+    def get_fingerprint_sha256_b64(self):
         """
-        Return an MD5 fingerprint of the public part of this key.  Nothing
-        secret is revealed.
+        Return a SHA256 fingerprint of the public part of this key, base64 encoded
+        without '=' padding. Nothing secret is revealed.
 
         :return:
-            a 16-byte `string <str>` (binary) of the MD5 fingerprint, in SSH
-            format.
+            a 43-character `str`
+
+        .. versionadded:: 2.9
+        """
+        fingerprint = sha256(self.asbytes()).digest()
+        return u(base64.b64encode(fingerprint)[:-1])
+
+    def get_fingerprint_md5(self):
+        """
+        Return an MD5 fingerprint of the public part of this key.
+        Nothing secret is revealed.
+
+        :return:
+            a 16-byte `bytes`
+
+        .. versionadded:: 2.9
         """
         return md5(self.asbytes()).digest()
+
+    def get_fingerprint(self):
+        """
+        An alias for `get_fingerprint_md5`.
+        This may be changed or removed in a later major release.
+
+        :return:
+            a 16-byte `bytes`
+        """
+        return self.get_fingerprint_md5()
 
     def get_base64(self):
         """
