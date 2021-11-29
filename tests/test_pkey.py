@@ -612,6 +612,25 @@ class KeyTest(unittest.TestCase):
             _support('test_rsa.key-cert.pub'),
         )
 
+    def keys_loaded_twice(self):
+        for key_class, filename in [
+            (RSAKey, "test_rsa.key"),
+            (DSSKey, "test_dss.key"),
+            (ECDSAKey, "test_ecdsa_256.key"),
+            (Ed25519Key, "test_ed25519.key"),
+        ]:
+            key1 = key_class.from_private_key_file(_support(filename))
+            key2 = key_class.from_private_key_file(_support(filename))
+            yield key1, key2
+
+    def test_keys_are_comparable(self):
+        for key1, key2 in self.keys_loaded_twice():
+            assert key1 == key2
+
+    def test_keys_are_hashable(self):
+        for key1, key2 in self.keys_loaded_twice():
+            assert hash(key1) == hash(key2)
+
     def test_autodetect_ed25519(self):
         key = load_private_key_file(_support("test_ed25519.key"))
         self.assertIsInstance(key, Ed25519Key)
