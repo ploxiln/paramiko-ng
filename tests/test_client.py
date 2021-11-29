@@ -409,16 +409,17 @@ class SSHClientTest(ClientTest):
         self.tc.close()
         del self.tc
 
-        # inherently flaky, depending on python version/implementation, unfortunately :(
+        # GC is unpredictable, depending on python version and implementation
         time.sleep(0.1)
+        gc.collect()
+        time.sleep(0.2)
         gc.collect()
         time.sleep(0.1)
         gc.collect()
-        time.sleep(0.1)
+        time.sleep(0.2)
         gc.collect()
         time.sleep(0.1)
         gc.collect()
-
         self.assertTrue(p() is None)
 
     def test_client_can_be_used_as_context_manager(self):
