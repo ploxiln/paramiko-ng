@@ -404,12 +404,17 @@ class SSHClientTest(ClientTest):
         self.tc.close()
         del self.tc
 
-        # force a collection to see whether the SSHClient object is deallocated
-        # 2 GCs are needed on PyPy, time is needed for Python 3
-        time.sleep(0.3)
+        # GC is unpredictable, depending on python version and implementation
+        time.sleep(0.1)
         gc.collect()
+        time.sleep(0.2)
         gc.collect()
-
+        time.sleep(0.1)
+        gc.collect()
+        time.sleep(0.2)
+        gc.collect()
+        time.sleep(0.1)
+        gc.collect()
         self.assertTrue(p() is None)
 
     def test_client_can_be_used_as_context_manager(self):
@@ -596,7 +601,7 @@ class SSHClientTest(ClientTest):
         self.tc.connect(self.addr, self.port, username='slowdive', password='pygmalion')
 
         self.event.wait(1.0)
-        self.assertTrue(self.event.isSet())
+        self.assertTrue(self.event.is_set())
         self.assertTrue(self.ts.is_active())
 
     def test_update_environment(self):
