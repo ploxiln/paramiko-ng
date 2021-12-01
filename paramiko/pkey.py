@@ -209,26 +209,20 @@ class PKey(object):
     def __str__(self):
         return self.asbytes()
 
-    # noinspection PyUnresolvedReferences
-    # TODO: The comparison functions should be removed as per:
-    # https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons
     def __cmp__(self, other):
+        # python-2 only, same purpose as __eq__()
+        return cmp(self.asbytes(), other.asbytes())  # noqa
+
+    def __eq__(self, other):
         """
-        Compare this key to another.  Returns 0 if this key is equivalent to
-        the given key, or non-0 if they are different.  Only the public parts
+        Compare this key to another.  Returns True if this key is equivalent to
+        the given key, or False if they are different.  Only the public parts
         of the key are compared, so a public key will compare equal to its
         corresponding private key.
 
         :param .PKey other: key to compare to.
         """
-        hs = hash(self)
-        ho = hash(other)
-        if hs != ho:
-            return cmp(hs, ho)   # noqa
-        return cmp(self.asbytes(), other.asbytes())  # noqa
-
-    def __eq__(self, other):
-        return hash(self) == hash(other)
+        return self.asbytes() == other.asbytes()
 
     def get_name(self):
         """

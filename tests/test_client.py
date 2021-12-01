@@ -409,15 +409,17 @@ class SSHClientTest(ClientTest):
         self.tc.close()
         del self.tc
 
-        # force a collection to see whether the SSHClient object is deallocated
-        # 2 GCs are needed on PyPy, time is needed for Python 3
+        # GC is unpredictable, depending on python version and implementation
         time.sleep(0.1)
+        gc.collect()
+        time.sleep(0.2)
         gc.collect()
         time.sleep(0.1)
         gc.collect()
+        time.sleep(0.2)
+        gc.collect()
         time.sleep(0.1)
         gc.collect()
-
         self.assertTrue(p() is None)
 
     def test_client_can_be_used_as_context_manager(self):
