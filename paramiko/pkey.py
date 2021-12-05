@@ -106,7 +106,11 @@ def load_private_key_file(filename, password=None):
     .. versionadded:: 2.8
     """
     with open(filename, "r") as f:
-        return load_private_key(f.read(), password)
+        try:
+            return load_private_key(f.read(), password)
+        except SSHException as e:
+            e.args = (e.args[0] + (" (file %r)" % filename),)
+            raise
 
 
 def register_pkey_type(cls):
@@ -318,8 +322,11 @@ class PKey(object):
             encrypted, and ``password`` is ``None``
         :raises: `.SSHException` -- if the key file is invalid
         """
-        key = cls(filename=filename, password=password)
-        return key
+        try:
+            return cls(filename=filename, password=password)
+        except SSHException as e:
+            e.args = (e.args[0] + (" (file %r)" % filename),)
+            raise
 
     @classmethod
     def from_private_key(cls, file_obj, password=None):
