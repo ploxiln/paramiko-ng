@@ -595,6 +595,11 @@ class KeyTest(unittest.TestCase):
         for key1, key2 in self.keys_loaded_twice():
             assert hash(key1) == hash(key2)
 
+    def test_keys_compare_public(self):
+        for key1, key2 in self.keys_loaded_twice():
+            pub = key2.__class__(data=key2.asbytes())
+            assert key1 == pub
+
     def test_autodetect_ed25519(self):
         key = load_private_key_file(_support("test_ed25519.key"))
         self.assertIsInstance(key, Ed25519Key)
