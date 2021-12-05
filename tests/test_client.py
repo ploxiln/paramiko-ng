@@ -388,6 +388,7 @@ class SSHClientTest(ClientTest):
 
         os.unlink(localname)
 
+    @slow
     def test_cleanup(self):
         """
         verify that when an SSHClient is collected, its transport (and the
@@ -410,17 +411,12 @@ class SSHClientTest(ClientTest):
         del self.tc
 
         # GC is unpredictable, depending on python version and implementation
-        time.sleep(0.1)
-        gc.collect()
-        time.sleep(0.2)
-        gc.collect()
-        time.sleep(0.1)
-        gc.collect()
-        time.sleep(0.2)
-        gc.collect()
-        time.sleep(0.1)
-        gc.collect()
-        self.assertTrue(p() is None)
+        for _ in range(16):
+            time.sleep(0.1)
+            gc.collect()
+            if p() is None:
+                break
+        self.assertIsNone(p())
 
     def test_client_can_be_used_as_context_manager(self):
         """
