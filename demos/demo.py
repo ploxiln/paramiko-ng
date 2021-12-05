@@ -19,14 +19,13 @@
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
 
-from binascii import hexlify
 import getpass
 import os
 import socket
 import sys
 import traceback
-from paramiko.py3compat import input
 
+from paramiko.py3compat import input
 import paramiko
 try:
     import interactive
@@ -46,7 +45,7 @@ def agent_auth(transport, username):
         return
 
     for key in agent_keys:
-        print('Trying ssh-agent key %s' % hexlify(key.get_fingerprint()).decode())
+        print('Trying ssh-agent key %s' % key.get_fingerprint_sha256_b64())
         try:
             transport.auth_publickey(username, key)
             print('... success!')

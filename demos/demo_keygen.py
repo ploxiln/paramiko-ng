@@ -19,14 +19,11 @@
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
 import sys
-
-from binascii import hexlify
 from optparse import OptionParser
 
 from paramiko import DSSKey
 from paramiko import RSAKey
 from paramiko.ssh_exception import SSHException
-from paramiko.py3compat import u
 
 usage = """%prog [-v] [-b bits] -t type [-N new_passphrase] [-f output_keyfile]"""
 
@@ -124,7 +121,6 @@ if __name__ == '__main__':
     if options.verbose:
         print("done.")
 
-    hash = u(hexlify(pub.get_fingerprint()))
     print("Fingerprint: %d %s %s.pub (%s)" % (
-        bits, ":".join([hash[i:2 + i] for i in range(0, len(hash), 2)]), filename, ktype.upper()
+        bits, pub.get_fingerprint_sha256_b64(), filename, ktype.upper()
     ))

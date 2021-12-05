@@ -18,14 +18,13 @@
 # along with Paramiko; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
-from binascii import hexlify
 import socket
 import sys
 import threading
 import traceback
 
 import paramiko
-from paramiko.py3compat import u, decodebytes
+from paramiko.py3compat import decodebytes
 
 
 # setup logging
@@ -33,7 +32,7 @@ paramiko.util.log_to_file('demo_server.log')
 
 host_key = paramiko.load_private_key_file('test_rsa.key')
 
-print('Read key: ' + u(hexlify(host_key.get_fingerprint())))
+print("Read key: " + host_key.get_fingerprint_sha256_b64())
 
 
 class Server (paramiko.ServerInterface):
@@ -59,7 +58,7 @@ class Server (paramiko.ServerInterface):
         return paramiko.AUTH_FAILED
 
     def check_auth_publickey(self, username, key):
-        print('Auth attempt with key: ' + u(hexlify(key.get_fingerprint())))
+        print("Auth attempt with key: " + key.get_fingerprint_sha256_b64())
         if (username == 'robey') and (key == self.good_pub_key):
             return paramiko.AUTH_SUCCESSFUL
         return paramiko.AUTH_FAILED
