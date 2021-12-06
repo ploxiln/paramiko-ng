@@ -187,9 +187,6 @@ class ECDSAKey(PKey):
         m.add_string(point_str)
         return m.asbytes()
 
-    def __str__(self):
-        return self.asbytes()
-
     def __hash__(self):
         return hash((self.get_name(), self.verifying_key.public_numbers().x,
                      self.verifying_key.public_numbers().y))

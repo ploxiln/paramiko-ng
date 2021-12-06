@@ -23,7 +23,7 @@ Common API for all public keys.
 import base64
 from binascii import unhexlify
 import os
-from hashlib import md5
+from hashlib import md5, sha256
 import re
 
 import bcrypt
@@ -34,7 +34,7 @@ from cryptography.hazmat.primitives.ciphers import algorithms, modes, Cipher
 
 from paramiko import util
 from paramiko.common import o600
-from paramiko.py3compat import u, encodebytes, decodebytes, b, string_types, byte_ord
+from paramiko.py3compat import u, encodebytes, decodebytes, b, string_types, byte_ord, PY2
 from paramiko.ssh_exception import SSHException, PasswordRequiredException
 from paramiko.message import Message
 
@@ -103,14 +103,20 @@ class PKey(object):
 
     def asbytes(self):
         """
-        Return a string of an SSH `.Message` made up of the public part(s) of
+        Return bytes of an SSH `.Message` made up of the public part(s) of
         this key.  This string is suitable for passing to `__init__` to
         re-create the key object later.
         """
-        return bytes()
+        raise NotImplementedError()
 
     def __str__(self):
-        return self.asbytes()
+        if PY2:
+            # strange original behavior for backwards compatibility
+            return self.asbytes()
+        else:
+            fingerprint = sha256(self.asbytes()).digest()
+            fingerprint_b64 = u(base64.b64encode(fingerprint)[:-1])
+            return "%s SHA256:%s" % (self.get_name(), fingerprint_b64)
 
     def __cmp__(self, other):
         # python-2 only, same purpose as __eq__()
@@ -125,7 +131,7 @@ class PKey(object):
 
         :param .PKey other: key to compare to.
         """
-        return self.asbytes() == other.asbytes()
+        return isinstance(other, PKey) and self.asbytes() == other.asbytes()
 
     def get_name(self):
         """
@@ -135,7 +141,7 @@ class PKey(object):
             name of this private key type, in SSH terminology, as a `str` (for
             example, ``"ssh-rsa"``).
         """
-        return ''
+        raise NotImplementedError()
 
     def get_bits(self):
         """
