@@ -98,6 +98,10 @@ setup(
     ],
     extras_require={
         'Ed25519': [],  # can be removed in 3.0
-        'gssapi': ["gssapi", "pyasn1"],
+        'gssapi': [
+            "pyasn1",
+            'gssapi;platform_system!="Windows"',
+            'pywin32;platform_system=="Windows"',
+        ],
     },
 )
