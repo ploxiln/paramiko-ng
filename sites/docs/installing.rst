@@ -21,7 +21,6 @@ Paramiko-NG has only a few direct dependencies:
 
 - The big one is Cryptography; see :ref:`its specific note below <cryptography>` for more details.
 - `bcrypt <https://pypi.org/project/bcrypt/>`_, for "new openssh format" private keys
-- `pynacl <https://pypi.org/project/PyNaCl/>`_, *optional* for Ed25519 key support
 
 If you need GSS-API / SSPI support, see :ref:`the below subsection on it
 <gssapi>` for details on its optional dependencies.
@@ -66,13 +65,12 @@ Optional dependencies for GSS-API / SSPI / Kerberos
 ===================================================
 
 In order to use GSS-API/Kerberos & related functionality, a couple of
-additional dependencies are required (these are not listed in our ``setup.py``
-due to their infrequent utility & non-platform-agnostic requirements):
+additional dependencies are required:
 
-* All platforms need **a working installation of GSS-API itself**, e.g. Heimdal.
-* All platforms need `pyasn1 <https://pypi.org/project/pyasn1/>`__ ``0.1.7`` or later.
-* **Unix** needs `gssapi <https://pypi.org/project/gssapi/>`__ ``1.4.1`` or later.
-* **Windows** needs `pywin32 <https://pypi.python.org/pypi/pywin32>`__ ``2.1.8`` or later.
+* All platforms need **a working installation of GSS-API itself**, e.g. Heimdal
+* All platforms need `pyasn1 <https://pypi.org/project/pyasn1/>`__
+* **Unix** needs `gssapi <https://pypi.org/project/gssapi/>`__
+* **Windows** needs `pywin32 <https://pypi.org/project/pywin32/>`__
 
 .. note::
     If you use Microsoft SSPI for kerberos authentication and credential
