@@ -87,12 +87,6 @@ class DSSKey(PKey):
         m.add_mpint(self.y)
         return m.asbytes()
 
-    def __str__(self):
-        return self.asbytes()
-
-    def __hash__(self):
-        return hash((self.get_name(), self.p, self.q, self.g, self.y))
-
     def get_name(self):
         return 'ssh-dss'
 

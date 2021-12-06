@@ -112,9 +112,6 @@ class Ed25519Key(PKey):
         ))
         return m.asbytes()
 
-    def __hash__(self):
-        return hash((self.get_name(), self.asbytes()))
-
     def get_name(self):
         return "ssh-ed25519"
 
