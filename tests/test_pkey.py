@@ -21,10 +21,11 @@
 Some unit tests for public/private key objects.
 """
 
-import unittest
 import os
-from binascii import hexlify
+import base64
+import unittest
 from hashlib import md5
+from binascii import hexlify, unhexlify
 
 import pytest
 
@@ -42,7 +43,7 @@ from paramiko.pkey import (
     load_private_key,
     load_private_key_file,
 )
-from paramiko.py3compat import StringIO, byte_chr, PY2
+from paramiko.py3compat import StringIO, PY2
 
 from .util import _support
 
@@ -83,6 +84,7 @@ FINGER_SHA256_ED25519_PASS = "vijWjn8kDy5J+W12WfaRfew8XSv0PYC1q+EAwoYNavM"
 FINGER_SHA256_ED25519_NOPAD = "3IBDT/vhj7a/KLk0eOJGmAwr61J1BDyJFzcN1uR7svo"
 
 SIGNED_RSA = '20:d7:8a:31:21:cb:f7:92:12:f2:a4:89:37:f5:78:af:e6:16:b6:25:b9:97:3d:a2:cd:5f:ca:20:21:73:4c:ad:34:73:8f:20:77:28:e2:94:15:08:d8:91:40:7a:85:83:bf:18:37:95:dc:54:1a:9b:88:29:6c:73:ca:38:b4:04:f1:56:b9:f2:42:9d:52:1b:29:29:b4:4f:fd:c9:2d:af:47:d2:40:76:30:f3:63:45:0c:d9:1d:43:86:0f:1c:70:e2:93:12:34:f3:ac:c5:0a:2f:14:50:66:59:f1:88:ee:c1:4a:e9:d1:9c:4e:46:f0:0e:47:6f:38:74:f1:44:a8'  # noqa: E501
+SIGNED_ED25519 = b'kufjk8JnhBZi+UR59+XOBo1Uhu9t1ciizCKG+iuuuoacJOLlQO/jGFJ10VhEjHzlabVhGAoRYmrpm5eXFrfyDQ=='  # noqa: E501
 
 RSA_PRIVATE_OUT = """\
 -----BEGIN RSA PRIVATE KEY-----
@@ -250,9 +252,8 @@ class KeyTest(unittest.TestCase):
         msg = key.sign_ssh_data(b'ice weasels')
         self.assertTrue(type(msg) is Message)
         msg.rewind()
-        self.assertEqual('ssh-rsa', msg.get_text())
-        sig = bytes().join([byte_chr(int(x, 16)) for x in SIGNED_RSA.split(':')])
-        self.assertEqual(sig, msg.get_binary())
+        self.assertEqual(msg.get_text(), 'ssh-rsa')
+        self.assertEqual(msg.get_binary(), unhexlify(SIGNED_RSA.replace(':', '')))
         msg.rewind()
         pub = RSAKey(data=key.asbytes())
         self.assertTrue(pub.verify_ssh_sig(b'ice weasels', msg))
@@ -496,6 +497,18 @@ class KeyTest(unittest.TestCase):
 
         key2 = Ed25519Key.from_private_key_file(_support('test_ed25519_password.key'), b'abc123')
         self.assertNotEqual(key1.asbytes(), key2.asbytes())
+        self.assertTrue(key1.can_sign())
+        self.assertTrue(key2.can_sign())
+
+    @pytest.mark.skipif("not Ed25519Key.is_supported()")
+    def test_ed25519_public(self):
+        pub_bytes = base64.b64decode(PUB_ED25519.split()[1])
+        key1 = Ed25519Key(data=pub_bytes)
+        key2 = Ed25519Key(msg=Message(pub_bytes))
+
+        self.assertEqual(key1.asbytes(), key2.asbytes())
+        self.assertFalse(key1.can_sign())
+        self.assertFalse(key2.can_sign())
 
     @pytest.mark.skipif("not Ed25519Key.is_supported()")
     def test_ed25519_nonbytes_password(self):
@@ -525,6 +538,37 @@ class KeyTest(unittest.TestCase):
             key = Ed25519Key.from_private_key(pkey_fileobj)
         self.assertEqual(key, key)
         self.assertTrue(key.can_sign())
+
+    @pytest.mark.skipif("not Ed25519Key.is_supported()")
+    def test_sign_ed25519(self):
+        private = Ed25519Key.from_private_key_file(_support("test_ed25519.key"))
+        msg = private.sign_ssh_data(b"ice weasels")
+        msg.rewind()
+        self.assertEqual(msg.get_text(), "ssh-ed25519")
+        self.assertEqual(msg.get_binary(), base64.b64decode(SIGNED_ED25519))
+
+        msg.rewind()
+        pub = Ed25519Key(data=base64.b64decode(PUB_ED25519.split()[1]))
+        self.assertTrue(pub.verify_ssh_sig(b"ice weasels", msg))
+
+    @pytest.mark.skipif("not Ed25519Key.is_supported()")
+    def test_verify_ed25519_valid(self):
+        signature = Message()
+        signature.add_string("ssh-ed25519")
+        signature.add_string(base64.b64decode(SIGNED_ED25519))
+        signature.rewind()
+
+        pub = Ed25519Key(data=base64.b64decode(PUB_ED25519.split()[1]))
+        self.assertTrue(pub.verify_ssh_sig(b"ice weasels", signature))
+
+    @pytest.mark.skipif("not Ed25519Key.is_supported()")
+    def test_verify_ed25519_invalid(self):
+        signature = Message()
+        signature.add_string("ssh-ed25519")
+        signature.add_string(b'bad/signature')
+
+        pub = Ed25519Key(data=base64.b64decode(PUB_ED25519.split()[1]))
+        self.assertFalse(pub.verify_ssh_sig(b"ice weasels", signature))
 
     def test_keyfile_is_actually_encrypted(self):
         # Read an existing encrypted private key

@@ -94,10 +94,10 @@ setup(
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
     install_requires=[
         'bcrypt>=3',
-        'cryptography>=2.5',
+        'cryptography>=2.6',
     ],
     extras_require={
-        'Ed25519': ["PyNaCl"],
+        'Ed25519': [],  # can be removed in 3.0
         'gssapi': ["gssapi", "pyasn1"],
     },
 )
