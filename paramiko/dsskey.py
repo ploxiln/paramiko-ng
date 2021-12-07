@@ -217,8 +217,8 @@ class DSSKey(PKey):
         return key
 
     # ...internals...
-    def _decode_key(self, data):
-        pkformat, data = data
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
         # private key file contains:
         # DSAPrivateKey = { version = 0, p, q, g, y, x }
         if pkformat == self.FORMAT_ORIGINAL:

@@ -263,8 +263,8 @@ class ECDSAKey(PKey):
         return ECDSAKey(vals=(private_key, private_key.public_key()))
 
     # ...internals...
-    def _decode_key(self, data):
-        pkformat, data = data
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
         if pkformat == self.FORMAT_ORIGINAL:
             try:
                 key = serialization.load_der_private_key(

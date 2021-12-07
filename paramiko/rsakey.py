@@ -157,8 +157,8 @@ class RSAKey(PKey):
         return RSAKey(key=key)
 
     # ...internals...
-    def _decode_key(self, data):
-        pkformat, data = data
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
         if pkformat == self.FORMAT_ORIGINAL:
             try:
                 key = serialization.load_der_private_key(
