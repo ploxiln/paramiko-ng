@@ -87,12 +87,6 @@ class DSSKey(PKey):
         m.add_mpint(self.y)
         return m.asbytes()
 
-    def __str__(self):
-        return self.asbytes()
-
-    def __hash__(self):
-        return hash((self.get_name(), self.p, self.q, self.g, self.y))
-
     def get_name(self):
         return 'ssh-dss'
 
@@ -223,8 +217,8 @@ class DSSKey(PKey):
         return key
 
     # ...internals...
-    def _decode_key(self, data):
-        pkformat, data = data
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
         # private key file contains:
         # DSAPrivateKey = { version = 0, p, q, g, y, x }
         if pkformat == self.FORMAT_ORIGINAL:

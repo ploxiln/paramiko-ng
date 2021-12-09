@@ -71,49 +71,47 @@ class Ed25519Key(PKey):
             _raw = self._from_private_key_file(filename, password)
         elif file_obj is not None:
             _raw = self._from_private_key(file_obj, password)
-
         if _raw is not None:
-            pkformat, data = _raw
-            if pkformat != self.FORMAT_OPENSSH:
-                raise SSHException("Invalid key format")
-            signing_key = self._parse_signing_key_data(data)
+            signing_key = self._decode_key(_raw)
 
         if signing_key is None and verifying_key is None:
             raise ValueError("need a key")
-        self._signing_key = signing_key
-        self._verifying_key = verifying_key
 
-    def _parse_signing_key_data(self, data):
+        self._signing_key = signing_key
+        self._verifying_key = verifying_key or signing_key.public_key()
+
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
+        if pkformat != self.FORMAT_OPENSSH:
+            raise SSHException("Invalid key format")
+
         message = Message(data)
         public = message.get_binary()
         key_data = message.get_binary()
+        comment = message.get_binary()  # noqa: F841
+
         # The second half of the key data is yet another copy of the public key...
         signing_key = ed25519.Ed25519PrivateKey.from_private_bytes(key_data[:32])
+
         # Verify that all the public keys are the same...
-        if not signing_key.public_key().public_bytes(
+        derived_public = signing_key.public_key().public_bytes(
             serialization.Encoding.Raw,
             serialization.PublicFormat.Raw,
-        ) == public == key_data[32:]:
+        )
+        if public != key_data[32:] or public != derived_public:
             raise SSHException("Invalid key public part mis-match")
-        comment = message.get_binary()  # noqa: F841
+
         return signing_key
 
     def asbytes(self):
-        if self.can_sign():
-            v = self._signing_key.public_key()
-        else:
-            v = self._verifying_key
-
-        m = Message()
-        m.add_string("ssh-ed25519")
-        m.add_string(v.public_bytes(
+        public_bytes = self._verifying_key.public_bytes(
             serialization.Encoding.Raw,
             serialization.PublicFormat.Raw,
-        ))
+        )
+        m = Message()
+        m.add_string("ssh-ed25519")
+        m.add_string(public_bytes)
         return m.asbytes()
-
-    def __hash__(self):
-        return hash((self.get_name(), self.asbytes()))
 
     def get_name(self):
         return "ssh-ed25519"

@@ -175,30 +175,21 @@ class ECDSAKey(PKey):
 
     def asbytes(self):
         key = self.verifying_key
-        m = Message()
-        m.add_string(self.ecdsa_curve.key_format_identifier)
-        m.add_string(self.ecdsa_curve.nist_name)
-
         numbers = key.public_numbers()
-
         key_size_bytes = (key.curve.key_size + 7) // 8
 
         x_bytes = deflate_long(numbers.x, add_sign_padding=False)
         x_bytes = b'\x00' * (key_size_bytes - len(x_bytes)) + x_bytes
-
         y_bytes = deflate_long(numbers.y, add_sign_padding=False)
         y_bytes = b'\x00' * (key_size_bytes - len(y_bytes)) + y_bytes
 
         point_str = four_byte + x_bytes + y_bytes
+
+        m = Message()
+        m.add_string(self.ecdsa_curve.key_format_identifier)
+        m.add_string(self.ecdsa_curve.nist_name)
         m.add_string(point_str)
         return m.asbytes()
-
-    def __str__(self):
-        return self.asbytes()
-
-    def __hash__(self):
-        return hash((self.get_name(), self.verifying_key.public_numbers().x,
-                     self.verifying_key.public_numbers().y))
 
     def get_name(self):
         return self.ecdsa_curve.key_format_identifier
@@ -270,8 +261,8 @@ class ECDSAKey(PKey):
         return ECDSAKey(vals=(private_key, private_key.public_key()))
 
     # ...internals...
-    def _decode_key(self, data):
-        pkformat, data = data
+    def _decode_key(self, _raw):
+        pkformat, data = _raw
         if pkformat == self.FORMAT_ORIGINAL:
             try:
                 key = serialization.load_der_private_key(
