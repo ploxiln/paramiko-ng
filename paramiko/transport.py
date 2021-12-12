@@ -404,12 +404,12 @@ class Transport(threading.Thread, ClosingContextManager):
         # user-defined event callbacks
         self.completion_event = None
         # how long (seconds) to wait for the SSH banner
-        self.banner_timeout = 15
+        self.banner_timeout = 15.0
         # how long (seconds) to wait for the handshake to finish after SSH
         # banner sent.
-        self.handshake_timeout = 15
+        self.handshake_timeout = 15.0
         # how long (seconds) to wait for the auth response.
-        self.auth_timeout = 30
+        self.auth_timeout = 30.0
         # AuthHandler to save MSG_USERAUTH_BANNER msg here
         self.banner = None
 
@@ -1912,8 +1912,6 @@ class Transport(threading.Thread, ClosingContextManager):
                 # responding, for example when the remote ssh daemon is loaded
                 # in to memory but we can not read from the disk/spawn a new
                 # shell.
-                # Make sure we can specify a timeout for the initial handshake.
-                # Re-use the banner timeout for now.
                 self.packetizer.start_handshake(self.handshake_timeout)
                 self._send_kex_init()
                 self._expect_packet(MSG_KEXINIT)
