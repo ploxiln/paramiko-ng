@@ -38,7 +38,10 @@ source_suffix = '.rst'
 default_role = 'obj'
 
 # Autodoc settings
-autodoc_default_flags = ['members', 'special-members']
+autodoc_default_options = {
+    'members': True,
+    'special-members': True,
+}
 
 # Intersphinx connection to stdlib
 intersphinx_mapping = {
