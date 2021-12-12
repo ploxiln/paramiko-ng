@@ -190,22 +190,23 @@ class SSHClient (ClosingContextManager):
         port=SSH_PORT,
         username=None,
         password=None,
+        *,
+        passphrase=None,
         pkey=None,
         key_filename=None,
-        timeout=None,
-        allow_agent=True,
         look_for_keys=True,
+        allow_agent=True,
+        timeout=None,
+        banner_timeout=None,
+        handshake_timeout=None,
+        auth_timeout=None,
         compress=False,
         sock=None,
         gss_auth=False,
         gss_kex=False,
         gss_deleg_creds=True,
         gss_host=None,
-        banner_timeout=None,
-        auth_timeout=None,
         gss_trust_dns=True,
-        passphrase=None,
-        handshake_timeout=None,
     ):
         """
         Connect to an SSH server and authenticate to it.  The server's host key
@@ -239,9 +240,6 @@ class SSHClient (ClosingContextManager):
 
         If a private key requires a password to unlock it, and a password is
         passed in, that password will be used to attempt to unlock the key.
-
-        Note that the following parameters are documented in a different
-        (more logical) order than they have in the function signature.
 
         :param str hostname: the server to connect to
         :param int port: the server port to connect to
@@ -307,6 +305,8 @@ class SSHClient (ClosingContextManager):
             Added the ``passphrase`` argument.
         .. versionchanged:: 2.9
             Added the ``handshake_timeout`` argument.
+        .. versionchanged:: 3.0
+            Made most arguments keyword-only and re-ordered them.
         """
         if not sock:
             sock = retry_on_signal(
