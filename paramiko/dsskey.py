@@ -195,13 +195,12 @@ class DSSKey(PKey):
         )
 
     @staticmethod
-    def generate(bits=1024, progress_func=None):
+    def generate(bits=1024):
         """
         Generate a new private DSS key.  This factory function can be used to
         generate a new host key or authentication key.
 
         :param int bits: number of bits the generated key should be.
-        :param progress_func: Unused
         :return: new `.DSSKey` private key
         """
         numbers = dsa.generate_private_key(

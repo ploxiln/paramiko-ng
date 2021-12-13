@@ -243,12 +243,11 @@ class ECDSAKey(PKey):
         )
 
     @classmethod
-    def generate(cls, curve=ec.SECP256R1(), progress_func=None, bits=None):
+    def generate(cls, curve=ec.SECP256R1(), bits=None):
         """
         Generate a new private ECDSA key.  This factory function can be used to
         generate a new host key or authentication key.
 
-        :param progress_func: Not used for this type of key.
         :returns: A new private key (`.ECDSAKey`) object
         """
         if bits is not None:

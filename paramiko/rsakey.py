@@ -142,13 +142,12 @@ class RSAKey(PKey):
         )
 
     @staticmethod
-    def generate(bits, progress_func=None):
+    def generate(bits):
         """
         Generate a new private RSA key.  This factory function can be used to
         generate a new host key or authentication key.
 
         :param int bits: number of bits the generated key should be.
-        :param progress_func: Unused
         :return: new `.RSAKey` private key
         """
         key = rsa.generate_private_key(
