@@ -20,7 +20,9 @@
 Useful functions used by the rest of paramiko.
 """
 
+import os
 import errno
+import select
 import struct
 import threading
 import logging
@@ -283,3 +285,33 @@ class ClosingContextManager(object):
 
 def clamp_value(minimum, val, maximum):
     return max(minimum, min(val, maximum))
+
+
+# select() takes a bitmask, so it can only handle fd numbers up to a finite limit
+# (usually 1024), while poll() can handle any fd number.
+#
+# Windows does not support poll() (it has "WSAPoll" but it's too buggy/limited).
+#
+# MacOS has a significant limitation and some on-again off-again bugs in its poll(),
+# but they should not affect paramiko's usage:
+#  * MacOS poll() does not support devices, e.g. /dev/zero, /dev/null, a tty
+#  * some older releases of MacOS had a poll() bug where non-zero timeout
+#    with zero-length list always returns immediately
+#
+# In case there are other bugs, allow forcing select()
+USE_POLL = hasattr(select, "poll") and not os.getenv("PARAMIKO_USE_SELECT")
+
+
+def poll_read(rlist, timeout=None):
+    if not USE_POLL:
+        r, w, e = select.select(rlist, [], [], timeout)
+        return r
+    else:
+        lookup = {}
+        poller = select.poll()
+        for f in rlist:
+            fd = f if type(f) == int else f.fileno()
+            lookup[fd] = f
+            poller.register(fd, select.POLLIN)
+        results = poller.poll(None if timeout is None else int(1000.0 * timeout))
+        return [lookup[rfd] for rfd, evt in results if evt]

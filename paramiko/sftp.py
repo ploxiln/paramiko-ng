@@ -16,7 +16,6 @@
 # along with Paramiko; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
-import select
 import socket
 import struct
 
@@ -148,13 +147,11 @@ class BaseSFTP (object):
         out = bytes()
         while n > 0:
             if isinstance(self.sock, socket.socket):
-                # sometimes sftp is used directly over a socket instead of
-                # through a paramiko channel.  in this case, check periodically
-                # if the socket is closed.  (for some reason, recv() won't ever
-                # return or raise an exception, but calling select on a closed
-                # socket will.)
+                # sometimes sftp is used directly over a socket instead of a paramiko channel
+                # recv() may not return/raise an exception when socket closed ??
+                # so check periodically if socket is closed using select/poll - see a9c51b23cea3
                 while True:
-                    read, write, err = select.select([self.sock], [], [], 0.1)
+                    read = util.poll_read([self.sock], 0.1)
                     if len(read) > 0:
                         x = self.sock.recv(n)
                         break

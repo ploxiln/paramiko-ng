@@ -21,10 +21,9 @@ import os
 import sys
 import time
 import socket
-from select import select
 
 from paramiko.ssh_exception import ProxyCommandFailure
-from paramiko.util import ClosingContextManager
+from paramiko.util import ClosingContextManager, poll_read
 
 
 class ProxyCommand(ClosingContextManager):
@@ -99,11 +98,12 @@ class ProxyCommand(ClosingContextManager):
                         raise socket.timeout()
                     select_timeout = self.timeout - elapsed
 
-                r, w, x = select([self.process.stdout], [], [], select_timeout)
+                r = poll_read([self.process.stdout], select_timeout)
                 if r and r[0] == self.process.stdout:
                     buffer += os.read(self.process.stdout.fileno(), size - len(buffer))
 
             return buffer
+
         except socket.timeout:
             if buffer:
                 # Don't raise socket.timeout, return partial result instead
