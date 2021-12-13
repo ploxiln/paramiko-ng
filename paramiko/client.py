@@ -37,7 +37,7 @@ from paramiko.pkey import load_private_key_file
 from paramiko.hostkeys import HostKeys
 from paramiko.py3compat import string_types
 from paramiko.ssh_exception import SSHException, BadHostKeyException, BadAuthenticationType
-from paramiko.transport import Transport
+from paramiko.transport import Transport, SecurityOptions
 from paramiko.util import retry_on_signal, ClosingContextManager
 
 
@@ -68,7 +68,20 @@ class SSHClient (ClosingContextManager):
         self._log_channel = None
         self._policy = RejectPolicy()
         self._transport = None
+        self._security_options = None
         self._agent = None
+
+    def get_security_options(self):
+        """
+        Return a `.SecurityOptions` object which can be used to tweak the authentication
+        and encryption algorithms this client will permit (for encryption, digest/hash
+        operations, public keys, and key exchanges) and the order of preference for them.
+        """
+        if self._security_options is None:
+            # create a shadow Transport, copy the options to the real Transport later
+            self._security_options = SecurityOptions(Transport(socket.socket()))
+
+        return self._security_options
 
     def load_system_host_keys(self, filename=None):
         """
@@ -311,6 +324,16 @@ class SSHClient (ClosingContextManager):
         t = self._transport = Transport(
             sock, gss_kex=gss_kex, gss_deleg_creds=gss_deleg_creds
         )
+
+        if self._security_options is not None:
+            t_opts             = t.get_security_options()  # noqa: E221
+            c_opts             = self._security_options    # noqa: E221
+            t_opts.compression = c_opts.compression        # noqa: E221
+            t_opts.key_types   = c_opts.key_types          # noqa: E221
+            t_opts.ciphers     = c_opts.ciphers            # noqa: E221
+            t_opts.digests     = c_opts.digests            # noqa: E221
+            t_opts.kex         = c_opts.kex                # noqa: E221
+
         t.use_compression(compress=compress)
         t.set_gss_host(
             # t.hostname may be None, but GSS-API requires a target name.
@@ -388,10 +411,11 @@ class SSHClient (ClosingContextManager):
             It's good practice to `close` your client objects anytime you're
             done using them, instead of relying on garbage collection.
         """
-        if self._transport is None:
-            return
-        self._transport.close()
-        self._transport = None
+        self._security_options = None  # has reference to "shadow Transport"
+
+        if self._transport is not None:
+            self._transport.close()
+            self._transport = None
 
         if self._agent is not None:
             self._agent.close()
