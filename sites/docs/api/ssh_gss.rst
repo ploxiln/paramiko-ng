@@ -7,10 +7,7 @@ GSS-API authentication
 .. autoclass:: _SSH_GSSAuth
     :member-order: bysource
 
-.. autoclass:: _SSH_GSSAPI_OLD
-    :member-order: bysource
-
-.. autoclass:: _SSH_GSSAPI_NEW
+.. autoclass:: _SSH_GSSAPI
     :member-order: bysource
 
 .. autoclass:: _SSH_SSPI

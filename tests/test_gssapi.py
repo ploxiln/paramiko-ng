@@ -46,16 +46,9 @@ class GSSAPITest(KerberosTestCase):
         self.assertEqual(self.krb5_mech, mech.__str__())
 
     def _gssapi_sspi_test(self):
-        """
-        Test the used methods of python-gssapi or sspi, sspicon from pywin32.
-        """
         try:
             import gssapi
-            if (hasattr(gssapi, '__title__') and
-                    gssapi.__title__ == 'python-gssapi'):
-                _API = "MIT"
-            else:
-                _API = "MIT-NEW"
+            _API = "MIT-NEW"
         except ImportError:
             import sspicon
             import sspi
@@ -65,51 +58,7 @@ class GSSAPITest(KerberosTestCase):
         gss_ctxt_status = False
         mic_msg = b"G'day Mate!"
 
-        if _API == "MIT":
-            if self.server_mode:
-                gss_flags = (gssapi.C_PROT_READY_FLAG,
-                             gssapi.C_INTEG_FLAG,
-                             gssapi.C_MUTUAL_FLAG,
-                             gssapi.C_DELEG_FLAG)
-            else:
-                gss_flags = (gssapi.C_PROT_READY_FLAG,
-                             gssapi.C_INTEG_FLAG,
-                             gssapi.C_DELEG_FLAG)
-            # Initialize a GSS-API context.
-            ctx = gssapi.Context()
-            ctx.flags = gss_flags
-            krb5_oid = gssapi.OID.mech_from_string(self.krb5_mech)
-            target_name = gssapi.Name("host@" + self.targ_name,
-                                      gssapi.C_NT_HOSTBASED_SERVICE)
-            gss_ctxt = gssapi.InitContext(peer_name=target_name,
-                                          mech_type=krb5_oid,
-                                          req_flags=ctx.flags)
-            if self.server_mode:
-                c_token = gss_ctxt.step(c_token)
-                gss_ctxt_status = gss_ctxt.established
-                self.assertEqual(False, gss_ctxt_status)
-                # Accept a GSS-API context.
-                gss_srv_ctxt = gssapi.AcceptContext()
-                s_token = gss_srv_ctxt.step(c_token)
-                gss_ctxt_status = gss_srv_ctxt.established
-                self.assertNotEqual(None, s_token)
-                self.assertEqual(True, gss_ctxt_status)
-                # Establish the client context
-                c_token = gss_ctxt.step(s_token)
-                self.assertEqual(None, c_token)
-            else:
-                while not gss_ctxt.established:
-                    c_token = gss_ctxt.step(c_token)
-                self.assertNotEqual(None, c_token)
-            # Build MIC
-            mic_token = gss_ctxt.get_mic(mic_msg)
-
-            if self.server_mode:
-                # Check MIC
-                status = gss_srv_ctxt.verify_mic(mic_msg, mic_token)
-                self.assertEqual(0, status)
-
-        elif _API == "MIT-NEW":
+        if _API == "MIT-NEW":
             if self.server_mode:
                 gss_flags = (gssapi.RequirementFlag.protection_ready,
                              gssapi.RequirementFlag.integrity,
@@ -186,14 +135,8 @@ class GSSAPITest(KerberosTestCase):
                 self.assertNotEqual(0, error)
 
     def test_gssapi_sspi_client(self):
-        """
-        Test the used methods of python-gssapi or sspi, sspicon from pywin32.
-        """
         self._gssapi_sspi_test()
 
     def test_gssapi_sspi_server(self):
-        """
-        Test the used methods of python-gssapi or sspi, sspicon from pywin32.
-        """
         self.server_mode = True
         self._gssapi_sspi_test()
