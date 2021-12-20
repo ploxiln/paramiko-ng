@@ -22,6 +22,7 @@ Some unit tests for utility functions.
 
 from binascii import hexlify
 import errno
+import io
 import os
 from hashlib import sha1
 import unittest
@@ -501,3 +502,54 @@ Host *
             config.lookup('some-random-host')['proxycommand'],
             'default-proxy'
         )
+
+    def poll_read_fds(self):
+        r0, w0 = os.pipe()
+        r1, w1 = os.pipe()
+
+        os.write(w1, b'foo')
+
+        readables = paramiko.util.poll_read([r0, r1], 0.1)
+        self.assertEqual([r1], readables)
+
+        readables = paramiko.util.poll_read([r0, r1])
+        self.assertEqual([r1], readables)
+
+        self.assertEqual(b'foo', os.read(r1, 256))
+
+        readables = paramiko.util.poll_read([r0, r1], 0.1)
+        self.assertEqual([], readables)
+
+    def poll_read_objs(self):
+        p0 = os.pipe()
+        p1 = os.pipe()
+        r0 = io.FileIO(p0[0], mode='r')
+        # w0 = io.FileIO(p0[1], mode='w')
+        r1 = io.FileIO(p1[0], mode='r')
+        w1 = io.FileIO(p1[1], mode='w')
+
+        w1.write(b'foo')
+
+        readables = paramiko.util.poll_read([r0, r1], 0.1)
+        self.assertEqual([r1], readables)
+
+        readables = paramiko.util.poll_read([r0, r1])
+        self.assertEqual([r1], readables)
+
+        self.assertEqual(b'foo', r1.read(256))
+
+        readables = paramiko.util.poll_read([r0, r1], 0.1)
+        self.assertEqual([], readables)
+
+    def test_poll_read(self):
+        self.poll_read_fds()
+        self.poll_read_objs()
+
+    def test_poll_read_select(self):
+        use_poll_orig = paramiko.util.USE_POLL
+        try:
+            paramiko.util.USE_POLL = False
+            self.poll_read_fds()
+            self.poll_read_objs()
+        finally:
+            paramiko.util.USE_POLL = use_poll_orig

@@ -28,14 +28,13 @@ import threading
 import time
 import tempfile
 import stat
-from select import select
 from paramiko.common import asbytes, io_sleep
 from paramiko.py3compat import byte_chr
 
 from paramiko.ssh_exception import SSHException, AuthenticationException
 from paramiko.message import Message
 from paramiko.pkey import PKey
-from paramiko.util import retry_on_signal
+from paramiko.util import retry_on_signal, poll_read
 
 cSSH2_AGENTC_REQUEST_IDENTITIES = byte_chr(11)
 SSH2_AGENT_IDENTITIES_ANSWER = 12
@@ -132,8 +131,8 @@ class AgentProxyThread(threading.Thread):
         oldflags = fcntl.fcntl(self.__inr, fcntl.F_GETFL)
         fcntl.fcntl(self.__inr, fcntl.F_SETFL, oldflags | os.O_NONBLOCK)
         while not self._exit:
-            events = select([self._agent._conn, self.__inr], [], [], 0.5)
-            for fd in events[0]:
+            events = poll_read([self._agent._conn, self.__inr], 0.5)
+            for fd in events:
                 if self._agent._conn == fd:
                     data = self._agent._conn.recv(512)
                     if len(data) != 0:
