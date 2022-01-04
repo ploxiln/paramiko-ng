@@ -190,6 +190,9 @@ class KeyTest(unittest.TestCase):
             assert name in str(key)
             assert fingerprint_sha256 in str(key)
 
+        # ensure comparison does not raise exception
+        assert key != None  # noqa: E711
+
     def test_generate_key_bytes(self):
         x1234 = b'\x01\x02\x03\x04'
         key = util.generate_key_bytes(md5, x1234, 'happy birthday', 30)
