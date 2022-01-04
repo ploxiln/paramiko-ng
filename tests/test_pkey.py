@@ -161,6 +161,9 @@ class KeyTest(unittest.TestCase):
         key2 = RSAKey.from_private_key(s)
         self.assertEqual(key, key2)
 
+        # ensure comparison does not raise exception
+        assert key != None  # noqa: E711
+
     def test_3_load_rsa_password(self):
         key = RSAKey.from_private_key_file(_support('test_rsa_password.key'), 'television')
         self.assertEqual('ssh-rsa', key.get_name())
@@ -185,6 +188,9 @@ class KeyTest(unittest.TestCase):
         s.seek(0)
         key2 = DSSKey.from_private_key(s)
         self.assertEqual(key, key2)
+
+        # ensure comparison does not raise exception
+        assert key != None  # noqa: E711
 
     def test_5_load_dss_password(self):
         key = DSSKey.from_private_key_file(_support('test_dss_password.key'), 'television')
@@ -297,6 +303,9 @@ class KeyTest(unittest.TestCase):
         s.seek(0)
         key2 = ECDSAKey.from_private_key(s)
         self.assertEqual(key, key2)
+
+        # ensure comparison does not raise exception
+        assert key != None  # noqa: E711
 
     def test_11_load_ecdsa_password_256(self):
         key = ECDSAKey.from_private_key_file(_support('test_ecdsa_password_256.key'),
@@ -500,6 +509,9 @@ class KeyTest(unittest.TestCase):
             _support('test_ed25519_password.key'), b'abc123'
         )
         self.assertNotEqual(key1.asbytes(), key2.asbytes())
+
+        # ensure comparison does not raise exception
+        assert key1 != None  # noqa: E711
 
     @pytest.mark.skipif("not Ed25519Key.is_supported()")
     def test_ed25519_compare(self):
