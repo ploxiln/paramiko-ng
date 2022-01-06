@@ -120,7 +120,8 @@ class PKey(object):
 
     def __cmp__(self, other):
         # python-2 only, same purpose as __eq__()
-        return cmp(self.asbytes(), other.asbytes())  # noqa
+        other_asbytes = other.asbytes() if isinstance(other, PKey) else b""
+        return cmp(self.asbytes(), other_asbytes)  # noqa
 
     def __eq__(self, other):
         """
