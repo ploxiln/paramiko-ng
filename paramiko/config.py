@@ -45,9 +45,6 @@ class SSHConfig (object):
     SETTINGS_REGEX = re.compile(r'(\w+)(?:\s*=\s*|\s+)(.+)')
 
     def __init__(self):
-        """
-        Create a new OpenSSH config object.
-        """
         self._config = []
 
     def parse(self, file_obj):

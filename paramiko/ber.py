@@ -26,10 +26,6 @@ class BERException (Exception):
 
 
 class BER(object):
-    """
-    Robey's tiny little attempt at a BER decoder.
-    """
-
     def __init__(self, content=bytes()):
         self.content = b(content)
         self.idx = 0

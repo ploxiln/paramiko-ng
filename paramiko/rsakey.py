@@ -33,8 +33,7 @@ from paramiko.ssh_exception import SSHException
 @register_pkey_type
 class RSAKey(PKey):
     """
-    Representation of an RSA key which can be used to sign and verify SSH2
-    data.
+    Representation of an RSA key which can be used to sign and verify SSH2 data.
     """
 
     LEGACY_TYPE = "RSA"

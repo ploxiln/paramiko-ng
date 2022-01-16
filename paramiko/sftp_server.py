@@ -60,8 +60,7 @@ class SFTPServer (BaseSFTP, SubsystemHandler):
     Use `.Transport.set_subsystem_handler` to activate this class.
     """
 
-    def __init__(self, channel, name, server, sftp_si=SFTPServerInterface,
-                 *largs, **kwargs):
+    def __init__(self, channel, name, server, sftp_si=SFTPServerInterface, *largs, **kwargs):
         """
         The constructor for SFTPServer is meant to be called from within the
         `.Transport` as a subsystem handler.  ``server`` and any additional
@@ -73,8 +72,7 @@ class SFTPServer (BaseSFTP, SubsystemHandler):
         :param .ServerInterface server:
             the server object associated with this channel and subsystem
         :param sftp_si:
-            a subclass of `.SFTPServerInterface` to use for handling individual
-            requests.
+            a subclass of `.SFTPServerInterface` to use for handling individual requests
         """
         BaseSFTP.__init__(self)
         SubsystemHandler.__init__(self, channel, name, server)

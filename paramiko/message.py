@@ -53,15 +53,10 @@ class Message (object):
             self.packet = BytesIO()
 
     def __str__(self):
-        """
-        Return the byte stream content of this message, as a string/bytes obj.
-        """
+        # TODO: should be str, not bytes
         return self.asbytes()
 
     def __repr__(self):
-        """
-        Returns a string representation of this object, for debugging.
-        """
         return 'paramiko.Message(' + repr(self.packet.getvalue()) + ')'
 
     def asbytes(self):
