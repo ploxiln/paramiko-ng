@@ -96,8 +96,7 @@ class Transport(threading.Thread, ClosingContextManager):
     An SSH Transport attaches to a stream (usually a socket), negotiates an
     encrypted session, authenticates, and then creates stream tunnels, called
     `channels <.Channel>`, across the session.  Multiple channels can be
-    multiplexed across a single session (and often are, in the case of port
-    forwardings).
+    multiplexed across a single session (and often are).
 
     Instances of this class may be used as context managers.
     """
@@ -272,12 +271,11 @@ class Transport(threading.Thread, ClosingContextManager):
         If the object is not actually a socket, it must have the following
         methods:
 
-        - ``send(str)``: Writes from 1 to ``len(str)`` bytes, and returns an
-          int representing the number of bytes written.  Returns
-          0 or raises ``EOFError`` if the stream has been closed.
-        - ``recv(int)``: Reads from 1 to ``int`` bytes and returns them as a
-          string.  Returns 0 or raises ``EOFError`` if the stream has been
-          closed.
+        - ``send(str)``: Writes up to ``len(str)`` bytes, and returns the number
+          of bytes written. Returns 0 or raises ``EOFError`` if the stream has
+          been closed.
+        - ``recv(int)``: Reads up to ``int`` bytes and returns them. Returns an
+          empty bytestring or raises ``EOFError`` if the stream has been closed.
         - ``close()``: Closes the socket.
         - ``settimeout(n)``: Sets a (float) timeout on I/O operations.
 
@@ -289,10 +287,8 @@ class Transport(threading.Thread, ClosingContextManager):
         be used. For more control, pass a connected socket instead.
 
         .. note::
-            Modifying the the window and packet sizes might have adverse
-            effects on your channels created from this transport. The default
-            values are the same as in the OpenSSH code base and have been
-            battle tested.
+            Modifying the window and packet sizes might have adverse
+            effects on your channels created from this transport.
 
         :param socket sock:
             a socket or socket-like object to create the session over.
@@ -748,12 +744,10 @@ class Transport(threading.Thread, ClosingContextManager):
     ):
         """
         Request a new channel to the server, of type ``"session"``.  This is
-        just an alias for calling `open_channel` with an argument of
-        ``"session"``.
+        just an alias for calling `open_channel` with an argument of ``"session"``.
 
         .. note:: Modifying the the window and packet sizes might have adverse
-            effects on the session created. The default values are the same
-            as in the OpenSSH code base and have been battle tested.
+            effects on the session created.
 
         :param int window_size:
             optional window size for this session.
@@ -766,7 +760,7 @@ class Transport(threading.Thread, ClosingContextManager):
             `.SSHException` -- if the request is rejected or the session ends
             prematurely
 
-        .. versionchanged:: 1.13.4/1.14.3/1.15.3
+        .. versionchanged:: 1.15.3
             Added the ``timeout`` argument.
         .. versionchanged:: 1.15
             Added the ``window_size`` and ``max_packet_size`` arguments.
@@ -832,8 +826,7 @@ class Transport(threading.Thread, ClosingContextManager):
         (using `connect` or `start_client`) and authenticating.
 
         .. note:: Modifying the the window and packet sizes might have adverse
-            effects on the channel created. The default values are the same
-            as in the OpenSSH code base and have been battle tested.
+            effects on the channel created.
 
         :param str kind:
             the kind of channel requested (usually ``"session"``,

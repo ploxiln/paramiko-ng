@@ -62,9 +62,6 @@ class SSHClient (ClosingContextManager):
     """
 
     def __init__(self):
-        """
-        Create a new SSHClient.
-        """
         self._system_host_keys = HostKeys()
         self._host_keys = HostKeys()
         self._host_keys_filename = None
@@ -246,55 +243,53 @@ class SSHClient (ClosingContextManager):
         :param str hostname: the server to connect to
         :param int port: the server port to connect to
         :param str username:
-            the username to authenticate as (defaults to the current local
-            username)
+            the username to authenticate as (defaults to the current local username)
         :param str password:
             Used for password authentication; is also used for private key
             decryption if ``passphrase`` is not given.
         :param str passphrase:
-            Used for decrypting private keys.
-        :param .PKey pkey: an optional private key to use for authentication
+            Used for decrypting private key files
+        :param .PKey pkey:
+            an optional private key (object) to use for authentication
         :param str key_filename:
             the filename, or list of filenames, of optional private key(s)
             and/or certs to try for authentication
         :param bool look_for_keys:
-            set to False to disable searching for discoverable private key
-            files in ``~/.ssh/``
+            set to False to disable searching for discoverable private key files in ``~/.ssh/``
         :param bool allow_agent:
             set to False to disable connecting to the SSH agent
         :param float timeout:
             an optional timeout (in seconds) for the overall SSH session
             negotiation (also applies to the TCP connection)
-        :param float banner_timeout: an optional timeout (in seconds) to wait
-            for the SSH banner to be presented.
-        :param float handshake_timeout: an optional timeout (in seconds) to wait
-            for the SSH handshake to finish after SSH banner exchange.
-        :param float auth_timeout: an optional timeout (in seconds) to wait for
-            an authentication response.
-        :param bool compress: set to True to turn on compression
+        :param float banner_timeout:
+            override default timeout (in seconds) to wait for the SSH banner
+            to be presented
+        :param float handshake_timeout:
+            override default timeout (in seconds) to wait for the SSH handshake
+            to finish after SSH banner exchange
+        :param float auth_timeout:
+            override default timeout (in seconds) to wait for an authentication response
+        :param bool compress:
+            enable deflate/gzip SSH transport compression
         :param socket sock:
             an open socket or socket-like object (such as a `.Channel`) to use
             for communication to the target host
         :param bool gss_auth:
-            ``True`` if you want to use GSS-API authentication
+            Use GSS-API authentication
         :param bool gss_kex:
             Perform GSS-API Key Exchange and user authentication
-        :param bool gss_deleg_creds: Delegate GSS-API client credentials or not
+        :param bool gss_deleg_creds:
+            Whether to delegate GSS-API client credentials (default ``True``)
         :param str gss_host:
             The targets name in the kerberos database. default: hostname
         :param bool gss_trust_dns:
             Indicates whether or not the DNS is trusted to securely
-            canonicalize the name of the host being connected to (default
-            ``True``).
+            canonicalize the name of the host being connected to (default ``True``)
 
-        :raises:
-            `.BadHostKeyException` -- if the server's host key could not be
-            verified
+        :raises: `.BadHostKeyException` -- if the server's host key could not be verified
         :raises: `.AuthenticationException` -- if authentication failed
-        :raises:
-            `.SSHException` -- if there was any other error connecting or
-            establishing an SSH session
-        :raises socket.error: if a socket error occurred while connecting
+        :raises: `.SSHException` -- if there was some other error establishing an SSH session
+        :raises: `socket.error` -- if a socket error occurred while connecting
 
         .. versionchanged:: 1.15
             Added the ``banner_timeout``, ``gss_auth``, ``gss_kex``,

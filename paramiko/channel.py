@@ -133,9 +133,6 @@ class Channel (ClosingContextManager):
             pass
 
     def __repr__(self):
-        """
-        Return a string representation of this object, for debugging.
-        """
         out = '<paramiko.Channel {}'.format(self.chanid)
         if self.closed:
             out += ' (closed)'
@@ -1384,9 +1381,6 @@ class ChannelFile (BufferedFile):
         self._set_mode(mode, bufsize)
 
     def __repr__(self):
-        """
-        Returns a string representation of this object, for debugging.
-        """
         return '<paramiko.ChannelFile from ' + repr(self.channel) + '>'
 
     def _read(self, size):

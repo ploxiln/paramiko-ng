@@ -111,10 +111,8 @@ class _SSH_GSSAuth(object):
         self._username = None
         self._session_id = None
         self._service = "ssh-connection"
-        """
-        OpenSSH supports Kerberos V5 mechanism only for GSS-API authentication,
-        so we also support the krb5 mechanism only.
-        """
+        # OpenSSH supports Kerberos V5 mechanism only for GSS-API authentication,
+        # so we also support the krb5 mechanism only.
         self._krb5_mech = "1.2.840.113554.1.2.2"
 
         # client mode

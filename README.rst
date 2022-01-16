@@ -5,7 +5,7 @@ Paramiko-NG
 This is a fork of `paramiko <https://github.com/paramiko/paramiko/>`_ for more active maintenance.
 
 This is still imported under the name ``paramiko``, but you can
-install with the package name *paramiko-ng* (default) or *paramiko*
+install with the pip-package-name *paramiko-ng* (default) or *paramiko*
 (by setting the environment variable ``PARAMIKO_REPLACE``, see `Installation`_).
 
 Changelog: `releases <https://github.com/ploxiln/paramiko-ng/releases>`_
@@ -13,7 +13,7 @@ Changelog: `releases <https://github.com/ploxiln/paramiko-ng/releases>`_
 :Paramiko-NG: Python SSH module
 :Copyright:   Copyright (c) 2003-2009  Robey Pointer <robeypointer@gmail.com>
 :Copyright:   Copyright (c) 2013-2019  Jeff Forcier <jeff@bitprophet.org>
-:Copyright:   Copyright (c) 2019-2020  Pierce Lopez <pierce.lopez@gmail.com>
+:Copyright:   Copyright (c) 2019-2022  Pierce Lopez <pierce.lopez@gmail.com>
 :License:     `LGPL <https://www.gnu.org/copyleft/lesser.html>`_
 :API docs:    https://ploxiln.github.io/paramiko-ng/
 :Development: https://github.com/ploxiln/paramiko-ng/
@@ -42,15 +42,16 @@ Installation
 The import name is still just ``paramiko``. Make sure the original *paramiko*
 is not installed before installing *paramiko-ng* - otherwise pip may report
 success even though *paramiko-ng* was not correctly installed.
+(Because the import name is the same, installed files can conflict.)
 
 The most common way to install is simply::
 
     pip install paramiko-ng
 
 You can also install under the original "paramiko" pip-package-name, in order to
-satisfy requirements for other packages (replace "2.7.6" with desired version)::
+satisfy requirements for other packages (replace "2.8.10" with desired version)::
 
-    PARAMIKO_REPLACE=1 pip install https://github.com/ploxiln/paramiko-ng/archive/2.7.6.tar.gz#egg=paramiko
+    PARAMIKO_REPLACE=1 pip install "https://github.com/ploxiln/paramiko-ng/archive/2.8.10.tar.gz#egg=paramiko"
 
 For dependencies and other details, see https://ploxiln.github.io/paramiko-ng/installing.html
 
@@ -91,7 +92,7 @@ This prints out the results of executing ``ls`` on a remote server. The host
 key ``b'AAA...'`` should of course be replaced by the actual base64 encoding of the
 host key.  If you skip host key verification, the connection is not secure!
 
-The following example scripts (in demos/) get progressively more detailed:
+The following example scripts (in `demos/ <demos/>`_) get progressively more detailed:
 
 :demo_simple.py:
     Calls invoke_shell() and emulates a terminal/TTY through which you can
@@ -123,18 +124,18 @@ Use
 
 The demo scripts are probably the best example of how to use this package.
 
-A much easier alternative to using paramiko directly is to use `Fabric <https://www.fabfile.org/>`_
-(or, for managed networking equipment, `netmiko <http://ktbyers.github.io/netmiko/>`_).
-To use *paramiko-ng* with these packages, currently, you need to install paramiko-ng
-with the pip-package-name *paramiko*, using the ``PARAMIKO_REPLACE`` environment varariable
-as described in `Installation`_.
+A much easier alternative to using paramiko-ng directly is to use
+`fab-classic <https://github.com/ploxiln/fab-classic/#readme>`_ or
+`Fabric <https://www.fabfile.org/>`_ 2.x (or, for managed networking equipment,
+`netmiko <http://ktbyers.github.io/netmiko/>`_). Whereas recent releases of
+*fab-classic* depend on *paramiko-ng* directly, to use this with *Fabric* or
+*netmiko* you need to install *paramiko-ng* with the pip-package-name
+"paramiko", using the ``PARAMIKO_REPLACE`` environment variable as described
+above in `Installation`_.
 
-There is also `fab-classic <https://github.com/ploxiln/fab-classic/#readme>`_, a fork of Fabric-1.x
-which works a bit differently than current Fabric-2.x. The latest release of fab-classic depends
-on paramiko-ng directly.
 
 There are also unit tests which will verify that most of the components are working correctly::
 
     $ pip install -r dev-requirements.txt
-    $ pytest
+    $ pytest -v
 

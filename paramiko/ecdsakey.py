@@ -92,8 +92,7 @@ class _ECDSACurveSet(object):
 @register_pkey_type
 class ECDSAKey(PKey):
     """
-    Representation of an ECDSA key which can be used to sign and verify SSH2
-    data.
+    Representation of an ECDSA key which can be used to sign and verify SSH2 data.
     """
 
     LEGACY_TYPE = "EC"

@@ -140,7 +140,7 @@ def _unpad(data):
 
 class PKey(object):
     """
-    Base class for public keys.
+    Base class for keys.
     """
 
     # known encryption types for private key files:
@@ -183,17 +183,18 @@ class PKey(object):
     #: Examples: ``"ssh-rsa"``, ``"ecdsa-sha2-"``
     OPENSSH_TYPE_PREFIX = None
 
-    def __init__(self, msg=None, data=None):
+    def __init__(self, msg=None, data=None, filename=None, password=None):
         """
-        Create a new instance of this public key type.  If ``msg`` is given,
-        the key's public part(s) will be filled in from the message.  If
-        ``data`` is given, the key's public part(s) will be filled in from
-        the string.
+        Create a new instance of this key type.
 
         :param .Message msg:
             an optional SSH `.Message` containing a public key of this type.
-        :param str data: an optional string containing a public key
-            of this type
+        :param bytes data:
+            an optional bytestring containing a public key of this type
+        :param str filename:
+            an optional private key filename to load
+        :param str password:
+            an optional passphrase for decrypting the private key file
 
         :raises: `.SSHException` --
             if a key cannot be created from the ``data`` or ``msg`` given, or
@@ -204,8 +205,8 @@ class PKey(object):
     def asbytes(self):
         """
         Return bytes of an SSH `.Message` made up of the public part(s) of
-        this key.  This string is suitable for passing to `__init__` to
-        re-create the key object later.
+        this key.  This bytestring is suitable for passing to the constructor
+        to re-create the public key object later.
         """
         raise NotImplementedError()
 
@@ -712,8 +713,7 @@ class PublicBlob(object):
 
     .. note::
         Most of the time you'll want to call `from_file`, `from_string` or
-        `from_message` for useful instantiation, the main constructor is
-        basically "I should be using ``attrs`` for this."
+        `from_message` for useful instantiation.
     """
     def __init__(self, type_, blob, comment=None):
         """

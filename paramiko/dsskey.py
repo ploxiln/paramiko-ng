@@ -39,8 +39,7 @@ from paramiko.pkey import PKey, register_pkey_type
 @register_pkey_type
 class DSSKey(PKey):
     """
-    Representation of a DSS key which can be used to sign an verify SSH2
-    data.
+    Representation of a DSS key which can be used to sign and verify SSH2 data.
     """
 
     LEGACY_TYPE = "DSA"
