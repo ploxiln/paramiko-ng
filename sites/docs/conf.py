@@ -40,7 +40,7 @@ default_role = 'obj'
 # Autodoc settings
 autodoc_default_options = {
     'members': True,
-    'special-members': True,
+    'special-members': "__init__, __eq__",
 }
 
 # Intersphinx connection to stdlib
