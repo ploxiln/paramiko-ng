@@ -5,15 +5,15 @@ Installing
 Paramiko-NG itself
 ==================
 
-The recommended way to get Paramiko is to **install the latest stable release**
+The recommended way to get Paramiko-NG is to install the latest stable release
 via `pip <http://pip-installer.org>`_::
 
     $ pip install paramiko-ng
 
 You can also install under the original "paramiko" pip-package-name,
-in order to satisfy requirements for other packages (replace "2.7.6" with desired version)::
+in order to satisfy requirements for other packages (replace "2.8.10" with desired version)::
 
-    $ PARAMIKO_REPLACE=1 pip install https://github.com/ploxiln/paramiko-ng/archive/2.7.6.tar.gz#egg=paramiko
+    $ PARAMIKO_REPLACE=1 pip install "https://github.com/ploxiln/paramiko-ng/archive/2.8.10.tar.gz#egg=paramiko"
 
 Paramiko-NG currently supports Python 2.7, 3.4+, and PyPy.
 

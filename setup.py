@@ -36,19 +36,18 @@ Required packages:
 The import name is still just ``paramiko``. Make sure the original *paramiko*
 is not installed before installing *paramiko-ng* - otherwise pip may report
 success even though *paramiko-ng* was not correctly installed.
-
-To install the development version::
-
-    pip install -e git+https://github.com/ploxiln/paramiko-ng/#egg=paramiko-ng
+(Because the import name is the same, installed files can conflict.)
 
 You can also install under the original "paramiko" pip-package-name,
 in order to satisfy requirements for other packages::
 
-    PARAMIKO_REPLACE=1 pip install https://github.com/ploxiln/paramiko-ng/archive/2.7.4.tar.gz#egg=paramiko
+    PARAMIKO_REPLACE=1 pip install "https://github.com/ploxiln/paramiko-ng/archive/2.8.10.tar.gz#egg=paramiko"
 
-Replace "2.7.4" with the desired recent version, or for latest development version do::
+Replace "2.8.10" with the desired version.
 
-    PARAMIKO_REPLACE=1 pip install git+https://github.com/ploxiln/paramiko-ng/#egg=paramiko
+To install the latest development version::
+
+    pip install -e "git+https://github.com/ploxiln/paramiko-ng/#egg=paramiko-ng"
 
 '''  # noqa: E501
 
