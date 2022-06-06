@@ -1073,7 +1073,7 @@ Issues noted as "Fabric #NN" can be found at https://github.com/fabric/fabric/.
   * SFTPClient.listdir_attr() now preserves the 'longname' field [patch from
     wesley augur]
   * SFTPClient.get_channel() API added
-  * SSHClient constuctor takes an optional 'timeout' parameter [patch from
+  * SSHClient constructor takes an optional 'timeout' parameter [patch from
     james bardin]
 
 1.7 2007-02-18 (zubat)
