@@ -106,8 +106,7 @@ class Transport(threading.Thread, ClosingContextManager):
     _PROTO_ID = '2.0'
     _CLIENT_ID = 'ParamikoNG'
 
-    # These tuples of algorithm identifiers are in preference order; do not
-    # reorder without reason!
+    # These tuples of algorithm identifiers are in preference order
     _preferred_ciphers = (
         'aes128-ctr',
         'aes192-ctr',
@@ -118,10 +117,10 @@ class Transport(threading.Thread, ClosingContextManager):
         '3des-cbc',
     )
     _preferred_macs = (
-        'hmac-sha2-256',
-        'hmac-sha2-512',
         'hmac-sha2-256-etm@openssh.com',
         'hmac-sha2-512-etm@openssh.com',
+        'hmac-sha2-256',
+        'hmac-sha2-512',
         'hmac-sha1',
     )
     _preferred_keys = (
@@ -208,8 +207,8 @@ class Transport(threading.Thread, ClosingContextManager):
     _mac_info = {
         'hmac-sha1': {'class': sha1, 'size': 20},
         'hmac-sha2-256': {'class': sha256, 'size': 32},
-        'hmac-sha2-256-etm@openssh.com': {'class': sha256, 'size': 32},
         'hmac-sha2-512': {'class': sha512, 'size': 64},
+        'hmac-sha2-256-etm@openssh.com': {'class': sha256, 'size': 32},
         'hmac-sha2-512-etm@openssh.com': {'class': sha512, 'size': 64},
     }
 
@@ -245,9 +244,7 @@ class Transport(threading.Thread, ClosingContextManager):
     }
 
     _compression_info = {
-        # zlib@openssh.com is just zlib, but only turned on after a successful
-        # authentication.  openssh servers may only offer this type because
-        # they've had troubles with security holes in zlib in the past.
+        # zlib@openssh.com is zlib, but only turned on after successful authentication
         'zlib@openssh.com': (ZlibCompressor, ZlibDecompressor),
         'zlib': (ZlibCompressor, ZlibDecompressor),
         'none': (None, None),

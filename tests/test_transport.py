@@ -485,6 +485,8 @@ class TransportTest(unittest.TestCase):
         """
         def force_compression(o):
             o.compression = ('zlib',)
+            o.digests = ('hmac-sha2-256',)  # assert counts assume non-etm
+
         self.setup_test_server(force_compression, force_compression)
         chan = self.tc.open_session()
         chan.exec_command('yes')
