@@ -172,12 +172,6 @@ class Transport(threading.Thread, ClosingContextManager):
             'block-size': 16,
             'key-size': 32
         },
-        'blowfish-cbc': {
-            'class': algorithms.Blowfish,
-            'mode': modes.CBC,
-            'block-size': 8,
-            'key-size': 16
-        },
         'aes128-cbc': {
             'class': algorithms.AES,
             'mode': modes.CBC,
