@@ -447,10 +447,9 @@ class Transport(threading.Thread, ClosingContextManager):
 
     def get_security_options(self):
         """
-        Return a `.SecurityOptions` object which can be used to tweak the
-        encryption algorithms this transport will permit (for encryption,
-        digest/hash operations, public keys, and key exchanges) and the order
-        of preference for them.
+        Return a `.SecurityOptions` object which can be used to tweak the authentication
+        and encryption algorithms this transport will permit (for encryption, digest/hash
+        operations, public keys, and key exchanges) and the order of preference for them.
         """
         return SecurityOptions(self)
 
