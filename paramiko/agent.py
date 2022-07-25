@@ -224,15 +224,20 @@ class AgentClientProxy(object):
             except:
                 # probably a dangling env var: the ssh agent is gone
                 return
+
         elif sys.platform == 'win32':
-            import paramiko.win_pageant as win_pageant
+            from paramiko import win_pageant, win_openssh
             if win_pageant.can_talk_to_agent():
                 conn = win_pageant.PageantConnection()
             else:
-                return
+                if win_openssh.can_talk_to_agent():
+                    conn = win_openssh.OpenSSHAgentConnection()
+                else:
+                    return
         else:
             # no agent support
             return
+
         self._conn = conn
 
     def close(self):
@@ -358,15 +363,20 @@ class Agent(AgentSSH):
             except:
                 # probably a dangling env var: the ssh agent is gone
                 return
+
         elif sys.platform == 'win32':
-            from . import win_pageant
+            from paramiko import win_pageant, win_openssh
             if win_pageant.can_talk_to_agent():
                 conn = win_pageant.PageantConnection()
             else:
-                return
+                if win_openssh.can_talk_to_agent():
+                    conn = win_openssh.OpenSSHAgentConnection()
+                else:
+                    return
         else:
             # no agent support
             return
+
         self._connect(conn)
 
     def close(self):
