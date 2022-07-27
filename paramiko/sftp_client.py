@@ -712,9 +712,8 @@ class SFTPClient(BaseSFTP, ClosingContextManager):
         operations will be passed through.  This method is primarily provided
         as a convenience.
 
-        :param object remotepath: opened file or file-like object to copy to
-        :param str fl:
-            the destination path on the local host or open file object
+        :param str remotepath: the source path on the SFTP server
+        :param fl: opened file or file-like object to copy to
         :param callable callback:
             optional callback function (form: ``func(int, int)``) that accepts
             the bytes transferred so far and the total bytes to be transferred
