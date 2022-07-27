@@ -411,8 +411,8 @@ class SSHClientTest(ClientTest):
         del self.tc
 
         # GC is unpredictable, depending on python version and implementation
-        for _ in range(16):
-            time.sleep(0.1)
+        for _ in range(40):
+            time.sleep(0.05)
             gc.collect()
             if p() is None:
                 break
