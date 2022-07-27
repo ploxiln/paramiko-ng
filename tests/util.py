@@ -1,7 +1,9 @@
-from os.path import dirname, realpath, join
 import os
 import sys
+import locale
 import unittest
+import functools
+from os.path import dirname, realpath, join
 
 import pytest
 
@@ -112,3 +114,47 @@ def k5shell(args=None):
     if not args:
         args = [os.environ.get("SHELL", "bash")]
     sys.exit(subprocess.call(args))
+
+
+# List of locales which have non-ascii characters in all categories.
+# Omits most European languages which for instance may have only some months
+# with names that include accented characters.
+_non_ascii_locales = [
+    # East Asian locales
+    "ja_JP", "ko_KR", "zh_CN", "zh_TW",
+    # European locales with non-latin alphabets
+    "el_GR", "ru_RU", "uk_UA",
+]
+# Also include UTF-8 versions of these locales
+_non_ascii_locales.extend([name + ".utf8" for name in _non_ascii_locales])
+
+
+def requireNonAsciiLocale(category_name="LC_ALL"):
+    """Run decorated test under a non-ascii locale or skip if not possible."""
+    if os.name != "posix":
+        pytest.skip("Non-posix OSes don't really use C locales")
+
+    cat = getattr(locale, category_name)
+    return functools.partial(_decorate_with_locale, cat, _non_ascii_locales)
+
+
+def _decorate_with_locale(category, try_locales, test_method):
+    """Decorate test_method to run after switching to a different locale."""
+
+    def _test_under_locale(self, sftp):
+        original = locale.setlocale(category)
+        while try_locales:
+            try:
+                locale.setlocale(category, try_locales[0])
+            except locale.Error:
+                try_locales.pop(0)
+            else:
+                try:
+                    return test_method(self, sftp)
+                finally:
+                    locale.setlocale(category, original)
+
+        pytest.skip("No usable locales installed")
+
+    functools.update_wrapper(_test_under_locale, test_method)
+    return _test_under_locale
