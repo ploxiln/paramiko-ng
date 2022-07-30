@@ -404,7 +404,7 @@ class AgentKey(PKey):
     def get_name(self):
         return self.name
 
-    def sign_ssh_data(self, data):
+    def sign_ssh_data(self, data, algorithm=None):
         msg = Message()
         msg.add_byte(cSSH2_AGENTC_SIGN_REQUEST)
         msg.add_string(self.blob)

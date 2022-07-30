@@ -52,7 +52,7 @@ from paramiko.common import (
     MSG_CHANNEL_WINDOW_ADJUST, MSG_CHANNEL_REQUEST, MSG_CHANNEL_EOF,
     MSG_CHANNEL_CLOSE, MIN_WINDOW_SIZE, MIN_PACKET_SIZE, MAX_WINDOW_SIZE,
     DEFAULT_WINDOW_SIZE, DEFAULT_MAX_PACKET_SIZE, HIGHEST_USERAUTH_MESSAGE_ID,
-    MSG_UNIMPLEMENTED, MSG_NAMES,
+    MSG_UNIMPLEMENTED, MSG_EXT_INFO, cMSG_EXT_INFO, MSG_NAMES,
 )
 from paramiko.compress import ZlibCompressor, ZlibDecompressor
 from paramiko.dsskey import DSSKey
@@ -74,7 +74,7 @@ from paramiko.server import ServerInterface
 from paramiko.sftp_client import SFTPClient
 from paramiko.ssh_exception import (
     SSHException, BadHostKeyException, BadAuthenticationType,
-    ChannelException, ProxyCommandFailure,
+    IncompatiblePeer, ChannelException, ProxyCommandFailure,
 )
 from paramiko.util import retry_on_signal, ClosingContextManager, clamp_value
 
@@ -127,6 +127,8 @@ class Transport(threading.Thread, ClosingContextManager):
         'ecdsa-sha2-nistp256',
         'ecdsa-sha2-nistp384',
         'ecdsa-sha2-nistp521',
+        'rsa-sha2-512',
+        'rsa-sha2-256',
         'ssh-rsa',
     )
     if Ed25519Key.is_supported():
@@ -207,10 +209,14 @@ class Transport(threading.Thread, ClosingContextManager):
     }
 
     _key_info = {
-        'ssh-rsa': RSAKey,
-        'ssh-rsa-cert-v01@openssh.com': RSAKey,
         'ssh-dss': DSSKey,
         'ssh-dss-cert-v01@openssh.com': DSSKey,
+        'ssh-rsa': RSAKey,
+        'ssh-rsa-cert-v01@openssh.com': RSAKey,
+        'rsa-sha2-256': RSAKey,
+        'rsa-sha2-256-cert-v01@openssh.com': RSAKey,
+        'rsa-sha2-512': RSAKey,
+        'rsa-sha2-512-cert-v01@openssh.com': RSAKey,
         'ecdsa-sha2-nistp256': ECDSAKey,
         'ecdsa-sha2-nistp256-cert-v01@openssh.com': ECDSAKey,
         'ecdsa-sha2-nistp384': ECDSAKey,
@@ -252,7 +258,8 @@ class Transport(threading.Thread, ClosingContextManager):
                  default_window_size=DEFAULT_WINDOW_SIZE,
                  default_max_packet_size=DEFAULT_MAX_PACKET_SIZE,
                  gss_kex=False,
-                 gss_deleg_creds=True):
+                 gss_deleg_creds=True,
+                 server_sig_algs=True):
         """
         Create a new SSH session over an existing socket, or socket-like
         object.  This only creates the `.Transport` object; it doesn't begin
@@ -291,13 +298,20 @@ class Transport(threading.Thread, ClosingContextManager):
             Perform GSS-API Key Exchange and user authentication.
         :param bool gss_deleg_creds:
             Whether to delegate GSS-API client credentials.
+        :param bool server_sig_algs:
+            Whether to send an extra message to compatible clients, in server
+            mode, with a list of supported pubkey algorithms.
 
         .. versionchanged:: 1.15
-            Added the ``default_window_size`` and ``default_max_packet_size``
-            arguments.
+            Added the ``default_window_size`` and ``default_max_packet_size`` kwargs.
+        .. versionchanged:: 1.15
+            Added the ``gss_kex`` and ``gss_deleg_creds`` kwargs.
+        .. versionchanged:: 2.9
+            Added the ``server_sig_algs`` kwarg.
         """
         self.active = False
         self.hostname = None
+        self.server_extensions = {}
 
         if isinstance(sock, string_types):
             # convert "host:port" into (host, port)
@@ -392,13 +406,13 @@ class Transport(threading.Thread, ClosingContextManager):
         self.completion_event = None
         # how long (seconds) to wait for the SSH banner
         self.banner_timeout = 15.0
-        # how long (seconds) to wait for the handshake to finish after SSH
-        # banner sent.
+        # how long (seconds) to wait for the handshake to finish after SSH banner sent.
         self.handshake_timeout = 15.0
         # how long (seconds) to wait for the auth response.
         self.auth_timeout = 30.0
         # AuthHandler to save MSG_USERAUTH_BANNER msg here
         self.banner = None
+        self._remote_ext_info = None
 
         # server mode:
         self.server_mode = False
@@ -406,6 +420,7 @@ class Transport(threading.Thread, ClosingContextManager):
         self.server_key_dict = {}
         self.server_accepts = []
         self.server_accept_cv = threading.Condition(self.lock)
+        self.server_sig_algs = server_sig_algs
         self.subsystem_table = {}
 
     def __repr__(self):
@@ -625,6 +640,9 @@ class Transport(threading.Thread, ClosingContextManager):
             the host key to add, usually an `.RSAKey` or `.DSSKey`.
         """
         self.server_key_dict[key.get_name()] = key
+        if isinstance(key, RSAKey):
+            self.server_key_dict['rsa-sha2-256'] = key
+            self.server_key_dict['rsa-sha2-512'] = key
 
     def get_server_key(self):
         """
@@ -1156,6 +1174,11 @@ class Transport(threading.Thread, ClosingContextManager):
         """
         if hostkey is not None:
             self._preferred_keys = [hostkey.get_name()]
+            if isinstance(hostkey, RSAKey):
+                self._preferred_keys = [
+                    'rsa-sha2-512',
+                    'rsa-sha2-256',
+                ] + self._preferred_keys
 
         self.set_gss_host(
             gss_host=gss_host,
@@ -1960,7 +1983,8 @@ class Transport(threading.Thread, ClosingContextManager):
                             self._send_message(msg)
                     self.packetizer.complete_handshake()
             except SSHException as e:
-                self._log(ERROR, "Exception: %s", e, exc_info=True)
+                self._log(ERROR, "Exception (%s): %s",
+                          "server" if self.server_mode else "client", e, exc_info=True)
                 self.saved_exception = e
             except EOFError as e:
                 self._log(DEBUG, 'EOF in transport thread')
@@ -2036,9 +2060,7 @@ class Transport(threading.Thread, ClosingContextManager):
             except ProxyCommandFailure:
                 raise
             except Exception as e:
-                raise SSHException(
-                    'Error reading SSH protocol banner' + str(e)
-                )
+                raise SSHException("Error reading SSH protocol banner: " + (str(e) or repr(e)))
             if buf[:4] == 'SSH-':
                 break
             self._log(DEBUG, "Banner: %r", buf)
@@ -2058,8 +2080,7 @@ class Transport(threading.Thread, ClosingContextManager):
         version = segs[1]
         client = segs[2]
         if version != '1.99' and version != '2.0':
-            msg = 'Incompatible version ({} instead of 2.0)'
-            raise SSHException(msg.format(version))
+            raise IncompatiblePeer("Incompatible version ({} instead of 2.0)".format(version))
         self._log(INFO, "Connected (version %s, client %s)", version, client)
 
     def _send_kex_init(self):
@@ -2074,20 +2095,16 @@ class Transport(threading.Thread, ClosingContextManager):
             self.clear_to_send_lock.release()
         self.gss_kex_used = False
         self.in_kex = True
+        kex_algos = list(self._preferred_kex)
         if self.server_mode:
             mp_required_prefix = 'diffie-hellman-group-exchange-sha'
             kex_mp = [
-                k for k
-                in self._preferred_kex
-                if k.startswith(mp_required_prefix)
+                k for k in kex_algos if k.startswith(mp_required_prefix)
             ]
             if (self._modulus_pack is None) and (len(kex_mp) > 0):
-                # can't do group-exchange if we don't have a pack of potential
-                # primes
+                # can't do group-exchange if we don't have a pack of potential primes
                 pkex = [
-                    k for k
-                    in self.get_security_options().kex
-                    if not k.startswith(mp_required_prefix)
+                    k for k in kex_algos if not k.startswith(mp_required_prefix)
                 ]
                 self.get_security_options().kex = pkex
             available_server_keys = list(filter(
@@ -2095,12 +2112,15 @@ class Transport(threading.Thread, ClosingContextManager):
                 self._preferred_keys
             ))
         else:
+            # client mode
             available_server_keys = self._preferred_keys
+            # Signal support for MSG_EXT_INFO.
+            kex_algos.append('ext-info-c')
 
         m = Message()
         m.add_byte(cMSG_KEXINIT)
         m.add_bytes(os.urandom(16))
-        m.add_list(self._preferred_kex)
+        m.add_list(kex_algos)
         m.add_list(available_server_keys)
         m.add_list(self._preferred_ciphers)
         m.add_list(self._preferred_ciphers)
@@ -2118,17 +2138,17 @@ class Transport(threading.Thread, ClosingContextManager):
 
     def _parse_kex_init(self, m):
         m.get_bytes(16) # cookie, discarded
-        kex_algo_list = m.get_list()
-        server_key_algo_list = m.get_list()
-        client_encrypt_algo_list = m.get_list()
-        server_encrypt_algo_list = m.get_list()
-        client_mac_algo_list = m.get_list()
-        server_mac_algo_list = m.get_list()
-        client_compress_algo_list = m.get_list()
-        server_compress_algo_list = m.get_list()
-        client_lang_list = m.get_string()
-        server_lang_list = m.get_string()  # a list, but may have odd bytes e.g. \xff
-        kex_follows = m.get_boolean()
+        kex_algo_list             = m.get_list()  # noqa: E221
+        server_key_algo_list      = m.get_list()  # noqa: E221
+        client_encrypt_algo_list  = m.get_list()  # noqa: E221
+        server_encrypt_algo_list  = m.get_list()  # noqa: E221
+        client_mac_algo_list      = m.get_list()  # noqa: E221
+        server_mac_algo_list      = m.get_list()  # noqa: E221
+        client_compress_algo_list = m.get_list()  # noqa: E221
+        server_compress_algo_list = m.get_list()  # noqa: E221
+        client_lang_list          = m.get_string()  # noqa: E221
+        server_lang_list          = m.get_string()  # noqa: E221  # may have odd bytes e.g. \xff
+        kex_follows               = m.get_boolean()  # noqa: E221
         m.get_int() # unused
 
         self._log(
@@ -2157,10 +2177,13 @@ class Transport(threading.Thread, ClosingContextManager):
             server_compress_algo_list,
         )
 
-        # as a server, we pick the first item in the client's list that we
-        # support.
-        # as a client, we pick the first item in our list that the server
-        # supports.
+        # Strip out ext-info "kex algo"
+        self._remote_ext_info = None
+        if len(kex_algo_list) > 0 and kex_algo_list[-1].startswith("ext-info-"):
+            self._remote_ext_info = kex_algo_list.pop()
+
+        # As a server, we pick the first item in the client's list that we support.
+        # As a client, we pick the first item in our list that the server supports.
         if self.server_mode:
             agreed_kex = list(filter(
                 self._preferred_kex.__contains__,
@@ -2172,7 +2195,7 @@ class Transport(threading.Thread, ClosingContextManager):
                 self._preferred_kex
             ))
         if len(agreed_kex) == 0:
-            raise SSHException('Incompatible ssh peer (no acceptable kex algorithm)')
+            raise IncompatiblePeer("Incompatible ssh peer (no acceptable kex algorithm)")
         self.kex_engine = self._kex_info[agreed_kex[0]](self)
         self._log(DEBUG, "Kex agreed: %s", agreed_kex[0])
 
@@ -2189,10 +2212,10 @@ class Transport(threading.Thread, ClosingContextManager):
                 server_key_algo_list.__contains__, self._preferred_keys
             ))
         if len(agreed_keys) == 0:
-            raise SSHException('Incompatible ssh peer (no acceptable host key)')
+            raise IncompatiblePeer("Incompatible ssh peer (no acceptable host key)")
         self.host_key_type = agreed_keys[0]
         if self.server_mode and (self.get_server_key() is None):
-            raise SSHException("Incompatible ssh peer (can't match requested host key type)")
+            raise IncompatiblePeer("Incompatible ssh peer (can't match requested host key type)")
         self._log_agreement(
             'HostKey', agreed_keys[0], agreed_keys[0]
         )
@@ -2216,7 +2239,7 @@ class Transport(threading.Thread, ClosingContextManager):
                 self._preferred_ciphers
             ))
         if len(agreed_local_ciphers) == 0 or len(agreed_remote_ciphers) == 0:
-            raise SSHException('Incompatible ssh server (no acceptable ciphers)')
+            raise IncompatiblePeer("Incompatible ssh server (no acceptable ciphers)")
         self.local_cipher = agreed_local_ciphers[0]
         self.remote_cipher = agreed_remote_ciphers[0]
         self._log_agreement(
@@ -2238,7 +2261,7 @@ class Transport(threading.Thread, ClosingContextManager):
                 server_mac_algo_list.__contains__, self._preferred_macs
             ))
         if (len(agreed_local_macs) == 0) or (len(agreed_remote_macs) == 0):
-            raise SSHException('Incompatible ssh server (no acceptable macs)')
+            raise IncompatiblePeer("Incompatible ssh server (no acceptable macs)")
         self.local_mac = agreed_local_macs[0]
         self.remote_mac = agreed_remote_macs[0]
         self._log_agreement(
@@ -2267,11 +2290,13 @@ class Transport(threading.Thread, ClosingContextManager):
             len(agreed_local_compression) == 0 or
             len(agreed_remote_compression) == 0
         ):
-            msg = 'Incompatible ssh server (no acceptable compression) {!r} {!r} {!r}'
-            raise SSHException(msg.format(
-                agreed_local_compression, agreed_remote_compression,
-                self._preferred_compression,
-            ))
+            raise IncompatiblePeer(
+                "Incompatible ssh server (no acceptable compression) {!r} {!r} {!r}".format(
+                    agreed_local_compression,
+                    agreed_remote_compression,
+                    self._preferred_compression,
+                )
+            )
         self.local_compression = agreed_local_compression[0]
         self.remote_compression = agreed_remote_compression[0]
         self._log_agreement(
@@ -2369,6 +2394,18 @@ class Transport(threading.Thread, ClosingContextManager):
             self.packetizer.set_outbound_compressor(compress_out())
         if not self.packetizer.need_rekey():
             self.in_kex = False
+
+        # If client indicated extension support, send that packet immediately
+        if self.server_mode and self.server_sig_algs and self._remote_ext_info == "ext-info-c":
+            extensions = {"server-sig-algs": ",".join(self._preferred_keys)}
+            m = Message()
+            m.add_byte(cMSG_EXT_INFO)
+            m.add_int(len(extensions))
+            for name, value in sorted(extensions.items()):
+                m.add_string(name)
+                m.add_string(value)
+            self._send_message(m)
+
         # we always expect to receive NEWKEYS now
         self._expect_packet(MSG_NEWKEYS)
 
@@ -2383,6 +2420,18 @@ class Transport(threading.Thread, ClosingContextManager):
             compress_in = self._compression_info[self.remote_compression][1]
             self._log(DEBUG, 'Switching on inbound compression ...')
             self.packetizer.set_inbound_compressor(compress_in())
+
+    def _parse_ext_info(self, msg):
+        # Packet is a count followed by that many key-string to possibly-bytes pairs.
+        extensions = {}
+        for _ in range(msg.get_int()):
+            name = msg.get_text()
+            value = msg.get_string()
+            extensions[name] = value
+        self._log(DEBUG, "Got EXT_INFO: %r", extensions)
+        # This should work ok in cases where a server sends /two/ such
+        # messages; the RFC explicitly states a 2nd one should overwrite the 1st.
+        self.server_extensions = extensions
 
     def _parse_newkeys(self, m):
         self._log(DEBUG, 'Switch to new keys ...')
@@ -2624,6 +2673,7 @@ class Transport(threading.Thread, ClosingContextManager):
             self.lock.release()
 
     _handler_table = {
+        MSG_EXT_INFO: _parse_ext_info,
         MSG_NEWKEYS: _parse_newkeys,
         MSG_GLOBAL_REQUEST: _parse_global_request,
         MSG_REQUEST_SUCCESS: _parse_request_success,

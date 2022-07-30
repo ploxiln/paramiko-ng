@@ -21,6 +21,7 @@ Some unit tests for the ssh2 protocol in Transport.
 """
 
 from binascii import hexlify
+from contextlib import contextmanager
 import select
 import socket
 import time
@@ -34,7 +35,8 @@ except ImportError:
 
 from paramiko import (
     Transport, SecurityOptions, ServerInterface, RSAKey, SSHException,
-    ChannelException, Packetizer, AuthHandler, BadHostKeyException
+    ChannelException, Packetizer, AuthHandler, BadHostKeyException,
+    AuthenticationException, IncompatiblePeer,
 )
 from paramiko import AUTH_FAILED, AUTH_SUCCESSFUL
 from paramiko import OPEN_SUCCEEDED, OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED
@@ -71,6 +73,9 @@ Maybe.
 
 class NullServer (ServerInterface):
 
+    def __init__(self, allowed_keys=None):
+        self.allowed_keys = allowed_keys or []
+
     def get_allowed_auths(self, username):
         if username == 'slowdive':
             return 'publickey,password'
@@ -78,6 +83,11 @@ class NullServer (ServerInterface):
 
     def check_auth_password(self, username, password):
         if (username == 'slowdive') and (password == 'pygmalion'):
+            return AUTH_SUCCESSFUL
+        return AUTH_FAILED
+
+    def check_auth_publickey(self, username, key):
+        if key in self.allowed_keys:
             return AUTH_SUCCESSFUL
         return AUTH_FAILED
 
@@ -1086,3 +1096,240 @@ class TransportTest(unittest.TestCase):
 
         for t in threads:
             t.join()
+
+
+@contextmanager
+def server(
+    hostkey=None,
+    init=None,
+    server_init=None,
+    client_init=None,
+    connect=None,
+    pubkeys=None,
+    catch_error=False,
+):
+    """
+    SSH server contextmanager for testing.
+    :param hostkey:
+        Host key to use for the server; if None, loads
+        ``test_rsa.key``.
+    :param init:
+        Default `Transport` constructor kwargs to use for both sides.
+    :param server_init:
+        Extends and/or overrides ``init`` for server transport only.
+    :param client_init:
+        Extends and/or overrides ``init`` for client transport only.
+    :param connect:
+        Kwargs to use for ``connect()`` on the client.
+    :param pubkeys:
+        List of public keys for auth.
+    :param catch_error:
+        Whether to capture connection errors & yield from contextmanager.
+        Necessary for connection_time exception testing.
+    """
+    if init is None:
+        init = {}
+    if server_init is None:
+        server_init = {}
+    if client_init is None:
+        client_init = {}
+    if connect is None:
+        connect = dict(username="slowdive", password="pygmalion")
+    socks = LoopSocket()
+    sockc = LoopSocket()
+    sockc.link(socks)
+    tc = Transport(sockc)
+    ts = Transport(socks)
+
+    tc_disabled = init.get("disabled", []) + client_init.get("disabled", [])
+    ts_disabled = init.get("disabled", []) + server_init.get("disabled", [])
+    tc_opts = tc.get_security_options()
+    ts_opts = ts.get_security_options()
+    tc_opts.key_types = [x for x in tc_opts.key_types if x not in tc_disabled]
+    ts_opts.key_types = [x for x in ts_opts.key_types if x not in ts_disabled]
+
+    if hostkey is None:
+        hostkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+    ts.add_server_key(hostkey)
+    event = threading.Event()
+    server = NullServer(allowed_keys=pubkeys)
+    assert not event.is_set()
+    assert not ts.is_active()
+    assert tc.get_username() is None
+    assert ts.get_username() is None
+    assert not tc.is_authenticated()
+    assert not ts.is_authenticated()
+
+    err = None
+    # Trap errors and yield instead of raising right away;  otherwise callers
+    # cannot usefully deal with problems at connect time which stem from errors
+    # in the server side.
+    try:
+        ts.start_server(event, server)
+        tc.connect(**connect)
+
+        event.wait(1.0)
+        assert event.is_set()
+        assert ts.is_active()
+        assert tc.is_active()
+
+    except Exception as e:
+        if not catch_error:
+            raise
+        err = e
+
+    yield (tc, ts, err) if catch_error else (tc, ts)
+
+    tc.close()
+    ts.close()
+    socks.close()
+    sockc.close()
+
+
+_disable_sha2 = dict(disabled=["rsa-sha2-256", "rsa-sha2-512"])
+_disable_sha1 = dict(disabled=["ssh-rsa"])
+
+
+class TestSHA2SignatureKeyExchange(unittest.TestCase):
+    # NOTE: these all rely on the default server() hostkey being RSA
+    # NOTE: these rely on both sides being properly implemented re: agreed-upon
+    # hostkey during kex being what's actually used. Truly proving that eg
+    # SHA512 was used, is quite difficult w/o super gross hacks. However, there
+    # are new tests in test_pkey.py which use known signature blobs to prove
+    # the SHA2 family was in fact used!
+
+    def test_base_case_ssh_rsa_still_used_as_fallback(self):
+        # Prove that ssh-rsa is used if either, or both, participants have SHA2 algorithms disabled
+        for which in ("init", "client_init", "server_init"):
+            with server(**{which: _disable_sha2}) as (tc, _):
+                assert tc.host_key_type == "ssh-rsa"
+
+    def test_kex_with_sha2_512(self):
+        # It's the default!
+        with server() as (tc, _):
+            assert tc.host_key_type == "rsa-sha2-512"
+
+    def test_kex_with_sha2_256(self):
+        # No 512 -> you get 256
+        with server(
+            init=dict(disabled=["rsa-sha2-512"])
+        ) as (tc, _):
+            assert tc.host_key_type == "rsa-sha2-256"
+
+    def _incompatible_peers(self, client_init, server_init):
+        with server(
+            client_init=client_init, server_init=server_init, catch_error=True
+        ) as (tc, ts, err):
+            # If neither side blew up then that's bad!
+            assert err is not None
+            # If client side blew up first, it'll be straightforward
+            if isinstance(err, IncompatiblePeer):
+                pass
+            # If server side blew up first, client sees EOF & we need to check
+            # the server transport for its saved error (otherwise it can only
+            # appear in log output)
+            elif isinstance(err, EOFError):
+                assert ts.saved_exception is not None
+                assert isinstance(ts.saved_exception, IncompatiblePeer)
+            # If it was something else, welp
+            else:
+                raise err
+
+    def test_client_sha2_disabled_server_sha1_disabled_no_match(self):
+        self._incompatible_peers(
+            client_init=_disable_sha2, server_init=_disable_sha1
+        )
+
+    def test_client_sha1_disabled_server_sha2_disabled_no_match(self):
+        self._incompatible_peers(
+            client_init=_disable_sha1, server_init=_disable_sha2
+        )
+
+    def test_explicit_client_hostkey_not_limited(self):
+        # Be very explicit about the hostkey on BOTH ends,
+        # and ensure it still ends up choosing sha2-512.
+        hostkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(hostkey=hostkey, connect=dict(hostkey=hostkey)) as (tc, _):
+            assert tc.host_key_type == "rsa-sha2-512"
+
+
+class TestExtInfo(unittest.TestCase):
+    def test_ext_info_handshake(self):
+        with server() as (tc, _):
+            assert tc.server_extensions == {
+                "server-sig-algs": b"ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256,ssh-rsa"  # noqa
+            }
+
+    def test_client_uses_server_sig_algs_for_pubkey_auth(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            server_init=dict(disabled=["rsa-sha2-512"]),
+        ) as (tc, _):
+            assert tc.is_authenticated()
+            # Client settled on 256 despite itself not having 512 disabled
+            assert tc._agreed_pubkey_algorithm == "rsa-sha2-256"
+
+
+class TestSHA2SignaturePubkeys(unittest.TestCase):
+    def test_pubkey_auth_honors_disabled_algorithms(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            init=dict(disabled=["ssh-rsa", "rsa-sha2-256", "rsa-sha2-512"]),
+            catch_error=True,
+        ) as (_, _, err):
+            assert isinstance(err, SSHException)
+            # assert "no RSA pubkey algorithms" in str(err)
+
+    def test_client_sha2_disabled_server_sha1_disabled_no_match(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            client_init=_disable_sha2,
+            server_init=_disable_sha1,
+            catch_error=True,
+        ) as (tc, ts, err):
+            assert isinstance(err, AuthenticationException)
+
+    def test_client_sha1_disabled_server_sha2_disabled_no_match(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            client_init=_disable_sha1,
+            server_init=_disable_sha2,
+            catch_error=True,
+        ) as (tc, ts, err):
+            assert isinstance(err, AuthenticationException)
+
+    def test_ssh_rsa_still_used_when_sha2_disabled(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        # this works because key obj comparison uses public bytes
+        with server(
+            pubkeys=[privkey], connect=dict(pkey=privkey), init=_disable_sha2
+        ) as (tc, _):
+            assert tc.is_authenticated()
+
+    def test_sha2_512(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            init=dict(disabled=["ssh-rsa", "rsa-sha2-256"]),
+        ) as (tc, ts):
+            assert tc.is_authenticated()
+            assert tc._agreed_pubkey_algorithm == "rsa-sha2-512"
+
+    def test_sha2_256(self):
+        privkey = RSAKey.from_private_key_file(_support("test_rsa.key"))
+        with server(
+            pubkeys=[privkey],
+            connect=dict(pkey=privkey),
+            init=dict(disabled=["ssh-rsa", "rsa-sha2-512"]),
+        ) as (tc, ts):
+            assert tc.is_authenticated()
+            assert tc._agreed_pubkey_algorithm == "rsa-sha2-256"
