@@ -428,6 +428,7 @@ class SSHClient (ClosingContextManager):
         timeout=None,
         get_pty=False,
         environment=None,
+        open_timeout=None,
     ):
         """
         Execute a command on the SSH server.  A new `.Channel` is opened and
@@ -447,6 +448,8 @@ class SSHClient (ClosingContextManager):
         :param dict environment:
             a dict of shell environment variables, to be merged into the
             default environment that the remote command executes within.
+        :param int open_timeout:
+            timeout (in seconds) to open a new channel. If None, value of `timeout` is used.
 
             .. warning::
                 Servers may silently reject some environment variables; see the
@@ -461,7 +464,9 @@ class SSHClient (ClosingContextManager):
         .. versionchanged:: 1.10
             Added the ``get_pty`` kwarg.
         """
-        chan = self._transport.open_session(timeout=timeout)
+        if open_timeout is None:
+            open_timeout = timeout
+        chan = self._transport.open_session(timeout=open_timeout)
         if get_pty:
             chan.get_pty()
         chan.settimeout(timeout)
