@@ -30,8 +30,7 @@ from hmac import HMAC
 
 from paramiko import util
 from paramiko.common import (
-    linefeed_byte, cr_byte_value, asbytes, MSG_NAMES, DEBUG, xffffffff,
-    zero_byte,
+    linefeed_byte, cr_byte_value, MSG_NAMES, DEBUG, xffffffff, zero_byte,
 )
 from paramiko.py3compat import u, byte_ord
 from paramiko.ssh_exception import SSHException, ProxyCommandFailure
@@ -370,7 +369,7 @@ class Packetizer (object):
         Write a block of data using the current cipher, as an SSH block.
         """
         # encrypt this sucka
-        data = asbytes(data)
+        data = data.asbytes()
         cmd = byte_ord(data[0])
         if cmd in MSG_NAMES:
             cmd_name = MSG_NAMES[cmd]
