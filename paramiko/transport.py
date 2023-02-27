@@ -2036,9 +2036,7 @@ class Transport(threading.Thread, ClosingContextManager):
             except ProxyCommandFailure:
                 raise
             except Exception as e:
-                raise SSHException(
-                    'Error reading SSH protocol banner' + str(e)
-                )
+                raise SSHException("Error reading SSH protocol banner: " + (str(e) or repr(e)))
             if buf[:4] == 'SSH-':
                 break
             self._log(DEBUG, "Banner: %r", buf)
