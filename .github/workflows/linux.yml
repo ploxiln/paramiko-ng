@@ -6,36 +6,33 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
 
     strategy:
       fail-fast: false
       matrix:
-        imgtag:
-          - "python:2.7-buster"
-          - "python:3.5-buster"
-          - "python:3.6-buster"
-          - "python:3.7-buster"
-          - "python:3.8-bullseye"
-          - "python:3.9-bullseye"
-          - "python:3.10-bullseye"
-          - "python:3.11-bullseye"
-          - "pypy:2.7-7.3.9"
-          - "pypy:3.7-7.3.9"
-          - "pypy:3.8-7.3.9"
-        crypto_ver:
-          - "3.2.1"
         include:
-          - {imgtag: "python:2.7-buster",   crypto_ver: "2.6.1"}
-          - {imgtag: "python:3.5-buster",   crypto_ver: "2.6.1"}
-          - {imgtag: "python:3.9-bullseye", crypto_ver: "2.9.2"}
-          - {imgtag: "python:2.7-buster",   crypto_ver: "3.3.2"}
-          - {imgtag: "python:3.6-buster",   crypto_ver: "3.4.8"}
-          - {imgtag: "python:3.7-buster",   crypto_ver: "3.4.8"}
-          - {imgtag: "python:3.9-bullseye", crypto_ver: "36.0.2"}
-          - {imgtag: "python:3.10-bullseye", crypto_ver: "37.0.4"}
-          - {imgtag: "python:3.11-bullseye", crypto_ver: "38.0.4"}
+          - {imgtag: "python:2.7-buster",    crypto_ver: "2.6.1"}
+          - {imgtag: "python:2.7-buster",    crypto_ver: "3.3.2"}
+          - {imgtag: "python:3.5-buster",    crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.5-buster",    crypto_ver: "3.2.1"}
+          - {imgtag: "python:3.6-bullseye",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.6-bullseye",  crypto_ver: "3.4.8"}
+          - {imgtag: "python:3.7-bullseye",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.7-bullseye",  crypto_ver: "3.4.8"}
+          - {imgtag: "python:3.8-bookworm",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.8-bookworm",  crypto_ver: "3.4.8"}
+          - {imgtag: "python:3.9-bookworm",  crypto_ver: "2.9.2"}
+          - {imgtag: "python:3.9-bookworm",  crypto_ver: "36.0.2"}
+          - {imgtag: "python:3.10-bookworm", crypto_ver: "36.0.2"}
+          - {imgtag: "python:3.10-bookworm", crypto_ver: "41.0.7"}
+          - {imgtag: "python:3.11-bookworm", crypto_ver: "38.0.4"}
+          - {imgtag: "python:3.11-bookworm", crypto_ver: "42.0.8"}
+          - {imgtag: "python:3.12-bookworm", crypto_ver: "38.0.4"}
+          - {imgtag: "python:3.12-bookworm", crypto_ver: "44.0.2"}
+          - {imgtag: "python:3.13-bookworm", crypto_ver: "38.0.4"}
+          - {imgtag: "python:3.13-bookworm", crypto_ver: "44.0.2"}
 
     container: "${{matrix.imgtag}}"
     steps:
@@ -66,7 +63,7 @@ jobs:
           pytest -v
 
   docs:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
