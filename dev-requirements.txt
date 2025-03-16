@@ -1,5 +1,5 @@
 # flake8 strictly controls versions of pyflakes/pycodestyle
-flake8==3.8.4
+flake8==5.0.4
 importlib_metadata<4.3 # for flake8
 # for running tests
 pytest==4.6.11;python_version<"3.9"
