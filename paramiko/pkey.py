@@ -30,6 +30,10 @@ import bcrypt
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.ciphers import algorithms, modes, Cipher
+try:
+    from cryptography.hazmat.decrepit.ciphers.algorithms import TripleDES
+except ImportError:
+    from cryptography.hazmat.primitives.ciphers.algorithms import TripleDES
 
 from paramiko import util
 from paramiko.common import o600
@@ -158,7 +162,7 @@ class PKey(object):
             'mode': modes.CBC
         },
         'DES-EDE3-CBC': {
-            'cipher': algorithms.TripleDES,
+            'cipher': TripleDES,
             'keysize': 24,
             'blocksize': 8,
             'mode': modes.CBC

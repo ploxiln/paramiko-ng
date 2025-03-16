@@ -114,7 +114,6 @@ class Transport(threading.Thread, ClosingContextManager):
         'aes128-cbc',
         'aes192-cbc',
         'aes256-cbc',
-        '3des-cbc',
     )
     _preferred_macs = (
         'hmac-sha2-256-etm@openssh.com',
@@ -189,12 +188,6 @@ class Transport(threading.Thread, ClosingContextManager):
             'mode': modes.CBC,
             'block-size': 16,
             'key-size': 32
-        },
-        '3des-cbc': {
-            'class': algorithms.TripleDES,
-            'mode': modes.CBC,
-            'block-size': 8,
-            'key-size': 24
         },
     }
 
