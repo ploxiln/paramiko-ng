@@ -15,6 +15,7 @@ jobs:
         include:
           - {imgtag: "python:2.7-buster",    crypto_ver: "2.6.1"}
           - {imgtag: "python:2.7-buster",    crypto_ver: "3.3.2"}
+          - {imgtag: "pypy:2.7-7.3.19",      crypto_ver: "3.3.2"}
           - {imgtag: "python:3.5-buster",    crypto_ver: "2.6.1"}
           - {imgtag: "python:3.5-buster",    crypto_ver: "3.2.1"}
           - {imgtag: "python:3.6-bullseye",  crypto_ver: "2.6.1"}
@@ -33,6 +34,7 @@ jobs:
           - {imgtag: "python:3.12-bookworm", crypto_ver: "44.0.2"}
           - {imgtag: "python:3.13-bookworm", crypto_ver: "38.0.4"}
           - {imgtag: "python:3.13-bookworm", crypto_ver: "44.0.2"}
+          - {imgtag: "pypy:3.11-7.3.19",     crypto_ver: "44.0.2"}
 
     container: "${{matrix.imgtag}}"
     steps:
