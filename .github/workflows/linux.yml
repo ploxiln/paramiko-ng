@@ -42,8 +42,7 @@ jobs:
         run: |
           pip install -r dev-requirements.txt
           pip install cryptography==${{matrix.crypto_ver}} PyNaCl
-          if [ ${{matrix.imgtag}} = python:2.7-buster ] || \
-             [ ${{matrix.imgtag}} = python:3.7-buster ]; then
+          if [ ${{matrix.imgtag}} = python:3.7-bullseye ]; then
             export DEBIAN_FRONTEND=noninteractive
             apt-get -q -y update
             apt-get -q -y install libkrb5-dev krb5-admin-server \
@@ -54,6 +53,7 @@ jobs:
           pip freeze
 
       - name: Lint
+        if: ${{ ! (contains(matrix.imgtag, ':2.7-') || contains(matrix.imgtag, ':3.5-')) }}
         run: |
           flake8 --version
           flake8 --show-source
