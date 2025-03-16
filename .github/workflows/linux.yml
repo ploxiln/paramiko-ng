@@ -14,15 +14,15 @@ jobs:
       matrix:
         include:
           - {imgtag: "python:2.7-buster",    crypto_ver: "2.6.1"}
-          - {imgtag: "python:2.7-buster",    crypto_ver: "3.3.2"}
-          - {imgtag: "pypy:2.7-7.3.19",      crypto_ver: "3.3.2"}
+          - {imgtag: "python:2.7-buster",    crypto_ver: "3.2.1"}
+          - {imgtag: "pypy:2.7-7.3.16",      crypto_ver: "3.3.2"}
           - {imgtag: "python:3.5-buster",    crypto_ver: "2.6.1"}
           - {imgtag: "python:3.5-buster",    crypto_ver: "3.2.1"}
-          - {imgtag: "python:3.6-bullseye",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.6-bullseye",  crypto_ver: "2.9.2"}
           - {imgtag: "python:3.6-bullseye",  crypto_ver: "3.4.8"}
-          - {imgtag: "python:3.7-bullseye",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.7-bullseye",  crypto_ver: "3.2.1"}
           - {imgtag: "python:3.7-bullseye",  crypto_ver: "3.4.8"}
-          - {imgtag: "python:3.8-bookworm",  crypto_ver: "2.6.1"}
+          - {imgtag: "python:3.8-bookworm",  crypto_ver: "3.3.2"}
           - {imgtag: "python:3.8-bookworm",  crypto_ver: "3.4.8"}
           - {imgtag: "python:3.9-bookworm",  crypto_ver: "2.9.2"}
           - {imgtag: "python:3.9-bookworm",  crypto_ver: "36.0.2"}
