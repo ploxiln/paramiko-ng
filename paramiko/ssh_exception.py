@@ -114,6 +114,16 @@ class BadHostKeyException (SSHException):
         )
 
 
+class IncompatiblePeer (SSHException):
+    """
+    A disagreement arose regarding an algorithm required for key exchange.
+
+    .. versionadded:: 2.9
+    """
+    # annotate with missing algorithms?
+    pass
+
+
 class ProxyCommandFailure (SSHException):
     """
     The "ProxyCommand" found in the .ssh/config file returned an error.
