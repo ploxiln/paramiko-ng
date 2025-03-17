@@ -21,7 +21,6 @@ from setuptools import setup
 
 longdesc = '''
 *paramiko-ng* is a fork of `paramiko <https://pypi.org/project/paramiko/>`_
-for more active maintenance.
 
 For changes in releases of this fork, see https://github.com/ploxiln/paramiko-ng/releases
 
@@ -47,7 +46,7 @@ Replace "2.8.10" with the desired version.
 
 To install the latest development version::
 
-    pip install -e "git+https://github.com/ploxiln/paramiko-ng/#egg=paramiko-ng"
+    pip install "git+https://github.com/ploxiln/paramiko-ng/#egg=paramiko-ng"
 
 '''  # noqa: E501
 
