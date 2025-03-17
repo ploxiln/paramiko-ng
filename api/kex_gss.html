@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>GSS-API key exchange &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Configuration" href="config.html" />
@@ -38,137 +36,105 @@
 <span id="gss-api-key-exchange"></span><h1>GSS-API key exchange<a class="headerlink" href="#module-paramiko.kex_gss" title="Permalink to this headline">¶</a></h1>
 <p>This module provides GSS-API / SSPI Key Exchange as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc4462.html"><strong>RFC 4462</strong></a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Credential delegation is not supported in server mode.</p>
+<p class="admonition-title">Note</p>
+<p>Credential delegation is not supported in server mode.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-2.2">RFC 4462 Section 2.2</a> says we are not
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-2.2">RFC 4462 Section 2.2</a> says we are not
 required to implement GSS-API error messages. Thus, in many methods within
 this module, if an error occurs an exception will be thrown and the
 connection will be terminated.</p>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="ssh_gss.html"><span class="doc">GSS-API authentication</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="ssh_gss.html"><span class="doc">GSS-API authentication</span></a></p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.15.</span></p>
+<p><span class="versionmodified added">New in version 1.15.</span></p>
 </div>
 <dl class="class">
 <dt id="paramiko.kex_gss.KexGSSGroup1">
-<em class="property">class </em><code class="descclassname">paramiko.kex_gss.</code><code class="descname">KexGSSGroup1</code><span class="sig-paren">(</span><em>transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.kex_gss.</code><code class="sig-name descname">KexGSSGroup1</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1" title="Permalink to this definition">¶</a></dt>
 <dd><p>GSS-API / SSPI Authenticated Diffie-Hellman Key Exchange as defined in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-2">RFC
 4462 Section 2</a></p>
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGroup1.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGroup1.start_kex">
-<code class="descname">start_kex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.start_kex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_kex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.start_kex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the GSS-API / SSPI Authenticated Diffie-Hellman Key Exchange.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGroup1.parse_next">
-<code class="descname">parse_next</code><span class="sig-paren">(</span><em>ptype</em>, <em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.parse_next" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse_next</code><span class="sig-paren">(</span><em class="sig-param">ptype</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.parse_next" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the next packet.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ptype</strong> – The (string) type of the incoming packet</li>
-<li><strong>m</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – The paket content</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptype</strong> – The (string) type of the incoming packet</p></li>
+<li><p><strong>m</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – The packet content</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.kex_gss.KexGSSGroup1.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup1.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.kex_gss.KexGSSGroup14">
-<em class="property">class </em><code class="descclassname">paramiko.kex_gss.</code><code class="descname">KexGSSGroup14</code><span class="sig-paren">(</span><em>transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup14" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.kex_gss.</code><code class="sig-name descname">KexGSSGroup14</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGroup14" title="Permalink to this definition">¶</a></dt>
 <dd><p>GSS-API / SSPI Authenticated Diffie-Hellman Group14 Key Exchange as defined
 in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-2">RFC 4462 Section 2</a></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.kex_gss.KexGSSGex">
-<em class="property">class </em><code class="descclassname">paramiko.kex_gss.</code><code class="descname">KexGSSGex</code><span class="sig-paren">(</span><em>transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.kex_gss.</code><code class="sig-name descname">KexGSSGex</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex" title="Permalink to this definition">¶</a></dt>
 <dd><p>GSS-API / SSPI Authenticated Diffie-Hellman Group Exchange as defined in
 <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-2">RFC 4462 Section 2</a></p>
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGex.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGex.start_kex">
-<code class="descname">start_kex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.start_kex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_kex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.start_kex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the GSS-API / SSPI Authenticated Diffie-Hellman Group Exchange</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.kex_gss.KexGSSGex.parse_next">
-<code class="descname">parse_next</code><span class="sig-paren">(</span><em>ptype</em>, <em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.parse_next" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse_next</code><span class="sig-paren">(</span><em class="sig-param">ptype</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.parse_next" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the next packet.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ptype</strong> – The (string) type of the incoming packet</li>
-<li><strong>m</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – The paket content</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptype</strong> – The (string) type of the incoming packet</p></li>
+<li><p><strong>m</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – The packet content</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.kex_gss.KexGSSGex.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.kex_gss.KexGSSGex.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.kex_gss.NullHostKey">
-<em class="property">class </em><code class="descclassname">paramiko.kex_gss.</code><code class="descname">NullHostKey</code><a class="headerlink" href="#paramiko.kex_gss.NullHostKey" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.kex_gss.</code><code class="sig-name descname">NullHostKey</code><a class="headerlink" href="#paramiko.kex_gss.NullHostKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class represents the Null Host Key for GSS-API Key Exchange as defined
 in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#section-5">RFC 4462 Section 5</a></p>
 <dl class="method">
 <dt id="paramiko.kex_gss.NullHostKey.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.NullHostKey.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.NullHostKey.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="paramiko.kex_gss.NullHostKey.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.kex_gss.NullHostKey.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.kex_gss.NullHostKey.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.kex_gss.NullHostKey.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
@@ -198,18 +164,6 @@ in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -247,17 +201,15 @@ in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -266,7 +218,7 @@ in <a class="reference external" href="https://tools.ietf.org/html/rfc4462.html#
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

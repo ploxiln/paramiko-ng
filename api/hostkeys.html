@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Host keys / known_hosts files &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Key handling" href="keys.html" />
@@ -38,53 +36,46 @@
 <span id="host-keys-known-hosts-files"></span><h1>Host keys / <code class="docutils literal notranslate"><span class="pre">known_hosts</span></code> files<a class="headerlink" href="#module-paramiko.hostkeys" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="paramiko.hostkeys.HostKeys">
-<em class="property">class </em><code class="descclassname">paramiko.hostkeys.</code><code class="descname">HostKeys</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.hostkeys.</code><code class="sig-name descname">HostKeys</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of an OpenSSH-style “known hosts” file.  Host keys can be
 read from one or more files, and then individual hosts can be looked up to
 verify server keys during SSH negotiation.</p>
 <p>A <a class="reference internal" href="#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object can be treated like a dict; any dict lookup is
 equivalent to calling <a class="reference internal" href="#paramiko.hostkeys.HostKeys.lookup" title="paramiko.hostkeys.HostKeys.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>.</p>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.5.3.</span></p>
+<p><span class="versionmodified added">New in version 1.5.3.</span></p>
 </div>
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new HostKeys object, optionally loading keys from an OpenSSH
 style host-key file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – filename to load host keys from, or <code class="docutils literal notranslate"><span class="pre">None</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – filename to load host keys from, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>hostname</em>, <em>keytype</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.add" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">hostname</em>, <em class="sig-param">keytype</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a host key entry to the table.  Any existing entry for a
 <code class="docutils literal notranslate"><span class="pre">(hostname,</span> <span class="pre">keytype)</span></code> pair will be replaced.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname (or IP) to add</li>
-<li><strong>keytype</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – key type (<code class="docutils literal notranslate"><span class="pre">&quot;ssh-rsa&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;ssh-dss&quot;</span></code>)</li>
-<li><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key to add</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname (or IP) to add</p></li>
+<li><p><strong>keytype</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – key type (<code class="docutils literal notranslate"><span class="pre">&quot;ssh-rsa&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;ssh-dss&quot;</span></code>)</p></li>
+<li><p><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key to add</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a file of known SSH host keys, in the format used by OpenSSH.
 This type of file unfortunately doesn’t exist on Windows, but on
 posix, it will usually be stored in
@@ -92,192 +83,151 @@ posix, it will usually be stored in
 <p>If this method is called multiple times, the host keys are merged,
 not cleared.  So multiple calls to <a class="reference internal" href="#paramiko.hostkeys.HostKeys.load" title="paramiko.hostkeys.HostKeys.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a> will just call <a class="reference internal" href="#paramiko.hostkeys.HostKeys.add" title="paramiko.hostkeys.HostKeys.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>,
 replacing any existing entries and adding new ones.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to read host keys from</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if there was an error reading the file</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to read host keys from</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if there was an error reading the file</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save host keys into a file, in the format used by OpenSSH.  The order
 of keys in the file will be preserved when possible (if these keys were
 loaded from a file originally).  The single exception is that combined
 lines will be split into individual key lines, which is arguably a bug.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to write</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if there was an error writing the file</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the file to write</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if there was an error writing the file</p>
+</dd>
+</dl>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.6.1.</span></p>
+<p><span class="versionmodified added">New in version 1.6.1.</span></p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.lookup">
-<code class="descname">lookup</code><span class="sig-paren">(</span><em>hostname</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.lookup" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">lookup</code><span class="sig-paren">(</span><em class="sig-param">hostname</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find a hostkey entry for a given hostname or IP.  If no entry is found,
 <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.  Otherwise a dictionary of keytype to key is
 returned.  The keytype will be either <code class="docutils literal notranslate"><span class="pre">&quot;ssh-rsa&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;ssh-dss&quot;</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname (or IP) to lookup</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict of <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> -&gt; <a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PKey</span></code></a> keys associated with this host
-(or <code class="docutils literal notranslate"><span class="pre">None</span></code>)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname (or IP) to lookup</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict of <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> -&gt; <a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PKey</span></code></a> keys associated with this host
+(or <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.check">
-<code class="descname">check</code><span class="sig-paren">(</span><em>hostname</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.check" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param">hostname</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True if the given key is associated with the given hostname
 in this dictionary.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – hostname (or IP) of the SSH server</li>
-<li><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key to check</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – hostname (or IP) of the SSH server</p></li>
+<li><p><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key to check</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if the key is associated with the hostname; else <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the key is associated with the hostname; else <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.clear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove all host keys from the dictionary.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.keys">
-<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on D's keys<a class="headerlink" href="#paramiko.hostkeys.HostKeys.keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on D's keys<a class="headerlink" href="#paramiko.hostkeys.HostKeys.keys" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.values">
-<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an object providing a view on D's values<a class="headerlink" href="#paramiko.hostkeys.HostKeys.values" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an object providing a view on D's values<a class="headerlink" href="#paramiko.hostkeys.HostKeys.values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="staticmethod">
+<dl class="method">
 <dt id="paramiko.hostkeys.HostKeys.hash_host">
-<em class="property">static </em><code class="descname">hash_host</code><span class="sig-paren">(</span><em>hostname</em>, <em>salt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.hash_host" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">hash_host</code><span class="sig-paren">(</span><em class="sig-param">hostname</em>, <em class="sig-param">salt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeys.hash_host" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a “hashed” form of the hostname, as used by OpenSSH when storing
 hashed hostnames in the known_hosts file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname to hash</li>
-<li><strong>salt</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – optional salt to use when hashing
-(must be 20 bytes long)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname to hash</p></li>
+<li><p><strong>salt</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – optional salt to use when hashing
+(must be 20 bytes long)</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the hashed hostname as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.hostkeys.HostKeys.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.hostkeys.HostKeys.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the hashed hostname as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="exception">
 <dt id="paramiko.hostkeys.InvalidHostKey">
-<em class="property">exception </em><code class="descclassname">paramiko.hostkeys.</code><code class="descname">InvalidHostKey</code><span class="sig-paren">(</span><em>line</em>, <em>exc</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.InvalidHostKey" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">paramiko.hostkeys.</code><code class="sig-name descname">InvalidHostKey</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">exc</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.InvalidHostKey" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="paramiko.hostkeys.InvalidHostKey.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>line</em>, <em>exc</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.InvalidHostKey.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">exc</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.InvalidHostKey.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.hostkeys.InvalidHostKey.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.hostkeys.InvalidHostKey.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.hostkeys.HostKeyEntry">
-<em class="property">class </em><code class="descclassname">paramiko.hostkeys.</code><code class="descname">HostKeyEntry</code><span class="sig-paren">(</span><em>hostnames=None</em>, <em>key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.hostkeys.</code><code class="sig-name descname">HostKeyEntry</code><span class="sig-paren">(</span><em class="sig-param">hostnames=None</em>, <em class="sig-param">key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a line in an OpenSSH-style “known hosts” file.</p>
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeyEntry.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>hostnames=None</em>, <em>key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">hostnames=None</em>, <em class="sig-param">key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="method">
 <dt id="paramiko.hostkeys.HostKeyEntry.from_line">
-<em class="property">classmethod </em><code class="descname">from_line</code><span class="sig-paren">(</span><em>line</em>, <em>lineno=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.from_line" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">from_line</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">lineno=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.from_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the given line of text to find the names for the host,
 the type of key, and the key data. The line is expected to be in the
 format used by the OpenSSH known_hosts file.</p>
 <p>Lines are expected to not have leading or trailing whitespace.
 We don’t bother to check for comments or empty lines.  All of
 that should be taken care of before sending the line to us.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a line from an OpenSSH known_hosts file</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a line from an OpenSSH known_hosts file</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.hostkeys.HostKeyEntry.to_line">
-<code class="descname">to_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.to_line" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">to_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.to_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string in OpenSSH known_hosts file format, or None if
 the object is not in a valid state.  A trailing newline is
 included.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="paramiko.hostkeys.HostKeyEntry.__repr__">
-<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.__repr__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return repr(self).</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.hostkeys.HostKeyEntry.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.hostkeys.HostKeyEntry.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
@@ -307,18 +257,6 @@ included.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -356,17 +294,15 @@ included.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -375,7 +311,7 @@ included.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

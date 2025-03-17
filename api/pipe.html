@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Cross-platform pipe implementations &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exceptions" href="ssh_exception.html" />
@@ -43,26 +41,20 @@ impossible.</p>
 will trigger as readable in <a class="reference external" href="https://docs.python.org/3.7/library/select.html#select.select" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a>.</p>
 <dl class="class">
 <dt id="paramiko.pipe.WindowsPipe">
-<em class="property">class </em><code class="descclassname">paramiko.pipe.</code><code class="descname">WindowsPipe</code><a class="headerlink" href="#paramiko.pipe.WindowsPipe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.pipe.</code><code class="sig-name descname">WindowsPipe</code><a class="headerlink" href="#paramiko.pipe.WindowsPipe" title="Permalink to this definition">¶</a></dt>
 <dd><p>On Windows, only an OS-level “WinSock” may be used in select(), but reads
 and writes must be to the actual socket object.</p>
 <dl class="method">
 <dt id="paramiko.pipe.WindowsPipe.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.pipe.WindowsPipe.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.pipe.WindowsPipe.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.pipe.WindowsPipe.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.pipe.WindowsPipe.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="paramiko.pipe.make_or_pipe">
-<code class="descclassname">paramiko.pipe.</code><code class="descname">make_or_pipe</code><span class="sig-paren">(</span><em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.pipe.make_or_pipe" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">paramiko.pipe.</code><code class="sig-name descname">make_or_pipe</code><span class="sig-paren">(</span><em class="sig-param">pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.pipe.make_or_pipe" title="Permalink to this definition">¶</a></dt>
 <dd><p>wraps a pipe into two pipe-like objects which are “or”d together to
 affect the real pipe. if either returned pipe is set, the wrapped pipe
 is set. when both are cleared, the wrapped pipe is cleared.</p>
@@ -93,18 +85,6 @@ is set. when both are cleared, the wrapped pipe is cleared.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -142,17 +122,15 @@ is set. when both are cleared, the wrapped pipe is cleared.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -161,7 +139,7 @@ is set. when both are cleared, the wrapped pipe is cleared.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

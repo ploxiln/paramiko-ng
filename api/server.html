@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Server implementation &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="SFTP" href="sftp.html" />
@@ -39,7 +37,7 @@
 <p><a class="reference internal" href="#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ServerInterface</span></code></a> is an interface to override for server support.</p>
 <dl class="class">
 <dt id="paramiko.server.ServerInterface">
-<em class="property">class </em><code class="descclassname">paramiko.server.</code><code class="descname">ServerInterface</code><a class="headerlink" href="#paramiko.server.ServerInterface" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.server.</code><code class="sig-name descname">ServerInterface</code><a class="headerlink" href="#paramiko.server.ServerInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class defines an interface for controlling the behavior of Paramiko
 in server mode.</p>
 <p>Methods on this class are called from Paramiko’s primary thread, so you
@@ -47,7 +45,7 @@ shouldn’t do too much work in them.  (Certainly nothing that blocks or
 sleeps.)</p>
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_request">
-<code class="descname">check_channel_request</code><span class="sig-paren">(</span><em>kind</em>, <em>chanid</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_request</code><span class="sig-paren">(</span><em class="sig-param">kind</em>, <em class="sig-param">chanid</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a channel request of a given type will be granted, and
 return <code class="docutils literal notranslate"><span class="pre">OPEN_SUCCEEDED</span></code> or an error code.  This method is
 called in server mode when the client requests a channel, after
@@ -58,12 +56,12 @@ below, which are used to determine which services will be allowed on
 a given channel:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_pty_request" title="paramiko.server.ServerInterface.check_channel_pty_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_pty_request</span></code></a></li>
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_shell_request" title="paramiko.server.ServerInterface.check_channel_shell_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_shell_request</span></code></a></li>
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_subsystem_request" title="paramiko.server.ServerInterface.check_channel_subsystem_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_subsystem_request</span></code></a></li>
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_window_change_request" title="paramiko.server.ServerInterface.check_channel_window_change_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_window_change_request</span></code></a></li>
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_x11_request" title="paramiko.server.ServerInterface.check_channel_x11_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_x11_request</span></code></a></li>
-<li><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_forward_agent_request" title="paramiko.server.ServerInterface.check_channel_forward_agent_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_forward_agent_request</span></code></a></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_pty_request" title="paramiko.server.ServerInterface.check_channel_pty_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_pty_request</span></code></a></p></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_shell_request" title="paramiko.server.ServerInterface.check_channel_shell_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_shell_request</span></code></a></p></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_subsystem_request" title="paramiko.server.ServerInterface.check_channel_subsystem_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_subsystem_request</span></code></a></p></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_window_change_request" title="paramiko.server.ServerInterface.check_channel_window_change_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_window_change_request</span></code></a></p></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_x11_request" title="paramiko.server.ServerInterface.check_channel_x11_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_x11_request</span></code></a></p></li>
+<li><p><a class="reference internal" href="#paramiko.server.ServerInterface.check_channel_forward_agent_request" title="paramiko.server.ServerInterface.check_channel_forward_agent_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_channel_forward_agent_request</span></code></a></p></li>
 </ul>
 </div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">chanid</span></code> parameter is a small number that uniquely identifies the
@@ -76,35 +74,31 @@ retrieve the channel ID.</p>
 codes to reject it:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_CONNECT_FAILED</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_UNKNOWN_CHANNEL_TYPE</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_RESOURCE_SHORTAGE</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_CONNECT_FAILED</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_UNKNOWN_CHANNEL_TYPE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_RESOURCE_SHORTAGE</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>The default implementation always returns
 <code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the kind of channel the client would like to open (usually
-<code class="docutils literal notranslate"><span class="pre">&quot;session&quot;</span></code>).</li>
-<li><strong>chanid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – ID of the channel</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the kind of channel the client would like to open (usually
+<code class="docutils literal notranslate"><span class="pre">&quot;session&quot;</span></code>).</p></li>
+<li><p><strong>chanid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – ID of the channel</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> success or failure code (listed above)</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> success or failure code (listed above)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.get_allowed_auths">
-<code class="descname">get_allowed_auths</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.get_allowed_auths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_allowed_auths</code><span class="sig-paren">(</span><em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.get_allowed_auths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of authentication methods supported by the server.
 This list is sent to clients attempting to authenticate, to inform them
 of authentication methods that might be successful.</p>
@@ -112,45 +106,42 @@ of authentication methods that might be successful.</p>
 authentication.  Possible values are <code class="docutils literal notranslate"><span class="pre">&quot;password&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;publickey&quot;</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code>.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">&quot;password&quot;</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username requesting authentication.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a comma-separated <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> of authentication types</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username requesting authentication.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a comma-separated <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> of authentication types</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_none">
-<code class="descname">check_auth_none</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_none" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_none</code><span class="sig-paren">(</span><em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a client may open channels with no (further)
 authentication.</p>
 <p>Return <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the client must authenticate, or
 <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if it’s okay for the client to not
 authenticate.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the client.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
-it succeeds.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the client.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
+it succeeds.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_password">
-<code class="descname">check_auth_password</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_password" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_password</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">password</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a given username and password supplied by the client is
 acceptable for use in authentication.</p>
 <p>Return <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the password is not accepted,
@@ -161,31 +152,27 @@ authentication, but more authentication is required.  (In this latter
 case, <a class="reference internal" href="#paramiko.server.ServerInterface.get_allowed_auths" title="paramiko.server.ServerInterface.get_allowed_auths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_allowed_auths</span></code></a> will be called to report to the client what
 options it has for continuing the authentication.)</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client.</li>
-<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the password given by the client.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client.</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the password given by the client.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
 it succeeds; <code class="docutils literal notranslate"><span class="pre">AUTH_PARTIALLY_SUCCESSFUL</span></code> if the password auth is
 successful, but authentication must continue.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_publickey">
-<code class="descname">check_auth_publickey</code><span class="sig-paren">(</span><em>username</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_publickey" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_publickey</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_publickey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a given key supplied by the client is acceptable for use
 in authentication.  You should override this method in server mode to
 check the username and key and decide if you would accept a signature
@@ -201,32 +188,28 @@ options it has for continuing the authentication.)</p>
 If you’re willing to accept the key, Paramiko will do the work of
 verifying the client’s signature.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client</li>
-<li><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key object provided by the client</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client</p></li>
+<li><p><strong>key</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – the key object provided by the client</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the client can’t authenticate with this key;
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the client can’t authenticate with this key;
 <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if it can; <code class="docutils literal notranslate"><span class="pre">AUTH_PARTIALLY_SUCCESSFUL</span></code> if it
 can authenticate with this key but must continue with
 authentication</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_interactive">
-<code class="descname">check_auth_interactive</code><span class="sig-paren">(</span><em>username</em>, <em>submethods</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_interactive" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_interactive</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">submethods</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begin an interactive authentication challenge, if supported.  You
 should override this method in server mode if you want to support the
 <code class="docutils literal notranslate"><span class="pre">&quot;keyboard-interactive&quot;</span></code> auth type, which requires you to send a
@@ -236,31 +219,27 @@ you should return an <a class="reference internal" href="#paramiko.server.Intera
 and instructions for the user.  The response will be sent via a call
 to <a class="reference internal" href="#paramiko.server.ServerInterface.check_auth_interactive_response" title="paramiko.server.ServerInterface.check_auth_interactive_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_auth_interactive_response</span></code></a>.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client</li>
-<li><strong>submethods</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a comma-separated list of methods preferred by the client (usually
-empty)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username of the authenticating client</p></li>
+<li><p><strong>submethods</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – a comma-separated list of methods preferred by the client (usually
+empty)</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if this auth method isn’t supported; otherwise an
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if this auth method isn’t supported; otherwise an
 object containing queries for the user</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int or <a class="reference internal" href="#paramiko.server.InteractiveQuery" title="paramiko.server.InteractiveQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InteractiveQuery</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int or <a class="reference internal" href="#paramiko.server.InteractiveQuery" title="paramiko.server.InteractiveQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InteractiveQuery</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_interactive_response">
-<code class="descname">check_auth_interactive_response</code><span class="sig-paren">(</span><em>responses</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_interactive_response" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_interactive_response</code><span class="sig-paren">(</span><em class="sig-param">responses</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_interactive_response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Continue or finish an interactive authentication challenge, if
 supported.  You should override this method in server mode if you want
 to support the <code class="docutils literal notranslate"><span class="pre">&quot;keyboard-interactive&quot;</span></code> auth type.</p>
@@ -276,140 +255,129 @@ you may return an <a class="reference internal" href="#paramiko.server.Interacti
 client to respond with more answers, calling this method again.  This
 cycle can continue indefinitely.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>responses</strong> – list of <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> responses from the client</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>responses</strong> – list of <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> responses from the client</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the authentication fails; <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code> if
 it succeeds; <code class="docutils literal notranslate"><span class="pre">AUTH_PARTIALLY_SUCCESSFUL</span></code> if the interactive auth
 is successful, but authentication must continue; otherwise an
-object containing queries for the user</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int or <a class="reference internal" href="#paramiko.server.InteractiveQuery" title="paramiko.server.InteractiveQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InteractiveQuery</span></code></a></td>
-</tr>
-</tbody>
-</table>
+object containing queries for the user</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int or <a class="reference internal" href="#paramiko.server.InteractiveQuery" title="paramiko.server.InteractiveQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InteractiveQuery</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_gssapi_with_mic">
-<code class="descname">check_auth_gssapi_with_mic</code><span class="sig-paren">(</span><em>username</em>, <em>gss_authenticated=2</em>, <em>cc_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_gssapi_with_mic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_gssapi_with_mic</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">gss_authenticated=2</em>, <em class="sig-param">cc_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_gssapi_with_mic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Authenticate the given user to the server if he is a valid krb5
 principal.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username of the authenticating client</li>
-<li><strong>gss_authenticated</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The result of the krb5 authentication</li>
-<li><strong>cc_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The krb5 client credentials cache filename</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username of the authenticating client</p></li>
+<li><p><strong>gss_authenticated</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The result of the krb5 authentication</p></li>
+<li><p><strong>cc_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The krb5 client credentials cache filename</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the user is not authenticated otherwise
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the user is not authenticated otherwise
 <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first">Kerberos credential delegation is not supported.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first">: We are just checking in L{AuthHandler} that the given user is
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>Kerberos credential delegation is not supported.</p>
+</dd>
+<dt class="field-odd">See</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a></p>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>: We are just checking in L{AuthHandler} that the given user is
 a valid krb5 principal!
 We don’t check if the krb5 principal is allowed to log in on
 the server, because there is no way to do that in python. So
 if you develop your own SSH server with paramiko for a cetain
-plattform like Linux, you should call C{krb5_kuserok()} in
+platform like Linux, you should call C{krb5_kuserok()} in
 your local kerberos library to make sure that the
 krb5_principal has an account on the server and is allowed to
 log in as a user.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://www.unix.com/man-page/all/3/krb5_kuserok/">http://www.unix.com/man-page/all/3/krb5_kuserok/</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">See</dt>
+<dd class="field-odd"><p><a class="reference external" href="http://www.unix.com/man-page/all/3/krb5_kuserok/">http://www.unix.com/man-page/all/3/krb5_kuserok/</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_auth_gssapi_keyex">
-<code class="descname">check_auth_gssapi_keyex</code><span class="sig-paren">(</span><em>username</em>, <em>gss_authenticated=2</em>, <em>cc_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_gssapi_keyex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_auth_gssapi_keyex</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">gss_authenticated=2</em>, <em class="sig-param">cc_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_auth_gssapi_keyex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Authenticate the given user to the server if he is a valid krb5
 principal and GSS-API Key Exchange was performed.
 If GSS-API Key Exchange was not performed, this authentication method
 won’t be available.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username of the authenticating client</li>
-<li><strong>gss_authenticated</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The result of the krb5 authentication</li>
-<li><strong>cc_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The krb5 client credentials cache filename</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The username of the authenticating client</p></li>
+<li><p><strong>gss_authenticated</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The result of the krb5 authentication</p></li>
+<li><p><strong>cc_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The krb5 client credentials cache filename</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the user is not authenticated otherwise
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">AUTH_FAILED</span></code> if the user is not authenticated otherwise
 <code class="docutils literal notranslate"><span class="pre">AUTH_SUCCESSFUL</span></code></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first">Kerberos credential delegation is not supported.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a> <a class="reference internal" href="kex_gss.html#module-paramiko.kex_gss" title="paramiko.kex_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kex_gss</span></code></a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first">: We are just checking in L{AuthHandler} that the given user is
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>Kerberos credential delegation is not supported.</p>
+</dd>
+<dt class="field-odd">See</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a> <a class="reference internal" href="kex_gss.html#module-paramiko.kex_gss" title="paramiko.kex_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kex_gss</span></code></a></p>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>: We are just checking in L{AuthHandler} that the given user is
 a valid krb5 principal!
 We don’t check if the krb5 principal is allowed to log in on
 the server, because there is no way to do that in python. So
 if you develop your own SSH server with paramiko for a cetain
-plattform like Linux, you should call C{krb5_kuserok()} in
+platform like Linux, you should call C{krb5_kuserok()} in
 your local kerberos library to make sure that the
 krb5_principal has an account on the server and is allowed
 to log in as a user.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://www.unix.com/man-page/all/3/krb5_kuserok/">http://www.unix.com/man-page/all/3/krb5_kuserok/</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">See</dt>
+<dd class="field-odd"><p><a class="reference external" href="http://www.unix.com/man-page/all/3/krb5_kuserok/">http://www.unix.com/man-page/all/3/krb5_kuserok/</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.enable_auth_gssapi">
-<code class="descname">enable_auth_gssapi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.enable_auth_gssapi" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enable_auth_gssapi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.enable_auth_gssapi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overwrite this function in your SSH server to enable GSSAPI
 authentication.
 The default implementation always returns false.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns bool:</th><td class="field-body">Whether GSSAPI authentication is enabled.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns bool</dt>
+<dd class="field-odd"><p>Whether GSSAPI authentication is enabled.</p>
+</dd>
+<dt class="field-even">See</dt>
+<dd class="field-even"><p><a class="reference internal" href="ssh_gss.html#module-paramiko.ssh_gss" title="paramiko.ssh_gss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ssh_gss</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_port_forward_request">
-<code class="descname">check_port_forward_request</code><span class="sig-paren">(</span><em>address</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_port_forward_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_port_forward_request</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_port_forward_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handle a request for port forwarding.  The client is asking that
 connections to the given address and port be forwarded back across
 this ssh connection.  An address of <code class="docutils literal notranslate"><span class="pre">&quot;0.0.0.0&quot;</span></code> indicates a global
@@ -419,47 +387,39 @@ a port).</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, rejecting the
 port forwarding request.  If the request is accepted, you should return
 the port opened for listening.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested address</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the requested port</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the requested address</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the requested port</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the port number (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) that was opened for listening, or <code class="docutils literal notranslate"><span class="pre">False</span></code>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the port number (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) that was opened for listening, or <code class="docutils literal notranslate"><span class="pre">False</span></code>
 to reject</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.cancel_port_forward_request">
-<code class="descname">cancel_port_forward_request</code><span class="sig-paren">(</span><em>address</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.cancel_port_forward_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cancel_port_forward_request</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.cancel_port_forward_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>The client would like to cancel a previous port-forwarding request.
 If the given address and port is being forwarded across this ssh
 connection, the port should be closed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the forwarded address</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the forwarded port</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the forwarded address</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the forwarded port</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_global_request">
-<code class="descname">check_global_request</code><span class="sig-paren">(</span><em>kind</em>, <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_global_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_global_request</code><span class="sig-paren">(</span><em class="sig-param">kind</em>, <em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_global_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handle a global request of the given <code class="docutils literal notranslate"><span class="pre">kind</span></code>.  This method is called
 in server mode and client mode, whenever the remote host makes a global
 request.  If there are any arguments to the request, they will be in
@@ -474,109 +434,95 @@ tuple can only be strings, ints, longs, or bools.)</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, indicating that it
 does not support any global requests.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Port forwarding requests are handled separately, in
+<p class="admonition-title">Note</p>
+<p>Port forwarding requests are handled separately, in
 <a class="reference internal" href="#paramiko.server.ServerInterface.check_port_forward_request" title="paramiko.server.ServerInterface.check_port_forward_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_port_forward_request</span></code></a>.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the kind of global request being made.</li>
-<li><strong>msg</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – any extra arguments to the request.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the kind of global request being made.</p></li>
+<li><p><strong>msg</strong> (<a class="reference internal" href="message.html#paramiko.message.Message" title="paramiko.message.Message"><em>Message</em></a>) – any extra arguments to the request.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> or a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of data if the request was granted; <code class="docutils literal notranslate"><span class="pre">False</span></code>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> or a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of data if the request was granted; <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_pty_request">
-<code class="descname">check_channel_pty_request</code><span class="sig-paren">(</span><em>channel</em>, <em>term</em>, <em>width</em>, <em>height</em>, <em>pixelwidth</em>, <em>pixelheight</em>, <em>modes</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_pty_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_pty_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">term</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">pixelwidth</em>, <em class="sig-param">pixelheight</em>, <em class="sig-param">modes</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_pty_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a pseudo-terminal of the given dimensions (usually
 requested for shell access) can be provided on the given channel.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</li>
-<li><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – type of terminal requested (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>).</li>
-<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in characters.</li>
-<li><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in characters.</li>
-<li><strong>pixelwidth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</li>
-<li><strong>pixelheight</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – type of terminal requested (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>).</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in characters.</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in characters.</p></li>
+<li><p><strong>pixelwidth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</p></li>
+<li><p><strong>pixelheight</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if the pseudo-terminal has been allocated; <code class="docutils literal notranslate"><span class="pre">False</span></code>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the pseudo-terminal has been allocated; <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_shell_request">
-<code class="descname">check_channel_shell_request</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_shell_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_shell_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_shell_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a shell will be provided to the client on the given
 channel.  If this method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the channel should be
 connected to the stdin/stdout of a shell (or something that acts like
 a shell).</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to a shell; <code class="docutils literal notranslate"><span class="pre">False</span></code> if
-a shell can’t or won’t be provided.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to a shell; <code class="docutils literal notranslate"><span class="pre">False</span></code> if
+a shell can’t or won’t be provided.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_exec_request">
-<code class="descname">check_channel_exec_request</code><span class="sig-paren">(</span><em>channel</em>, <em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_exec_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_exec_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">command</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_exec_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a shell command will be executed for the client.  If this
 method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the channel should be connected to the stdin,
 stdout, and stderr of the shell command.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on.</li>
-<li><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command to execute.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on.</p></li>
+<li><p><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command to execute.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to the stdin, stdout, and
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to the stdin, stdout, and
 stderr of the executing command; <code class="docutils literal notranslate"><span class="pre">False</span></code> if the command will not
 be executed.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.1.</span></p>
+<p><span class="versionmodified added">New in version 1.1.</span></p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_subsystem_request">
-<code class="descname">check_channel_subsystem_request</code><span class="sig-paren">(</span><em>channel</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_subsystem_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_subsystem_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_subsystem_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a requested subsystem will be provided to the client on
 the given channel.  If this method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, all future I/O
 through this channel will be assumed to be connected to the requested
@@ -586,105 +532,91 @@ subsystem.  An example of a subsystem is <code class="docutils literal notransla
 If one has been set, the handler is invoked and this method returns
 <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Otherwise it returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Because the default implementation uses the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> to
+<p class="admonition-title">Note</p>
+<p>Because the default implementation uses the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> to
 identify valid subsystems, you probably won’t need to override this
 method.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to the requested
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this channel is now hooked up to the requested
 subsystem; <code class="docutils literal notranslate"><span class="pre">False</span></code> if that subsystem can’t or won’t be provided.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_window_change_request">
-<code class="descname">check_channel_window_change_request</code><span class="sig-paren">(</span><em>channel</em>, <em>width</em>, <em>height</em>, <em>pixelwidth</em>, <em>pixelheight</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_window_change_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_window_change_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">pixelwidth</em>, <em class="sig-param">pixelheight</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_window_change_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the pseudo-terminal on the given channel can be resized.
 This only makes sense if a pty was previously allocated on it.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</li>
-<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in characters.</li>
-<li><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in characters.</li>
-<li><strong>pixelwidth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</li>
-<li><strong>pixelheight</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the pty request arrived on.</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in characters.</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in characters.</p></li>
+<li><p><strong>pixelwidth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – width of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</p></li>
+<li><p><strong>pixelheight</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – height of screen in pixels, if known (may be <code class="docutils literal notranslate"><span class="pre">0</span></code> if unknown).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if the terminal was resized; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the terminal was resized; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_x11_request">
-<code class="descname">check_channel_x11_request</code><span class="sig-paren">(</span><em>channel</em>, <em>single_connection</em>, <em>auth_protocol</em>, <em>auth_cookie</em>, <em>screen_number</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_x11_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_x11_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">single_connection</em>, <em class="sig-param">auth_protocol</em>, <em class="sig-param">auth_cookie</em>, <em class="sig-param">screen_number</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_x11_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the client will be provided with an X11 session.  If this
 method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, X11 applications should be routed through new
 SSH channels, using <a class="reference internal" href="transport.html#paramiko.transport.Transport.open_x11_channel" title="paramiko.transport.Transport.open_x11_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport.open_x11_channel</span></code></a>.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the X11 request arrived on</li>
-<li><strong>single_connection</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if only a single X11 channel should be opened, else
-<code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
-<li><strong>auth_protocol</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the protocol used for X11 authentication</li>
-<li><strong>auth_cookie</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the cookie used to authenticate to X11</li>
-<li><strong>screen_number</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the number of the X11 screen to connect to</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the X11 request arrived on</p></li>
+<li><p><strong>single_connection</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if only a single X11 channel should be opened, else
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>auth_protocol</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the protocol used for X11 authentication</p></li>
+<li><p><strong>auth_cookie</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the cookie used to authenticate to X11</p></li>
+<li><p><strong>screen_number</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the number of the X11 screen to connect to</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">True</span></code> if the X11 session was opened; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the X11 session was opened; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_forward_agent_request">
-<code class="descname">check_channel_forward_agent_request</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_forward_agent_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_forward_agent_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_forward_agent_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the client will be provided with an forward agent session.
 If this method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the server will allow SSH Agent
 forwarding.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">True</span></code> if the AgentForward was loaded; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the request arrived on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the AgentForward was loaded; <code class="docutils literal notranslate"><span class="pre">False</span></code> if not</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_direct_tcpip_request">
-<code class="descname">check_channel_direct_tcpip_request</code><span class="sig-paren">(</span><em>chanid</em>, <em>origin</em>, <em>destination</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_direct_tcpip_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_direct_tcpip_request</code><span class="sig-paren">(</span><em class="sig-param">chanid</em>, <em class="sig-param">origin</em>, <em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_direct_tcpip_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if a local port forwarding channel will be granted, and
 return <code class="docutils literal notranslate"><span class="pre">OPEN_SUCCEEDED</span></code> or an error code.  This method is
 called in server mode when the client requests a channel, after
@@ -702,37 +634,33 @@ tunnel.</p>
 codes to reject it:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_CONNECT_FAILED</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_UNKNOWN_CHANNEL_TYPE</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_RESOURCE_SHORTAGE</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_CONNECT_FAILED</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_UNKNOWN_CHANNEL_TYPE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_RESOURCE_SHORTAGE</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>The default implementation always returns
 <code class="docutils literal notranslate"><span class="pre">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>chanid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – ID of the channel</li>
-<li><strong>origin</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – 2-tuple containing the IP address and port of the originator
-(client side)</li>
-<li><strong>destination</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – 2-tuple containing the IP address and port of the destination
-(server side)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chanid</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – ID of the channel</p></li>
+<li><p><strong>origin</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – 2-tuple containing the IP address and port of the originator
+(client side)</p></li>
+<li><p><strong>destination</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – 2-tuple containing the IP address and port of the destination
+(server side)</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> success or failure code (listed above)</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> success or failure code (listed above)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.check_channel_env_request">
-<code class="descname">check_channel_env_request</code><span class="sig-paren">(</span><em>channel</em>, <em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_env_request" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_channel_env_request</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">name</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.check_channel_env_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether a given environment variable can be specified for the
 given channel.  This method should return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the server
 is willing to set the specified environment variable.  Note that
@@ -740,153 +668,122 @@ some environment variables (e.g., PATH) can be exceedingly
 dangerous, so blindly allowing the client to set the environment
 is almost certainly not a good idea.</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel</strong> – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the env request arrived on</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name</li>
-<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Channel value</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> – the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> the env request arrived on</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Channel value</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A boolean</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A boolean</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.ServerInterface.get_banner">
-<code class="descname">get_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.get_banner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.ServerInterface.get_banner" title="Permalink to this definition">¶</a></dt>
 <dd><p>A pre-login banner to display to the user. The message may span
 multiple lines separated by crlf pairs. The language should be in
 rfc3066 style, for example: en-US</p>
 <p>The default implementation always returns <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">None)</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the banner and language code.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A tuple containing the banner and language code.</p>
+</dd>
+</dl>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.</span></p>
+<p><span class="versionmodified added">New in version 2.3.</span></p>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.server.ServerInterface.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.server.ServerInterface.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.server.InteractiveQuery">
-<em class="property">class </em><code class="descclassname">paramiko.server.</code><code class="descname">InteractiveQuery</code><span class="sig-paren">(</span><em>name=''</em>, <em>instructions=''</em>, <em>*prompts</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.server.</code><code class="sig-name descname">InteractiveQuery</code><span class="sig-paren">(</span><em class="sig-param">name=''</em>, <em class="sig-param">instructions=''</em>, <em class="sig-param">*prompts</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery" title="Permalink to this definition">¶</a></dt>
 <dd><p>A query (set of prompts) for a user during interactive authentication.</p>
 <dl class="method">
 <dt id="paramiko.server.InteractiveQuery.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>name=''</em>, <em>instructions=''</em>, <em>*prompts</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name=''</em>, <em class="sig-param">instructions=''</em>, <em class="sig-param">*prompts</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new interactive query to send to the client.  The name and
 instructions are optional, but are generally displayed to the end
 user.  A list of prompts may be included, or they may be added via
 the <a class="reference internal" href="#paramiko.server.InteractiveQuery.add_prompt" title="paramiko.server.InteractiveQuery.add_prompt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_prompt</span></code></a> method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of this query</li>
-<li><strong>instructions</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user instructions (usually short) about this query</li>
-<li><strong>prompts</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – one or more authentication prompts</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of this query</p></li>
+<li><p><strong>instructions</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – user instructions (usually short) about this query</p></li>
+<li><p><strong>prompts</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – one or more authentication prompts</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.InteractiveQuery.add_prompt">
-<code class="descname">add_prompt</code><span class="sig-paren">(</span><em>prompt</em>, <em>echo=True</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery.add_prompt" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_prompt</code><span class="sig-paren">(</span><em class="sig-param">prompt</em>, <em class="sig-param">echo=True</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.InteractiveQuery.add_prompt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a prompt to this query.  The prompt should be a (reasonably short)
 string.  Multiple prompts can be added to the same query.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the user prompt</li>
-<li><strong>echo</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> (default) if the user’s response should be echoed;
-<code class="docutils literal notranslate"><span class="pre">False</span></code> if not (for a password or similar)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the user prompt</p></li>
+<li><p><strong>echo</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> (default) if the user’s response should be echoed;
+<code class="docutils literal notranslate"><span class="pre">False</span></code> if not (for a password or similar)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.server.InteractiveQuery.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.server.InteractiveQuery.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.server.SubsystemHandler">
-<em class="property">class </em><code class="descclassname">paramiko.server.</code><code class="descname">SubsystemHandler</code><span class="sig-paren">(</span><em>channel</em>, <em>name</em>, <em>server</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handler for a subsytem in server mode.  If you create a subclass of this
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.server.</code><code class="sig-name descname">SubsystemHandler</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">name</em>, <em class="sig-param">server</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler for a subsystem in server mode.  If you create a subclass of this
 class and pass it to <a class="reference internal" href="transport.html#paramiko.transport.Transport.set_subsystem_handler" title="paramiko.transport.Transport.set_subsystem_handler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport.set_subsystem_handler</span></code></a>, an object of this
 class will be created for each request for this subsystem.  Each new object
 will be executed within its own new thread by calling <a class="reference internal" href="#paramiko.server.SubsystemHandler.start_subsystem" title="paramiko.server.SubsystemHandler.start_subsystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_subsystem</span></code></a>.
 When that method completes, the channel is closed.</p>
 <p>For example, if you made a subclass <code class="docutils literal notranslate"><span class="pre">MP3Handler</span></code> and registered it as the
 handler for subsystem <code class="docutils literal notranslate"><span class="pre">&quot;mp3&quot;</span></code>, then whenever a client has successfully
-authenticated and requests subsytem <code class="docutils literal notranslate"><span class="pre">&quot;mp3&quot;</span></code>, an object of class
+authenticated and requests subsystem <code class="docutils literal notranslate"><span class="pre">&quot;mp3&quot;</span></code>, an object of class
 <code class="docutils literal notranslate"><span class="pre">MP3Handler</span></code> will be created, and <a class="reference internal" href="#paramiko.server.SubsystemHandler.start_subsystem" title="paramiko.server.SubsystemHandler.start_subsystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_subsystem</span></code></a> will be called on
 it from a new thread.</p>
 <dl class="method">
 <dt id="paramiko.server.SubsystemHandler.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>channel</em>, <em>name</em>, <em>server</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">channel</em>, <em class="sig-param">name</em>, <em class="sig-param">server</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new handler for a channel.  This is used by <a class="reference internal" href="#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ServerInterface</span></code></a>
 to start up a new handler when a channel requests this subsystem.  You
 don’t need to override this method, but if you do, be sure to pass the
 <code class="docutils literal notranslate"><span class="pre">channel</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> parameters through to the original
 <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method here.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the channel associated with this
-subsystem request.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</li>
-<li><strong>server</strong> (<a class="reference internal" href="#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><em>ServerInterface</em></a>) – the server object for the session that started this subsystem</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the channel associated with this
+subsystem request.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</p></li>
+<li><p><strong>server</strong> (<a class="reference internal" href="#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><em>ServerInterface</em></a>) – the server object for the session that started this subsystem</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.SubsystemHandler.get_server">
-<code class="descname">get_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.get_server" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.get_server" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the <a class="reference internal" href="#paramiko.server.ServerInterface" title="paramiko.server.ServerInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ServerInterface</span></code></a> object associated with this channel and
 subsystem.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.SubsystemHandler.start_subsystem">
-<code class="descname">start_subsystem</code><span class="sig-paren">(</span><em>name</em>, <em>transport</em>, <em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.start_subsystem" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_subsystem</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">transport</em>, <em class="sig-param">channel</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.start_subsystem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process an ssh subsystem in server mode.  This method is called on a
 new object (and in a new thread) for each subsystem request.  It is
 assumed that all subsystem logic will take place here, and when the
@@ -895,37 +792,33 @@ returns, the channel is closed.</p>
 <p>The combination of <code class="docutils literal notranslate"><span class="pre">transport</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code> are unique; this
 handler corresponds to exactly one <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> on one <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is the responsibility of this method to exit if the underlying
+<p class="admonition-title">Note</p>
+<p>It is the responsibility of this method to exit if the underlying
 <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> is closed.  This can be done by checking
 <a class="reference internal" href="transport.html#paramiko.transport.Transport.is_active" title="paramiko.transport.Transport.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport.is_active</span></code></a> or noticing an EOF on the <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>.  If
 this method loops forever without checking for this case, your
 Python interpreter may refuse to exit because this thread will
 still be running.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</li>
-<li><strong>transport</strong> (<a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><em>Transport</em></a>) – the server-mode <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</li>
-<li><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the channel associated with this subsystem
-request.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of the requested subsystem.</p></li>
+<li><p><strong>transport</strong> (<a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><em>Transport</em></a>) – the server-mode <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</p></li>
+<li><p><strong>channel</strong> (<a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><em>Channel</em></a>) – the channel associated with this subsystem
+request.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.server.SubsystemHandler.finish_subsystem">
-<code class="descname">finish_subsystem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.finish_subsystem" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">finish_subsystem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.server.SubsystemHandler.finish_subsystem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform any cleanup at the end of a subsystem.  The default
 implementation just closes the channel.</p>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.1.</span></p>
+<p><span class="versionmodified added">New in version 1.1.</span></p>
 </div>
 </dd></dl>
 
@@ -956,18 +849,6 @@ implementation just closes the channel.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -1005,17 +886,15 @@ implementation just closes the channel.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1024,7 +903,7 @@ implementation just closes the channel.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

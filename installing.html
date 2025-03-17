@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Installing &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Frequently Asked/Answered Questions" href="faq.html" />
@@ -38,22 +36,21 @@
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="paramiko-ng-itself">
 <h2>Paramiko-NG itself<a class="headerlink" href="#paramiko-ng-itself" title="Permalink to this headline">¶</a></h2>
-<p>The recommended way to get Paramiko is to <strong>install the latest stable release</strong>
+<p>The recommended way to get Paramiko-NG is to install the latest stable release
 via <a class="reference external" href="http://pip-installer.org">pip</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install paramiko-ng
 </pre></div>
 </div>
 <p>You can also install under the original “paramiko” pip-package-name,
-in order to satisfy requirements for other packages (replace “2.7.6” with desired version):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ PARAMIKO_REPLACE=1 pip install https://github.com/ploxiln/paramiko-ng/archive/2.7.6.tar.gz#egg=paramiko
+in order to satisfy requirements for other packages (replace “2.8.10” with desired version):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ PARAMIKO_REPLACE=1 pip install &quot;https://github.com/ploxiln/paramiko-ng/archive/2.8.10.tar.gz#egg=paramiko&quot;
 </pre></div>
 </div>
 <p>Paramiko-NG currently supports Python 2.7, 3.4+, and PyPy.</p>
 <p>Paramiko-NG has only a few direct dependencies:</p>
 <ul class="simple">
-<li>The big one is Cryptography; see <a class="reference internal" href="#cryptography"><span class="std std-ref">its specific note below</span></a> for more details.</li>
-<li><a class="reference external" href="https://pypi.org/project/bcrypt/">bcrypt</a>, for “new openssh format” private keys</li>
-<li><a class="reference external" href="https://pypi.org/project/PyNaCl/">pynacl</a>, <em>optional</em> for Ed25519 key support</li>
+<li><p>The big one is Cryptography; see <a class="reference internal" href="#cryptography"><span class="std std-ref">its specific note below</span></a> for more details.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/bcrypt/">bcrypt</a>, for “new openssh format” private keys</p></li>
 </ul>
 <p>If you need GSS-API / SSPI support, see <a class="reference internal" href="#gssapi"><span class="std std-ref">the below subsection on it</span></a> for details on its optional dependencies.</p>
 </div>
@@ -61,33 +58,40 @@ in order to satisfy requirements for other packages (replace “2.7.6” with de
 <span id="id1"></span><h2>Cryptography<a class="headerlink" href="#cryptography" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://cryptography.io">Cryptography</a>  provides the low-level (C-based)
 encryption algorithms we need to implement the SSH protocol. It has detailed
-<a class="reference external" href="https://cryptography.io/en/latest/installation/">installation instructions</a> (and an <a class="reference external" href="https://cryptography.io/en/latest/faq/">FAQ</a>)
+<a class="reference external" href="https://cryptography.io/en/latest/installation.html">installation instructions</a> (and an <a class="reference external" href="https://cryptography.io/en/latest/faq/">FAQ</a>)
 which you should read carefully.</p>
-<p>In general, you’ll need one of the following setups:</p>
+<p>Cryptography provides statically built “wheels” for most common systems,
+which modern “pip” will preferentially install. These include all needed
+non-python components pre-built and should “just work”.</p>
+<p>If you need or want to build cryptography from source, you will need a
+C build toolchain, development headers for Python, OpenSSL and
+<code class="docutils literal notranslate"><span class="pre">libffi</span></code>, and starting with cryptography-3.4, also a Rust language
+toolchain installed. Again, see <a class="reference external" href="https://cryptography.io/en/latest/installation.html">Cryptography’s install docs</a>;
+these requirements may occasionally change.</p>
 <ul class="simple">
-<li>On Windows or Mac OS X, provided your <code class="docutils literal notranslate"><span class="pre">pip</span></code> is modern (8.x+): nothing else
-is required. <code class="docutils literal notranslate"><span class="pre">pip</span></code> will install statically compiled binary archives of
-Cryptography &amp; its dependencies.</li>
-<li>On Linux, or on other platforms with older versions of <code class="docutils literal notranslate"><span class="pre">pip</span></code>: you’ll need a
-C build toolchain, plus development headers for Python, OpenSSL and
-<code class="docutils literal notranslate"><span class="pre">libffi</span></code>. Again, see <a class="reference external" href="https://cryptography.io/en/latest/installation/">Cryptography’s install docs</a>; these requirements may
-occasionally change.</li>
+<li><p>Cryptography-3.4 dropped support for Python-2.7</p></li>
+<li><p>Cryptography-3.3 dropped support for Python-3.5</p></li>
+<li><p>Cryptography-3.2 dropped support for OpenSSL-1.0.2</p></li>
 </ul>
+<p>If you have a problem with these changing requirements, you can install
+the last patch release before the incompatible minor release like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install &#39;cryptography&lt;3.4&#39;
+</pre></div>
+</div>
 </div>
 <div class="section" id="optional-dependencies-for-gss-api-sspi-kerberos">
 <span id="gssapi"></span><h2>Optional dependencies for GSS-API / SSPI / Kerberos<a class="headerlink" href="#optional-dependencies-for-gss-api-sspi-kerberos" title="Permalink to this headline">¶</a></h2>
 <p>In order to use GSS-API/Kerberos &amp; related functionality, a couple of
-additional dependencies are required (these are not listed in our <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>
-due to their infrequent utility &amp; non-platform-agnostic requirements):</p>
+additional dependencies are required:</p>
 <ul class="simple">
-<li>All platforms need <strong>a working installation of GSS-API itself</strong>, e.g. Heimdal.</li>
-<li>All platforms need <a class="reference external" href="https://pypi.org/project/pyasn1/">pyasn1</a> <code class="docutils literal notranslate"><span class="pre">0.1.7</span></code> or later.</li>
-<li><strong>Unix</strong> needs <a class="reference external" href="https://pypi.org/project/gssapi/">gssapi</a> <code class="docutils literal notranslate"><span class="pre">1.4.1</span></code> or later.</li>
-<li><strong>Windows</strong> needs <a class="reference external" href="https://pypi.python.org/pypi/pywin32">pywin32</a> <code class="docutils literal notranslate"><span class="pre">2.1.8</span></code> or later.</li>
+<li><p>All platforms need <strong>a working installation of GSS-API itself</strong>, e.g. Heimdal</p></li>
+<li><p>All platforms need <a class="reference external" href="https://pypi.org/project/pyasn1/">pyasn1</a></p></li>
+<li><p><strong>Unix</strong> needs <a class="reference external" href="https://pypi.org/project/gssapi/">gssapi</a></p></li>
+<li><p><strong>Windows</strong> needs <a class="reference external" href="https://pypi.org/project/pywin32/">pywin32</a></p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you use Microsoft SSPI for kerberos authentication and credential
+<p class="admonition-title">Note</p>
+<p>If you use Microsoft SSPI for kerberos authentication and credential
 delegation, make sure that the target host is trusted for delegation in the
 active directory configuration. For details see:
 <a class="reference external" href="http://technet.microsoft.com/en-us/library/cc738491%28v=ws.10%29.aspx">http://technet.microsoft.com/en-us/library/cc738491%28v=ws.10%29.aspx</a></p>
@@ -118,18 +122,6 @@ active directory configuration. For details see:
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -167,17 +159,15 @@ active directory configuration. For details see:
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -186,7 +176,7 @@ active directory configuration. For details see:
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

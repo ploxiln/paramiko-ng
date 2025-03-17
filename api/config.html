@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Configuration &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ProxyCommand support" href="proxy.html" />
@@ -39,38 +37,35 @@
 <p>Configuration file (aka <code class="docutils literal notranslate"><span class="pre">ssh_config</span></code>) support.</p>
 <dl class="class">
 <dt id="paramiko.config.SSHConfig">
-<em class="property">class </em><code class="descclassname">paramiko.config.</code><code class="descname">SSHConfig</code><a class="headerlink" href="#paramiko.config.SSHConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.config.</code><code class="sig-name descname">SSHConfig</code><a class="headerlink" href="#paramiko.config.SSHConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of config information as stored in the format used by
 OpenSSH. Queries can be made via <a class="reference internal" href="#paramiko.config.SSHConfig.lookup" title="paramiko.config.SSHConfig.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>. The format is described in
 OpenSSH’s <code class="docutils literal notranslate"><span class="pre">ssh_config</span></code> man page. This class is provided primarily as a
 convenience to posix users (since the OpenSSH format is a de-facto
 standard on posix) but should work fine on Windows too.</p>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.6.</span></p>
+<p><span class="versionmodified added">New in version 1.6.</span></p>
 </div>
 <dl class="method">
 <dt id="paramiko.config.SSHConfig.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new OpenSSH config object.</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.config.SSHConfig.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>file_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">file_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read an OpenSSH config from the given file object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_obj</strong> – a file-like object to read the config file from</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_obj</strong> – a file-like object to read the config file from</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.config.SSHConfig.lookup">
-<code class="descname">lookup</code><span class="sig-paren">(</span><em>hostname</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.lookup" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">lookup</code><span class="sig-paren">(</span><em class="sig-param">hostname</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dict of config options for a given hostname.</p>
 <p>The host-matching rules of OpenSSH’s <code class="docutils literal notranslate"><span class="pre">ssh_config</span></code> man page are used:
 For each parameter, the first obtained value will be used.  The
@@ -83,51 +78,30 @@ and general defaults at the end.</p>
 <p>The keys in the returned dict are all normalized to lowercase (look for
 <code class="docutils literal notranslate"><span class="pre">&quot;port&quot;</span></code>, not <code class="docutils literal notranslate"><span class="pre">&quot;Port&quot;</span></code>. The values are processed according to the
 rules for substitution variable expansion in <code class="docutils literal notranslate"><span class="pre">ssh_config</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname to lookup</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the hostname to lookup</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.config.SSHConfig.get_hostnames">
-<code class="descname">get_hostnames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.get_hostnames" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_hostnames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.SSHConfig.get_hostnames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the set of literal hostnames defined in the SSH config (both
 explicit hostnames and wildcard entries).</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.config.SSHConfig.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.config.SSHConfig.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.config.LazyFqdn">
-<em class="property">class </em><code class="descclassname">paramiko.config.</code><code class="descname">LazyFqdn</code><span class="sig-paren">(</span><em>config</em>, <em>host=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.LazyFqdn" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.config.</code><code class="sig-name descname">LazyFqdn</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">host=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.LazyFqdn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the host’s fqdn on request as string.</p>
 <dl class="method">
 <dt id="paramiko.config.LazyFqdn.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>config</em>, <em>host=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.LazyFqdn.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">host=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.LazyFqdn.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="paramiko.config.LazyFqdn.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.config.LazyFqdn.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.config.LazyFqdn.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.config.LazyFqdn.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
@@ -157,18 +131,6 @@ explicit hostnames and wildcard entries).</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -206,17 +168,15 @@ explicit hostnames and wildcard entries).</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -225,7 +185,7 @@ explicit hostnames and wildcard entries).</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

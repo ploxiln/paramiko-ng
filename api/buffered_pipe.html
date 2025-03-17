@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Buffered pipes &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Buffered files" href="file.html" />
@@ -41,76 +39,50 @@ read from and closed, but is reading from a buffer fed by another thread.  The
 read operations are blocking and can have a timeout set.</p>
 <dl class="class">
 <dt id="paramiko.buffered_pipe.BufferedPipe">
-<em class="property">class </em><code class="descclassname">paramiko.buffered_pipe.</code><code class="descname">BufferedPipe</code><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.buffered_pipe.</code><code class="sig-name descname">BufferedPipe</code><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe" title="Permalink to this definition">¶</a></dt>
 <dd><p>A buffer that obeys normal read (with timeout) &amp; close semantics for a
 file or socket, but is fed data from another thread.  This is used by
 <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>.</p>
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="paramiko.buffered_pipe.BufferedPipe.__len__">
-<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.__len__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the number of bytes buffered.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">number (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) of bytes buffered</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.buffered_pipe.BufferedPipe.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.close" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close this pipe object.  Future calls to <a class="reference internal" href="#paramiko.buffered_pipe.BufferedPipe.read" title="paramiko.buffered_pipe.BufferedPipe.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> after the buffer
 has been emptied will return immediately with an empty string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.empty">
-<code class="descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.empty" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.empty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear out the buffer and return all data that was in it.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">any data that was in the buffer prior to clearing it out, as a
-<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>any data that was in the buffer prior to clearing it out, as a
+<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.feed">
-<code class="descname">feed</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Feed new data into this pipe.  This method is assumed to be called
 from a separate thread, so synchronization is done.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – the data to add, as a <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – the data to add, as a <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>nbytes</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">nbytes</em>, <em class="sig-param">timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data from the pipe.  The return value is a string representing
 the data received.  The maximum amount of data to be received at once
 is specified by <code class="docutils literal notranslate"><span class="pre">nbytes</span></code>.  If a string of length zero is returned,
@@ -119,63 +91,53 @@ the pipe has been closed.</p>
 seconds, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for no timeout.  If a float is given, a
 <a class="reference internal" href="#paramiko.buffered_pipe.PipeTimeout" title="paramiko.buffered_pipe.PipeTimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipeTimeout</span></code></a> will be raised if the timeout period value has elapsed
 before any data arrives.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>nbytes</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – maximum seconds to wait (or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the default, to wait forever)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nbytes</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – maximum seconds to wait (or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the default, to wait forever)</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the read data, as a <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#paramiko.buffered_pipe.PipeTimeout" title="paramiko.buffered_pipe.PipeTimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipeTimeout</span></code></a> – if a timeout was specified and no data was ready
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the read data, as a <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#paramiko.buffered_pipe.PipeTimeout" title="paramiko.buffered_pipe.PipeTimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipeTimeout</span></code></a> – if a timeout was specified and no data was ready
 before that timeout</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.read_ready">
-<code class="descname">read_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.read_ready" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.read_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if data is buffered and ready to be read from this
 feeder.  A <code class="docutils literal notranslate"><span class="pre">False</span></code> result does not mean that the feeder has closed;
 it means you may need to wait before more data arrives.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">True</span></code> if a <a class="reference internal" href="#paramiko.buffered_pipe.BufferedPipe.read" title="paramiko.buffered_pipe.BufferedPipe.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> call would immediately return at least one
-byte; <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a <a class="reference internal" href="#paramiko.buffered_pipe.BufferedPipe.read" title="paramiko.buffered_pipe.BufferedPipe.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> call would immediately return at least one
+byte; <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.set_event">
-<code class="descname">set_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.set_event" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_event</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.set_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set an event on this buffer.  When data is ready to be read (or the
 buffer has been closed), the event will be set.  When no data is
 ready, the event will be cleared.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – the event to set/clear</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/threading.html#threading.Event" title="(in Python v3.7)"><em>threading.Event</em></a>) – the event to set/clear</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.buffered_pipe.BufferedPipe.unlink_event">
-<code class="descname">unlink_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.unlink_event" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">unlink_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.buffered_pipe.BufferedPipe.unlink_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unlink an Event object from this buffer.</p>
 </dd></dl>
 
@@ -183,14 +145,8 @@ ready, the event will be cleared.</p>
 
 <dl class="exception">
 <dt id="paramiko.buffered_pipe.PipeTimeout">
-<em class="property">exception </em><code class="descclassname">paramiko.buffered_pipe.</code><code class="descname">PipeTimeout</code><a class="headerlink" href="#paramiko.buffered_pipe.PipeTimeout" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">paramiko.buffered_pipe.</code><code class="sig-name descname">PipeTimeout</code><a class="headerlink" href="#paramiko.buffered_pipe.PipeTimeout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Indicates that a timeout was reached on a read from a <a class="reference internal" href="#paramiko.buffered_pipe.BufferedPipe" title="paramiko.buffered_pipe.BufferedPipe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BufferedPipe</span></code></a>.</p>
-<dl class="attribute">
-<dt id="paramiko.buffered_pipe.PipeTimeout.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.buffered_pipe.PipeTimeout.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -218,18 +174,6 @@ ready, the event will be cleared.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -267,17 +211,15 @@ ready, the event will be cleared.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -286,7 +228,7 @@ ready, the event will be cleared.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

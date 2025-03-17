@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Packetizer &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Transport" href="transport.html" />
@@ -39,58 +37,43 @@
 <p>Packet handling</p>
 <dl class="exception">
 <dt id="paramiko.packet.NeedRekeyException">
-<em class="property">exception </em><code class="descclassname">paramiko.packet.</code><code class="descname">NeedRekeyException</code><a class="headerlink" href="#paramiko.packet.NeedRekeyException" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">paramiko.packet.</code><code class="sig-name descname">NeedRekeyException</code><a class="headerlink" href="#paramiko.packet.NeedRekeyException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception indicating a rekey is needed.</p>
-<dl class="attribute">
-<dt id="paramiko.packet.NeedRekeyException.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.packet.NeedRekeyException.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.packet.Packetizer">
-<em class="property">class </em><code class="descclassname">paramiko.packet.</code><code class="descname">Packetizer</code><span class="sig-paren">(</span><em>socket</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.packet.</code><code class="sig-name descname">Packetizer</code><span class="sig-paren">(</span><em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the base SSH packet protocol.</p>
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>socket</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="paramiko.packet.Packetizer.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.packet.Packetizer.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.complete_handshake">
-<code class="descname">complete_handshake</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.complete_handshake" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">complete_handshake</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.complete_handshake" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tells <a class="reference internal" href="#paramiko.packet.Packetizer" title="paramiko.packet.Packetizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Packetizer</span></code></a> that the handshake has completed.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.handshake_timed_out">
-<code class="descname">handshake_timed_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.handshake_timed_out" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">handshake_timed_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.handshake_timed_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the handshake has timed out.</p>
 <p>If <a class="reference internal" href="#paramiko.packet.Packetizer.start_handshake" title="paramiko.packet.Packetizer.start_handshake"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_handshake</span></code></a> wasn’t called before the call to this function,
 the return value will always be <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>. If the handshake completed
 before a timeout was reached, the return value will be <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">handshake time out status, as a <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>handshake time out status, as a <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.need_rekey">
-<code class="descname">need_rekey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.need_rekey" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">need_rekey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.need_rekey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a new set of keys needs to be negotiated.  This
 will be triggered during a packet read or write, so it should be
 checked after every read or write, or at least after every few.</p>
@@ -98,63 +81,60 @@ checked after every read or write, or at least after every few.</p>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.read_all">
-<code class="descname">read_all</code><span class="sig-paren">(</span><em>n</em>, <em>check_rekey=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.read_all" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read_all</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">check_rekey=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.read_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read as close to N bytes as possible, blocking as long as necessary.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of bytes to read</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the data read, as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">EOFError</span></code> – if the socket was closed before all the bytes could
-be read</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of bytes to read</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the data read, as a <a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">EOFError</span></code> – if the socket was closed before all the bytes could
+be read</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.read_message">
-<code class="descname">read_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.read_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.read_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only one thread should ever be in this function (no other locking is
 done).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the packet is mangled</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#paramiko.packet.NeedRekeyException" title="paramiko.packet.NeedRekeyException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeedRekeyException</span></code></a> – if the transport should rekey</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the packet is mangled</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#paramiko.packet.NeedRekeyException" title="paramiko.packet.NeedRekeyException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeedRekeyException</span></code></a> – if the transport should rekey</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.readline">
-<code class="descname">readline</code><span class="sig-paren">(</span><em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.readline" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readline</code><span class="sig-paren">(</span><em class="sig-param">timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.readline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a line from the socket.  We assume no data is pending after the
 line, so it’s okay to attempt large reads.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.send_message">
-<code class="descname">send_message</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.send_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a block of data using the current cipher, as an SSH block.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.set_inbound_cipher">
-<code class="descname">set_inbound_cipher</code><span class="sig-paren">(</span><em>block_engine</em>, <em>block_size</em>, <em>mac_engine</em>, <em>mac_size</em>, <em>mac_key</em>, <em>etm=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_inbound_cipher" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_inbound_cipher</code><span class="sig-paren">(</span><em class="sig-param">block_engine</em>, <em class="sig-param">block_size</em>, <em class="sig-param">mac_engine</em>, <em class="sig-param">mac_size</em>, <em class="sig-param">mac_key</em>, <em class="sig-param">etm=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_inbound_cipher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Switch inbound data cipher.
 :param etm: Set encrypt-then-mac from OpenSSH</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.set_keepalive">
-<code class="descname">set_keepalive</code><span class="sig-paren">(</span><em>interval</em>, <em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_keepalive" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_keepalive</code><span class="sig-paren">(</span><em class="sig-param">interval</em>, <em class="sig-param">callback</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_keepalive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn on/off the callback keepalive.  If <code class="docutils literal notranslate"><span class="pre">interval</span></code> seconds pass with
 no data read from or written to the socket, the callback will be
 executed and the timer will be reset.</p>
@@ -162,31 +142,28 @@ executed and the timer will be reset.</p>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.set_log">
-<code class="descname">set_log</code><span class="sig-paren">(</span><em>log</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_log" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_log</code><span class="sig-paren">(</span><em class="sig-param">log</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the Python log object to use for logging.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.set_outbound_cipher">
-<code class="descname">set_outbound_cipher</code><span class="sig-paren">(</span><em>block_engine</em>, <em>block_size</em>, <em>mac_engine</em>, <em>mac_size</em>, <em>mac_key</em>, <em>sdctr=False</em>, <em>etm=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_outbound_cipher" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_outbound_cipher</code><span class="sig-paren">(</span><em class="sig-param">block_engine</em>, <em class="sig-param">block_size</em>, <em class="sig-param">mac_engine</em>, <em class="sig-param">mac_size</em>, <em class="sig-param">mac_key</em>, <em class="sig-param">sdctr=False</em>, <em class="sig-param">etm=False</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.set_outbound_cipher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Switch outbound data cipher.
 :param etm: Set encrypt-then-mac from OpenSSH</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.packet.Packetizer.start_handshake">
-<code class="descname">start_handshake</code><span class="sig-paren">(</span><em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.start_handshake" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_handshake</code><span class="sig-paren">(</span><em class="sig-param">timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.packet.Packetizer.start_handshake" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tells <a class="reference internal" href="#paramiko.packet.Packetizer" title="paramiko.packet.Packetizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Packetizer</span></code></a> that the handshake process started.
 Starts a book keeping timer that can signal a timeout in the
 handshake process.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – amount of seconds to wait before timing out</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – amount of seconds to wait before timing out</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -216,18 +193,6 @@ handshake process.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -265,17 +230,15 @@ handshake process.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -284,7 +247,7 @@ handshake process.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

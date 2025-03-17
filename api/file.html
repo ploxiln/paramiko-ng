@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Buffered files &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cross-platform pipe implementations" href="pipe.html" />
@@ -38,121 +36,79 @@
 <span id="buffered-files"></span><h1>Buffered files<a class="headerlink" href="#module-paramiko.file" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="paramiko.file.BufferedFile">
-<em class="property">class </em><code class="descclassname">paramiko.file.</code><code class="descname">BufferedFile</code><a class="headerlink" href="#paramiko.file.BufferedFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.file.</code><code class="sig-name descname">BufferedFile</code><a class="headerlink" href="#paramiko.file.BufferedFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reusable base class to implement Python-style file buffering around a
 simpler stream.</p>
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="paramiko.file.BufferedFile.__iter__">
-<code class="descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.__iter__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an iterator that can be used to iterate over the lines in this
-file.  This iterator happens to return the file itself, since a file is
-its own iterator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">ValueError</span></code> – if the file is closed.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="paramiko.file.BufferedFile.__next__">
-<code class="descname">__next__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.__next__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the next line from the input, or raises <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code>
-when EOF is hit.  Unlike python file objects, it’s okay to mix
-calls to <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#next" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">next</span></code></a> and <a class="reference internal" href="#paramiko.file.BufferedFile.readline" title="paramiko.file.BufferedFile.readline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readline</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> – when the end of the file is reached.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a line (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) read from the file.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="paramiko.file.BufferedFile.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.close" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close the file.  Future read and write operations will fail.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.flush">
-<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.flush" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write out any data in the write buffer.  This may do nothing if write
 buffering is not turned on.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read at most <code class="docutils literal notranslate"><span class="pre">size</span></code> bytes from the file (less if we hit the end of
 the file first).  If the <code class="docutils literal notranslate"><span class="pre">size</span></code> argument is negative or omitted,
 read all the remaining data in the file.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">'b'</span></code> mode flag is ignored (<code class="docutils literal notranslate"><span class="pre">self.FLAG_BINARY</span></code> in
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">'b'</span></code> mode flag is ignored (<code class="docutils literal notranslate"><span class="pre">self.FLAG_BINARY</span></code> in
 <code class="docutils literal notranslate"><span class="pre">self._flags</span></code>), because SSH treats all files as binary, since we
 have no idea what encoding the file is in, or even if the file is
 text data.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data read from the file (as bytes), or an empty string if EOF was
-encountered immediately</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum number of bytes to read</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data read from the file (as bytes), or an empty string if EOF was
+encountered immediately</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.readable">
-<code class="descname">readable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readable" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the file can be read from.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.read" title="paramiko.file.BufferedFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
-an exception.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be read from. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.read" title="paramiko.file.BufferedFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a> will raise
+an exception.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.readinto">
-<code class="descname">readinto</code><span class="sig-paren">(</span><em>buff</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readinto" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readinto</code><span class="sig-paren">(</span><em class="sig-param">buff</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readinto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read up to <code class="docutils literal notranslate"><span class="pre">len(buff)</span></code> bytes into <code class="docutils literal notranslate"><span class="pre">bytearray</span></code> <em>buff</em> and return the
 number of bytes read.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number of bytes read.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of bytes read.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.readline">
-<code class="descname">readline</code><span class="sig-paren">(</span><em>size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readline" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readline</code><span class="sig-paren">(</span><em class="sig-param">size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read one entire line from the file.  A trailing newline character is
 kept in the string (but may be absent when a file ends with an
 incomplete line).  If the size argument is present and non-negative, it
@@ -160,157 +116,135 @@ is a maximum byte count (including the trailing newline) and an
 incomplete line may be returned.  An empty string is returned only when
 EOF is encountered immediately.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Unlike stdio’s <code class="docutils literal notranslate"><span class="pre">fgets</span></code>, the returned string contains null
+<p class="admonition-title">Note</p>
+<p>Unlike stdio’s <code class="docutils literal notranslate"><span class="pre">fgets</span></code>, the returned string contains null
 characters (<code class="docutils literal notranslate"><span class="pre">'\0'</span></code>) if they occurred in the input.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum length of returned string.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">next line of the file, or an empty string if the end of the
-file has been reached.<p>If the file was opened in binary (<code class="docutils literal notranslate"><span class="pre">'b'</span></code>) mode: bytes are returned
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – maximum length of returned string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>next line of the file, or an empty string if the end of the
+file has been reached.</p>
+<p>If the file was opened in binary (<code class="docutils literal notranslate"><span class="pre">'b'</span></code>) mode: bytes are returned
 Else: the encoding of the file is assumed to be UTF-8 and character
 strings (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) are returned</p>
-</td>
-</tr>
-</tbody>
-</table>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.readlines">
-<code class="descname">readlines</code><span class="sig-paren">(</span><em>sizehint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readlines" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readlines</code><span class="sig-paren">(</span><em class="sig-param">sizehint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.readlines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read all remaining lines using <a class="reference internal" href="#paramiko.file.BufferedFile.readline" title="paramiko.file.BufferedFile.readline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readline</span></code></a> and return them as a list.
 If the optional <code class="docutils literal notranslate"><span class="pre">sizehint</span></code> argument is present, instead of reading up
 to EOF, whole lines totalling approximately sizehint bytes (possibly
 after rounding up to an internal buffer size) are read.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired maximum number of bytes to read.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of lines read from the file.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sizehint</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – desired maximum number of bytes to read.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of lines read from the file.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.seek">
-<code class="descname">seek</code><span class="sig-paren">(</span><em>offset</em>, <em>whence=0</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.seek" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">seek</code><span class="sig-paren">(</span><em class="sig-param">offset</em>, <em class="sig-param">whence=0</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.seek" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the file’s current position, like stdio’s <code class="docutils literal notranslate"><span class="pre">fseek</span></code>.  Not all file
 objects support seeking.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If a file is opened in append mode (<code class="docutils literal notranslate"><span class="pre">'a'</span></code> or <code class="docutils literal notranslate"><span class="pre">'a+'</span></code>), any seek
+<p class="admonition-title">Note</p>
+<p>If a file is opened in append mode (<code class="docutils literal notranslate"><span class="pre">'a'</span></code> or <code class="docutils literal notranslate"><span class="pre">'a+'</span></code>), any seek
 operations will be undone at the next write (as the file position
 will move back to the end of the file).</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – position to move to within the file, relative to <code class="docutils literal notranslate"><span class="pre">whence</span></code>.</li>
-<li><strong>whence</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – type of movement: 0 = absolute; 1 = relative to the current
-position; 2 = relative to the end of the file.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – position to move to within the file, relative to <code class="docutils literal notranslate"><span class="pre">whence</span></code>.</p></li>
+<li><p><strong>whence</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – type of movement: 0 = absolute; 1 = relative to the current
+position; 2 = relative to the end of the file.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the file doesn’t support random access.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the file doesn’t support random access.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.seekable">
-<code class="descname">seekable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.seekable" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">seekable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.seekable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the file supports random access.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.seek" title="paramiko.file.BufferedFile.seek"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seek</span></code></a> will
-raise an exception.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file supports random access. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.seek" title="paramiko.file.BufferedFile.seek"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seek</span></code></a> will
+raise an exception.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.tell">
-<code class="descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.tell" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.tell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the file’s current position.  This may not be accurate or
 useful if the underlying file doesn’t support random access, or was
 opened in append mode.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">file position (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>file position (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> of bytes).</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.writable">
-<code class="descname">writable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.writable" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">writable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.writable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the file can be written to.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.write" title="paramiko.file.BufferedFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
-raise an exception.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the file can be written to. If <a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, <a class="reference internal" href="#paramiko.file.BufferedFile.write" title="paramiko.file.BufferedFile.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a> will
+raise an exception.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.write" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write data to the file.  If write buffering is on (<code class="docutils literal notranslate"><span class="pre">bufsize</span></code> was
 specified and non-zero), some or all of the data may not actually be
 written yet.  (Use <a class="reference internal" href="#paramiko.file.BufferedFile.flush" title="paramiko.file.BufferedFile.flush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flush</span></code></a> or <a class="reference internal" href="#paramiko.file.BufferedFile.close" title="paramiko.file.BufferedFile.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a> to force buffered data to be
 written out.)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – <code class="docutils literal notranslate"><span class="pre">str</span></code>/<code class="docutils literal notranslate"><span class="pre">bytes</span></code> data to write</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – <code class="docutils literal notranslate"><span class="pre">str</span></code>/<code class="docutils literal notranslate"><span class="pre">bytes</span></code> data to write</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.writelines">
-<code class="descname">writelines</code><span class="sig-paren">(</span><em>sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.writelines" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">writelines</code><span class="sig-paren">(</span><em class="sig-param">sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.writelines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a sequence of strings to the file.  The sequence can be any
 iterable object producing strings, typically a list of strings.  (The
 name is intended to match <a class="reference internal" href="#paramiko.file.BufferedFile.readlines" title="paramiko.file.BufferedFile.readlines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readlines</span></code></a>; <a class="reference internal" href="#paramiko.file.BufferedFile.writelines" title="paramiko.file.BufferedFile.writelines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writelines</span></code></a> does not add line
 separators.)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sequence</strong> – an iterable sequence of strings.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sequence</strong> – an iterable sequence of strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.file.BufferedFile.xreadlines">
-<code class="descname">xreadlines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.xreadlines" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">xreadlines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.file.BufferedFile.xreadlines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Identical to <code class="docutils literal notranslate"><span class="pre">iter(f)</span></code>.  This is a deprecated file interface that
 predates Python iterator support.</p>
 </dd></dl>
@@ -342,18 +276,6 @@ predates Python iterator support.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -391,17 +313,15 @@ predates Python iterator support.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -410,7 +330,7 @@ predates Python iterator support.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

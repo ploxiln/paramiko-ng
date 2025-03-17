@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>ProxyCommand support &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Server implementation" href="server.html" />
@@ -38,7 +36,7 @@
 <span id="proxycommand-support"></span><h1><code class="docutils literal notranslate"><span class="pre">ProxyCommand</span></code> support<a class="headerlink" href="#module-paramiko.proxy" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="paramiko.proxy.ProxyCommand">
-<em class="property">class </em><code class="descclassname">paramiko.proxy.</code><code class="descname">ProxyCommand</code><span class="sig-paren">(</span><em>command_line</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.proxy.</code><code class="sig-name descname">ProxyCommand</code><span class="sig-paren">(</span><em class="sig-param">command_line</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps a subprocess running ProxyCommand-driven programs.</p>
 <p>This class implements a the socket-like interface needed by the
 <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> and <a class="reference internal" href="packet.html#paramiko.packet.Packetizer" title="paramiko.packet.Packetizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Packetizer</span></code></a> classes. Using this class instead of a
@@ -47,48 +45,40 @@ proxy traffic between the client and a server hosted in another machine.</p>
 <p>Instances of this class may be used as context managers.</p>
 <dl class="method">
 <dt id="paramiko.proxy.ProxyCommand.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>command_line</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">command_line</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new CommandProxy instance. The instance created by this
 class can be passed as an argument to the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> class.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command_line</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command that should be executed and used as the proxy.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command_line</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command that should be executed and used as the proxy.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.proxy.ProxyCommand.recv">
-<code class="descname">recv</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.recv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">recv</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.recv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read from the standard output of the forked program.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – how many chars should be read</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the string of bytes read, which may be shorter than requested</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – how many chars should be read</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the string of bytes read, which may be shorter than requested</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.proxy.ProxyCommand.send">
-<code class="descname">send</code><span class="sig-paren">(</span><em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.send" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.proxy.ProxyCommand.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the content received from the SSH client to the standard
 input of the forked command.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>content</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – string to be sent to the forked command</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>content</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – string to be sent to the forked command</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -118,18 +108,6 @@ input of the forked command.</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -167,17 +145,15 @@ input of the forked command.</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -186,7 +162,7 @@ input of the forked command.</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

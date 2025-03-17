@@ -1,19 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Client &#8212; Paramiko-NG  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Message" href="message.html" />
@@ -39,7 +37,7 @@
 <p>SSH client &amp; key policies</p>
 <dl class="class">
 <dt id="paramiko.client.SSHClient">
-<em class="property">class </em><code class="descclassname">paramiko.client.</code><code class="descname">SSHClient</code><a class="headerlink" href="#paramiko.client.SSHClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.client.</code><code class="sig-name descname">SSHClient</code><a class="headerlink" href="#paramiko.client.SSHClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>A high-level representation of a session with an SSH server.  This class
 wraps <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>, <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>, and <a class="reference internal" href="sftp.html#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> to take care of most
 aspects of authenticating and opening channels.  A typical use case is:</p>
@@ -54,17 +52,25 @@ checking.  The default mechanism is to try to use local key files or an
 SSH agent (if one is running).</p>
 <p>Instances of this class may be used as context managers.</p>
 <div class="versionadded">
-<p><span class="versionmodified">New in version 1.6.</span></p>
+<p><span class="versionmodified added">New in version 1.6.</span></p>
 </div>
 <dl class="method">
 <dt id="paramiko.client.SSHClient.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new SSHClient.</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="paramiko.client.SSHClient.get_security_options">
+<code class="sig-name descname">get_security_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.get_security_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <a class="reference internal" href="transport.html#paramiko.transport.SecurityOptions" title="paramiko.transport.SecurityOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SecurityOptions</span></code></a> object which can be used to tweak the authentication
+and encryption algorithms this client will permit (for encryption, digest/hash
+operations, public keys, and key exchanges) and the order of preference for them.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.load_system_host_keys">
-<code class="descname">load_system_host_keys</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.load_system_host_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_system_host_keys</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.load_system_host_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load host keys from a system (read-only) file.  Host keys read with
 this method will not be saved back by <a class="reference internal" href="#paramiko.client.SSHClient.save_host_keys" title="paramiko.client.SSHClient.save_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_host_keys</span></code></a>.</p>
 <p>This method can be called multiple times.  Each new set of host keys
@@ -74,22 +80,20 @@ conflicts).</p>
 keys from the user’s local “known hosts” file, as used by OpenSSH,
 and no exception will be raised if the file can’t be read.  This is
 probably only useful on posix.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read, or <code class="docutils literal notranslate"><span class="pre">None</span></code></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> –
-if a filename was provided and the file could not be read</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> –
+if a filename was provided and the file could not be read</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.load_host_keys">
-<code class="descname">load_host_keys</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.load_host_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_host_keys</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.load_host_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load host keys from a local host-key file.  Host keys read with this
 method will be checked after keys loaded via <a class="reference internal" href="#paramiko.client.SSHClient.load_system_host_keys" title="paramiko.client.SSHClient.load_system_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_system_host_keys</span></code></a>,
 but will be saved back by <a class="reference internal" href="#paramiko.client.SSHClient.save_host_keys" title="paramiko.client.SSHClient.save_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_host_keys</span></code></a> (so they can be modified).
@@ -98,94 +102,81 @@ saves them, when connecting to a previously-unknown server.</p>
 <p>This method can be called multiple times.  Each new set of host keys
 will be merged with the existing set (new replacing old if there are
 conflicts).  When automatically saving, the last hostname is used.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the filename could not be read</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to read</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the filename could not be read</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.save_host_keys">
-<code class="descname">save_host_keys</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.save_host_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_host_keys</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.save_host_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the host keys back to a file.  Only the host keys loaded with
 <a class="reference internal" href="#paramiko.client.SSHClient.load_host_keys" title="paramiko.client.SSHClient.load_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_host_keys</span></code></a> (plus any added directly) will be saved – not any
 host keys loaded with <a class="reference internal" href="#paramiko.client.SSHClient.load_system_host_keys" title="paramiko.client.SSHClient.load_system_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_system_host_keys</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to save to</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the file could not be written</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename to save to</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">IOError</span></code> – if the file could not be written</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.get_host_keys">
-<code class="descname">get_host_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.get_host_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_host_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.get_host_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.  This can be used to examine the
 local host keys or change them.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the local host keys as a <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the local host keys as a <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.set_log_channel">
-<code class="descname">set_log_channel</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.set_log_channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_log_channel</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.set_log_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the channel for logging.  The default is <code class="docutils literal notranslate"><span class="pre">&quot;paramiko.transport&quot;</span></code>
 but it can be set to anything you want.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new channel name for logging</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – new channel name for logging</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.set_missing_host_key_policy">
-<code class="descname">set_missing_host_key_policy</code><span class="sig-paren">(</span><em>policy</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.set_missing_host_key_policy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_missing_host_key_policy</code><span class="sig-paren">(</span><em class="sig-param">policy</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.set_missing_host_key_policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set policy to use when connecting to servers without a known host key.</p>
 <p>Specifically:</p>
 <ul class="simple">
-<li>A <strong>policy</strong> is a “policy class” (or instance thereof), namely some
+<li><p>A <strong>policy</strong> is a “policy class” (or instance thereof), namely some
 subclass of <a class="reference internal" href="#paramiko.client.MissingHostKeyPolicy" title="paramiko.client.MissingHostKeyPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MissingHostKeyPolicy</span></code></a> such as <a class="reference internal" href="#paramiko.client.RejectPolicy" title="paramiko.client.RejectPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RejectPolicy</span></code></a> (the
 default), <a class="reference internal" href="#paramiko.client.AutoAddPolicy" title="paramiko.client.AutoAddPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutoAddPolicy</span></code></a>, <a class="reference internal" href="#paramiko.client.WarningPolicy" title="paramiko.client.WarningPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WarningPolicy</span></code></a>, or a user-created
-subclass.</li>
-<li>A host key is <strong>known</strong> when it appears in the client object’s cached
+subclass.</p></li>
+<li><p>A host key is <strong>known</strong> when it appears in the client object’s cached
 host keys structures (those manipulated by <a class="reference internal" href="#paramiko.client.SSHClient.load_system_host_keys" title="paramiko.client.SSHClient.load_system_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_system_host_keys</span></code></a>
-and/or <a class="reference internal" href="#paramiko.client.SSHClient.load_host_keys" title="paramiko.client.SSHClient.load_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_host_keys</span></code></a>).</li>
+and/or <a class="reference internal" href="#paramiko.client.SSHClient.load_host_keys" title="paramiko.client.SSHClient.load_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_host_keys</span></code></a>).</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>policy</strong> (<a class="reference internal" href="#paramiko.client.MissingHostKeyPolicy" title="paramiko.client.MissingHostKeyPolicy"><em>MissingHostKeyPolicy</em></a>) – the policy to use when receiving a host key from a
-previously-unknown server</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>policy</strong> (<a class="reference internal" href="#paramiko.client.MissingHostKeyPolicy" title="paramiko.client.MissingHostKeyPolicy"><em>MissingHostKeyPolicy</em></a>) – the policy to use when receiving a host key from a
+previously-unknown server</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><em>hostname</em>, <em>port=22</em>, <em>username=None</em>, <em>password=None</em>, <em>pkey=None</em>, <em>key_filename=None</em>, <em>timeout=None</em>, <em>allow_agent=True</em>, <em>look_for_keys=True</em>, <em>compress=False</em>, <em>sock=None</em>, <em>gss_auth=False</em>, <em>gss_kex=False</em>, <em>gss_deleg_creds=True</em>, <em>gss_host=None</em>, <em>banner_timeout=None</em>, <em>auth_timeout=None</em>, <em>gss_trust_dns=True</em>, <em>passphrase=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.connect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param">hostname</em>, <em class="sig-param">port=22</em>, <em class="sig-param">username=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">pkey=None</em>, <em class="sig-param">key_filename=None</em>, <em class="sig-param">timeout=None</em>, <em class="sig-param">allow_agent=True</em>, <em class="sig-param">look_for_keys=True</em>, <em class="sig-param">compress=False</em>, <em class="sig-param">sock=None</em>, <em class="sig-param">gss_auth=False</em>, <em class="sig-param">gss_kex=False</em>, <em class="sig-param">gss_deleg_creds=True</em>, <em class="sig-param">gss_host=None</em>, <em class="sig-param">banner_timeout=None</em>, <em class="sig-param">auth_timeout=None</em>, <em class="sig-param">gss_trust_dns=True</em>, <em class="sig-param">passphrase=None</em>, <em class="sig-param">handshake_timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to an SSH server and authenticate to it.  The server’s host key
 is checked against the system host keys (see <a class="reference internal" href="#paramiko.client.SSHClient.load_system_host_keys" title="paramiko.client.SSHClient.load_system_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_system_host_keys</span></code></a>)
 and any local host keys (<a class="reference internal" href="#paramiko.client.SSHClient.load_host_keys" title="paramiko.client.SSHClient.load_host_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_host_keys</span></code></a>).  If the server’s hostname
@@ -195,100 +186,103 @@ to reject the key and raise an <a class="reference internal" href="ssh_exception
 <p>Authentication is attempted in the following order of priority:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">pkey</span></code> or <code class="docutils literal notranslate"><span class="pre">key_filename</span></code> passed in (if any)<ul>
-<li><code class="docutils literal notranslate"><span class="pre">key_filename</span></code> may contain OpenSSH public certificate paths
+<li><p>The <code class="docutils literal notranslate"><span class="pre">pkey</span></code> or <code class="docutils literal notranslate"><span class="pre">key_filename</span></code> passed in (if any)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">key_filename</span></code> may contain OpenSSH public certificate paths
 as well as regular private-key paths; when files ending in
 <code class="docutils literal notranslate"><span class="pre">-cert.pub</span></code> are found, they are assumed to match a private
 key, and both components will be loaded. (The private key
 itself does <em>not</em> need to be listed in <code class="docutils literal notranslate"><span class="pre">key_filename</span></code> for
-this to occur - <em>just</em> the certificate.)</li>
+this to occur - <em>just</em> the certificate.)</p></li>
 </ul>
 </li>
-<li>Any key we can find through an SSH agent</li>
-<li>Any “id_rsa”, “id_dsa”, “id_ecdsa”, or “id_ed25519” key
-discoverable in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code><ul>
-<li>When OpenSSH-style public certificates exist that match an
+<li><p>Any key we can find through an SSH agent</p></li>
+<li><p>Any “id_rsa”, “id_dsa”, “id_ecdsa”, or “id_ed25519” key
+discoverable in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code></p>
+<ul>
+<li><p>When OpenSSH-style public certificates exist that match an
 existing such private key (so e.g. one has <code class="docutils literal notranslate"><span class="pre">id_rsa</span></code> and
 <code class="docutils literal notranslate"><span class="pre">id_rsa-cert.pub</span></code>) the certificate will be loaded alongside
-the private key and used for authentication.</li>
+the private key and used for authentication.</p></li>
 </ul>
 </li>
-<li>Plain username/password auth, if a password was given</li>
+<li><p>Plain username/password auth, if a password was given</p></li>
 </ul>
 </div></blockquote>
 <p>If a private key requires a password to unlock it, and a password is
 passed in, that password will be used to attempt to unlock the key.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the server to connect to</li>
-<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the server port to connect to</li>
-<li><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as (defaults to the current local
-username)</li>
-<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for password authentication; is also used for private key
-decryption if <code class="docutils literal notranslate"><span class="pre">passphrase</span></code> is not given.</li>
-<li><strong>passphrase</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for decrypting private keys.</li>
-<li><strong>pkey</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – an optional private key to use for authentication</li>
-<li><strong>key_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename, or list of filenames, of optional private key(s)
-and/or certs to try for authentication</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) for the TCP connect</li>
-<li><strong>allow_agent</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable connecting to the SSH agent</li>
-<li><strong>look_for_keys</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable searching for discoverable private key
-files in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code></li>
-<li><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to True to turn on compression</li>
-<li><strong>sock</strong> (<em>socket</em>) – an open socket or socket-like object (such as a <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>) to use
-for communication to the target host</li>
-<li><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to use GSS-API authentication</li>
-<li><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication</li>
-<li><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Delegate GSS-API client credentials or not</li>
-<li><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The targets name in the kerberos database. default: hostname</li>
-<li><strong>gss_trust_dns</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Indicates whether or not the DNS is trusted to securely
-canonicalize the name of the host being connected to (default
-<code class="docutils literal notranslate"><span class="pre">True</span></code>).</li>
-<li><strong>banner_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait
-for the SSH banner to be presented.</li>
-<li><strong>auth_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) to wait for
-an authentication response.</li>
+<p>Note that the following parameters are documented in a different
+(more logical) order than they have in the function signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the server to connect to</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the server port to connect to</p></li>
+<li><p><strong>username</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the username to authenticate as (defaults to the current local username)</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for password authentication; is also used for private key
+decryption if <code class="docutils literal notranslate"><span class="pre">passphrase</span></code> is not given.</p></li>
+<li><p><strong>passphrase</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Used for decrypting private key files</p></li>
+<li><p><strong>pkey</strong> (<a class="reference internal" href="keys.html#paramiko.pkey.PKey" title="paramiko.pkey.PKey"><em>PKey</em></a>) – an optional private key (object) to use for authentication</p></li>
+<li><p><strong>key_filename</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the filename, or list of filenames, of optional private key(s)
+and/or certs to try for authentication</p></li>
+<li><p><strong>look_for_keys</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable searching for discoverable private key files in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code></p></li>
+<li><p><strong>allow_agent</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – set to False to disable connecting to the SSH agent</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an optional timeout (in seconds) for the overall SSH session
+negotiation (also applies to the TCP connection)</p></li>
+<li><p><strong>banner_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – override default timeout (in seconds) to wait for the SSH banner
+to be presented</p></li>
+<li><p><strong>handshake_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – override default timeout (in seconds) to wait for the SSH handshake
+to finish after SSH banner exchange</p></li>
+<li><p><strong>auth_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – override default timeout (in seconds) to wait for an authentication response</p></li>
+<li><p><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – enable deflate/gzip SSH transport compression</p></li>
+<li><p><strong>sock</strong> (<em>socket</em>) – an open socket or socket-like object (such as a <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>) to use
+for communication to the target host</p></li>
+<li><p><strong>gss_auth</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Use GSS-API authentication</p></li>
+<li><p><strong>gss_kex</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Perform GSS-API Key Exchange and user authentication</p></li>
+<li><p><strong>gss_deleg_creds</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to delegate GSS-API client credentials (default <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
+<li><p><strong>gss_host</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The targets name in the kerberos database. default: hostname</p></li>
+<li><p><strong>gss_trust_dns</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Indicates whether or not the DNS is trusted to securely
+canonicalize the name of the host being connected to (default <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.BadHostKeyException" title="paramiko.ssh_exception.BadHostKeyException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BadHostKeyException</span></code></a> – if the server’s host key could not be
-verified</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.AuthenticationException" title="paramiko.ssh_exception.AuthenticationException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AuthenticationException</span></code></a> – if authentication failed</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if there was any other error connecting or
-establishing an SSH session</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.7/library/socket.html#socket.error" title="(in Python v3.7)"><strong>socket.error</strong></a> – if a socket error occurred while connecting</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.BadHostKeyException" title="paramiko.ssh_exception.BadHostKeyException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BadHostKeyException</span></code></a> – if the server’s host key could not be verified</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.AuthenticationException" title="paramiko.ssh_exception.AuthenticationException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AuthenticationException</span></code></a> – if authentication failed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if there was some other error establishing an SSH session</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/socket.html#socket.error" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">socket.error</span></code></a> – if a socket error occurred while connecting</p>
+</dd>
+</dl>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 1.15: </span>Added the <code class="docutils literal notranslate"><span class="pre">banner_timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">gss_auth</span></code>, <code class="docutils literal notranslate"><span class="pre">gss_kex</span></code>,
+<p><span class="versionmodified changed">Changed in version 1.15: </span>Added the <code class="docutils literal notranslate"><span class="pre">banner_timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">gss_auth</span></code>, <code class="docutils literal notranslate"><span class="pre">gss_kex</span></code>,
 <code class="docutils literal notranslate"><span class="pre">gss_deleg_creds</span></code> and <code class="docutils literal notranslate"><span class="pre">gss_host</span></code> arguments.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 2.3: </span>Added the <code class="docutils literal notranslate"><span class="pre">gss_trust_dns</span></code> argument.</p>
+<p><span class="versionmodified changed">Changed in version 2.2: </span>Added the <code class="docutils literal notranslate"><span class="pre">auth_timeout</span></code> argument.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 2.4: </span>Added the <code class="docutils literal notranslate"><span class="pre">passphrase</span></code> argument.</p>
+<p><span class="versionmodified changed">Changed in version 2.3: </span>Added the <code class="docutils literal notranslate"><span class="pre">gss_trust_dns</span></code> argument.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.4: </span>Added the <code class="docutils literal notranslate"><span class="pre">passphrase</span></code> argument.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.9: </span>Added the <code class="docutils literal notranslate"><span class="pre">handshake_timeout</span></code> argument.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.close" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close this SSHClient and its underlying <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Failure to do this may, in some situations, cause your Python
+<p class="admonition-title">Warning</p>
+<p>Failure to do this may, in some situations, cause your Python
 interpreter to hang at shutdown (often due to race conditions).
 It’s good practice to <a class="reference internal" href="#paramiko.client.SSHClient.close" title="paramiko.client.SSHClient.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a> your client objects anytime you’re
 done using them, instead of relying on garbage collection.</p>
@@ -297,112 +291,99 @@ done using them, instead of relying on garbage collection.</p>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.exec_command">
-<code class="descname">exec_command</code><span class="sig-paren">(</span><em>command</em>, <em>bufsize=-1</em>, <em>timeout=None</em>, <em>get_pty=False</em>, <em>environment=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.exec_command" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">exec_command</code><span class="sig-paren">(</span><em class="sig-param">command</em>, <em class="sig-param">bufsize=-1</em>, <em class="sig-param">timeout=None</em>, <em class="sig-param">get_pty=False</em>, <em class="sig-param">environment=None</em>, <em class="sig-param">open_timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.exec_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a command on the SSH server.  A new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> is opened and
 the requested command is executed.  The command’s input and output
 streams are returned as Python <code class="docutils literal notranslate"><span class="pre">file</span></code>-like objects representing
 stdin, stdout, and stderr.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command to execute</li>
-<li><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – interpreted the same way as by the built-in <code class="docutils literal notranslate"><span class="pre">file()</span></code> function in
-Python</li>
-<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – set command’s channel timeout. See <a class="reference internal" href="channel.html#paramiko.channel.Channel.settimeout" title="paramiko.channel.Channel.settimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.settimeout</span></code></a></li>
-<li><strong>get_pty</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Request a pseudo-terminal from the server (default <code class="docutils literal notranslate"><span class="pre">False</span></code>).
-See <a class="reference internal" href="channel.html#paramiko.channel.Channel.get_pty" title="paramiko.channel.Channel.get_pty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.get_pty</span></code></a></li>
-<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – <p>a dict of shell environment variables, to be merged into the
-default environment that the remote command executes within.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the command to execute</p></li>
+<li><p><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – interpreted the same way as by the built-in <code class="docutils literal notranslate"><span class="pre">file()</span></code> function in
+Python</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – set command’s channel timeout. See <a class="reference internal" href="channel.html#paramiko.channel.Channel.settimeout" title="paramiko.channel.Channel.settimeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.settimeout</span></code></a></p></li>
+<li><p><strong>get_pty</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Request a pseudo-terminal from the server (default <code class="docutils literal notranslate"><span class="pre">False</span></code>).
+See <a class="reference internal" href="channel.html#paramiko.channel.Channel.get_pty" title="paramiko.channel.Channel.get_pty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.get_pty</span></code></a></p></li>
+<li><p><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – a dict of shell environment variables, to be merged into the
+default environment that the remote command executes within.</p></li>
+<li><p><strong>open_timeout</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – <p>timeout (in seconds) to open a new channel. If None, value of <code class="xref py py-obj docutils literal notranslate"><span class="pre">timeout</span></code> is used.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Servers may silently reject some environment variables; see the
+<p class="admonition-title">Warning</p>
+<p>Servers may silently reject some environment variables; see the
 warning in <a class="reference internal" href="channel.html#paramiko.channel.Channel.set_environment_variable" title="paramiko.channel.Channel.set_environment_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.set_environment_variable</span></code></a> for details.</p>
 </div>
-</li>
+</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the stdin, stdout, and stderr of the executing command, as a
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the stdin, stdout, and stderr of the executing command, as a
 3-tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the server fails to execute the command</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the server fails to execute the command</p>
+</dd>
+</dl>
 <div class="versionchanged">
-<p><span class="versionmodified">Changed in version 1.10: </span>Added the <code class="docutils literal notranslate"><span class="pre">get_pty</span></code> kwarg.</p>
+<p><span class="versionmodified changed">Changed in version 1.10: </span>Added the <code class="docutils literal notranslate"><span class="pre">get_pty</span></code> kwarg.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.invoke_shell">
-<code class="descname">invoke_shell</code><span class="sig-paren">(</span><em>term='vt100'</em>, <em>width=80</em>, <em>height=24</em>, <em>width_pixels=0</em>, <em>height_pixels=0</em>, <em>environment=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.invoke_shell" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">invoke_shell</code><span class="sig-paren">(</span><em class="sig-param">term='vt100'</em>, <em class="sig-param">width=80</em>, <em class="sig-param">height=24</em>, <em class="sig-param">width_pixels=0</em>, <em class="sig-param">height_pixels=0</em>, <em class="sig-param">environment=None</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.invoke_shell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start an interactive shell session on the SSH server.  A new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a>
 is opened and connected to a pseudo-terminal using the requested
 terminal type and size.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the terminal type to emulate (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>)</li>
-<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in characters) of the terminal window</li>
-<li><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in characters) of the terminal window</li>
-<li><strong>width_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in pixels) of the terminal window</li>
-<li><strong>height_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in pixels) of the terminal window</li>
-<li><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – the command’s environment</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the terminal type to emulate (for example, <code class="docutils literal notranslate"><span class="pre">&quot;vt100&quot;</span></code>)</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in characters) of the terminal window</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in characters) of the terminal window</p></li>
+<li><p><strong>width_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the width (in pixels) of the terminal window</p></li>
+<li><p><strong>height_pixels</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the height (in pixels) of the terminal window</p></li>
+<li><p><strong>environment</strong> (<a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – the command’s environment</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> connected to the remote shell</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the server fails to invoke a shell</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new <a class="reference internal" href="channel.html#paramiko.channel.Channel" title="paramiko.channel.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> connected to the remote shell</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ssh_exception.html#paramiko.ssh_exception.SSHException" title="paramiko.ssh_exception.SSHException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHException</span></code></a> – if the server fails to invoke a shell</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.open_sftp">
-<code class="descname">open_sftp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.open_sftp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">open_sftp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.open_sftp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an SFTP session on the SSH server.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a new <a class="reference internal" href="sftp.html#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new <a class="reference internal" href="sftp.html#paramiko.sftp_client.SFTPClient" title="paramiko.sftp_client.SFTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SFTPClient</span></code></a> session object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="paramiko.client.SSHClient.get_transport">
-<code class="descname">get_transport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.get_transport" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_transport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.SSHClient.get_transport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the underlying <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> object for this SSH connection.
 This can be used to perform lower-level tasks, like opening specific
 kinds of channels.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> for this connection</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the <a class="reference internal" href="transport.html#paramiko.transport.Transport" title="paramiko.transport.Transport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transport</span></code></a> for this connection</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.client.MissingHostKeyPolicy">
-<em class="property">class </em><code class="descclassname">paramiko.client.</code><code class="descname">MissingHostKeyPolicy</code><a class="headerlink" href="#paramiko.client.MissingHostKeyPolicy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.client.</code><code class="sig-name descname">MissingHostKeyPolicy</code><a class="headerlink" href="#paramiko.client.MissingHostKeyPolicy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface for defining the policy that <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a> should use when the
 SSH server’s hostname is not in either the system host keys or the
 application’s keys.  Pre-made classes implement policies for automatically
@@ -411,29 +392,23 @@ and for automatically rejecting the key (<a class="reference internal" href="#pa
 <p>This function may be used to ask the user to verify the key, for example.</p>
 <dl class="method">
 <dt id="paramiko.client.MissingHostKeyPolicy.missing_host_key">
-<code class="descname">missing_host_key</code><span class="sig-paren">(</span><em>client</em>, <em>hostname</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.MissingHostKeyPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">missing_host_key</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">hostname</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.MissingHostKeyPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when an <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a> receives a server key for a server that
 isn’t in either the system or local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.  To accept
 the key, simply return.  To reject, raised an exception (which will
 be passed to the calling application).</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="paramiko.client.MissingHostKeyPolicy.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#paramiko.client.MissingHostKeyPolicy.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="paramiko.client.AutoAddPolicy">
-<em class="property">class </em><code class="descclassname">paramiko.client.</code><code class="descname">AutoAddPolicy</code><a class="headerlink" href="#paramiko.client.AutoAddPolicy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.client.</code><code class="sig-name descname">AutoAddPolicy</code><a class="headerlink" href="#paramiko.client.AutoAddPolicy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Policy for automatically adding the hostname and new host key to the
 local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object, and saving it.  This is used by <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a>.</p>
 <dl class="method">
 <dt id="paramiko.client.AutoAddPolicy.missing_host_key">
-<code class="descname">missing_host_key</code><span class="sig-paren">(</span><em>client</em>, <em>hostname</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.AutoAddPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">missing_host_key</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">hostname</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.AutoAddPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when an <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a> receives a server key for a server that
 isn’t in either the system or local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.  To accept
 the key, simply return.  To reject, raised an exception (which will
@@ -444,12 +419,12 @@ be passed to the calling application).</p>
 
 <dl class="class">
 <dt id="paramiko.client.RejectPolicy">
-<em class="property">class </em><code class="descclassname">paramiko.client.</code><code class="descname">RejectPolicy</code><a class="headerlink" href="#paramiko.client.RejectPolicy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.client.</code><code class="sig-name descname">RejectPolicy</code><a class="headerlink" href="#paramiko.client.RejectPolicy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Policy for automatically rejecting the unknown hostname &amp; key.  This is
 used by <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a>.</p>
 <dl class="method">
 <dt id="paramiko.client.RejectPolicy.missing_host_key">
-<code class="descname">missing_host_key</code><span class="sig-paren">(</span><em>client</em>, <em>hostname</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.RejectPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">missing_host_key</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">hostname</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.RejectPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when an <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a> receives a server key for a server that
 isn’t in either the system or local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.  To accept
 the key, simply return.  To reject, raised an exception (which will
@@ -460,12 +435,12 @@ be passed to the calling application).</p>
 
 <dl class="class">
 <dt id="paramiko.client.WarningPolicy">
-<em class="property">class </em><code class="descclassname">paramiko.client.</code><code class="descname">WarningPolicy</code><a class="headerlink" href="#paramiko.client.WarningPolicy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramiko.client.</code><code class="sig-name descname">WarningPolicy</code><a class="headerlink" href="#paramiko.client.WarningPolicy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Policy for logging a Python-style warning for an unknown host key, but
 accepting it. This is used by <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a>.</p>
 <dl class="method">
 <dt id="paramiko.client.WarningPolicy.missing_host_key">
-<code class="descname">missing_host_key</code><span class="sig-paren">(</span><em>client</em>, <em>hostname</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.WarningPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">missing_host_key</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">hostname</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#paramiko.client.WarningPolicy.missing_host_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when an <a class="reference internal" href="#paramiko.client.SSHClient" title="paramiko.client.SSHClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SSHClient</span></code></a> receives a server key for a server that
 isn’t in either the system or local <a class="reference internal" href="hostkeys.html#paramiko.hostkeys.HostKeys" title="paramiko.hostkeys.HostKeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HostKeys</span></code></a> object.  To accept
 the key, simply return.  To reject, raised an exception (which will
@@ -499,18 +474,6 @@ be passed to the calling application).</p>
 
 
 
-
-
-    
-
-<p>
-<a class="badge" href="https://travis-ci.org/ploxiln/paramiko-ng">
-    <img
-        alt="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-        src="https://secure.travis-ci.org/ploxiln/paramiko-ng.svg?branch=master"
-    />
-</a>
-</p>
 
 
 <h3>Navigation</h3>
@@ -548,17 +511,15 @@ be passed to the calling application).</p>
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -567,7 +528,7 @@ be passed to the calling application).</p>
       &copy;Paramiko contributors.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
