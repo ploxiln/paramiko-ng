@@ -828,6 +828,7 @@ class Channel (ClosingContextManager):
         m.add_int(1)
         return self._send(s, m)
 
+    @open_only
     def sendall(self, s):
         """
         Send data to the channel, without allowing partial results.  Unlike
@@ -851,6 +852,7 @@ class Channel (ClosingContextManager):
             s = s[sent:]
         return None
 
+    @open_only
     def sendall_stderr(self, s):
         """
         Send data to the channel's "stderr" stream, without allowing partial
