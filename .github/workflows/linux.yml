@@ -57,10 +57,15 @@ jobs:
           pip freeze
 
       - name: Lint
-        if: ${{ ! (contains(matrix.imgtag, ':2.7-') || contains(matrix.imgtag, ':3.5-')) }}
         run: |
-          flake8 --version
-          flake8 --show-source
+          PY_MIN="(3,6)"
+          PY_MAX="(3,13)"
+          if python3 -e 'import sys; sys.exit(0 if $PY_MIN <= sys.version_info[0:2] <= $PY_MAX else 1)'; then
+            flake8 --version
+            flake8 --show-source
+          else
+            echo skip
+          fi
 
       - name: Test
         run: |
