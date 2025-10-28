@@ -107,7 +107,6 @@ class UtilTest(unittest.TestCase):
         self.assertTrue('SSHConfig' in symbols)
 
     def test_parse_config(self):
-        global test_config_file
         f = StringIO(test_config_file)
         config = paramiko.util.parse_ssh_config(f)
         self.assertEqual(config._config, [
@@ -118,7 +117,6 @@ class UtilTest(unittest.TestCase):
             {'host': ['spoo.example.com'], 'config': {'crazy': 'something else'}}])
 
     def test_host_config(self):
-        global test_config_file
         f = StringIO(test_config_file)
         config = paramiko.util.parse_ssh_config(f)
 

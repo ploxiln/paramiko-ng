@@ -32,8 +32,10 @@ jobs:
           - {imgtag: "python:3.11-bookworm", crypto_ver: "42.0.8"}
           - {imgtag: "python:3.12-bookworm", crypto_ver: "38.0.4"}
           - {imgtag: "python:3.12-bookworm", crypto_ver: "44.0.2"}
-          - {imgtag: "python:3.13-bookworm", crypto_ver: "38.0.4"}
-          - {imgtag: "python:3.13-bookworm", crypto_ver: "44.0.2"}
+          - {imgtag: "python:3.13-trixie",   crypto_ver: "38.0.4"}
+          - {imgtag: "python:3.13-trixie",   crypto_ver: "44.0.2"}
+          - {imgtag: "python:3.14-trixie",   crypto_ver: "38.0.4"}
+          - {imgtag: "python:3.14-trixie",   crypto_ver: "44.0.2"}
           - {imgtag: "pypy:3.11-7.3.19",     crypto_ver: "44.0.2"}
 
     container: "${{matrix.imgtag}}"
@@ -55,7 +57,6 @@ jobs:
           pip freeze
 
       - name: Lint
-        if: ${{ ! (contains(matrix.imgtag, ':2.7-') || contains(matrix.imgtag, ':3.5-')) }}
         run: |
           flake8 --version
           flake8 --show-source
