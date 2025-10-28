@@ -22,6 +22,6 @@ from paramiko.ssh_exception import (
 def test_ssh_exception_strings(exc):
     assert isinstance(str(exc), str)
     assert isinstance(repr(exc), str)
-    if type(exc) != BadHostKeyException:
+    if type(exc) is not BadHostKeyException:
         ne = pickle.loads(pickle.dumps(exc))
-        assert type(ne) == type(exc)
+        assert type(ne) is type(exc)

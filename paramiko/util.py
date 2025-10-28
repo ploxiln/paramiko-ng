@@ -211,7 +211,7 @@ _g_thread_lock = threading.Lock()
 
 
 def get_thread_id():
-    global _g_thread_data, _g_thread_counter, _g_thread_lock
+    global _g_thread_counter
     try:
         return _g_thread_data.id
     except AttributeError:
@@ -306,7 +306,7 @@ def poll_read(rlist, timeout=None):
         lookup = {}
         poller = select.poll()
         for f in rlist:
-            fd = f if type(f) == int else f.fileno()
+            fd = f if type(f) is int else f.fileno()
             lookup[fd] = f
             poller.register(fd, select.POLLIN)
         results = poller.poll(None if timeout is None else int(1000.0 * timeout))
