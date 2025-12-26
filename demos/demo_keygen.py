@@ -40,24 +40,8 @@ key_dispatch_table = {
 }
 
 
-def progress(arg=None):
-    if not arg:
-        sys.stdout.write('0%\x08\x08\x08 ')
-        sys.stdout.flush()
-    elif arg[0] == 'p':
-        sys.stdout.write('25%\x08\x08\x08\x08 ')
-        sys.stdout.flush()
-    elif arg[0] == 'h':
-        sys.stdout.write('50%\x08\x08\x08\x08 ')
-        sys.stdout.flush()
-    elif arg[0] == 'x':
-        sys.stdout.write('75%\x08\x08\x08\x08 ')
-        sys.stdout.flush()
-
-
 if __name__ == '__main__':
     phrase = None
-    pfunc = None
 
     parser = OptionParser(usage=usage)
     parser.add_option("-t", "--type", type="string", dest="ktype",
@@ -96,7 +80,6 @@ if __name__ == '__main__':
         phrase = getattr(options, 'newphrase')
 
     if options.verbose:
-        pfunc = progress
         sys.stdout.write("Generating priv/pub %s %d bits key pair (%s/%s.pub)..."
                          % (ktype, bits, filename, filename))
         sys.stdout.flush()
@@ -108,7 +91,7 @@ if __name__ == '__main__':
         raise SSHException("Unknown %s algorithm to generate keys pair" % ktype)
 
     # generating private key
-    prv = key_dispatch_table[ktype].generate(bits=bits, progress_func=pfunc)
+    prv = key_dispatch_table[ktype].generate(bits=bits)
     prv.write_private_key_file(filename, password=phrase)
 
     # generating public key
