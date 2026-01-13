@@ -29,7 +29,7 @@ from paramiko.channel import Channel, ChannelFile, ChannelStderrFile, ChannelStd
 from paramiko.ssh_exception import (
     SSHException, PasswordRequiredException, BadAuthenticationType,
     ChannelException, BadHostKeyException, AuthenticationException,
-    ProxyCommandFailure,
+    IncompatiblePeer, ProxyCommandFailure,
 )
 from paramiko.server import ServerInterface, SubsystemHandler, InteractiveQuery
 from paramiko.rsakey import RSAKey
@@ -103,6 +103,7 @@ __all__ = [
     'BadAuthenticationType',
     'ChannelException',
     'BadHostKeyException',
+    'IncompatiblePeer',
     'ProxyCommand',
     'ProxyCommandFailure',
     'GSSAuth',

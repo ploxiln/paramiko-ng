@@ -83,8 +83,10 @@ FINGER_SHA256_ED25519 = "J6VESFdD3xSChn8y9PzWzeF+1tl892mOy2TqkMLO4ow"
 FINGER_SHA256_ED25519_PASS = "vijWjn8kDy5J+W12WfaRfew8XSv0PYC1q+EAwoYNavM"
 FINGER_SHA256_ED25519_NOPAD = "3IBDT/vhj7a/KLk0eOJGmAwr61J1BDyJFzcN1uR7svo"
 
-SIGNED_RSA = '20:d7:8a:31:21:cb:f7:92:12:f2:a4:89:37:f5:78:af:e6:16:b6:25:b9:97:3d:a2:cd:5f:ca:20:21:73:4c:ad:34:73:8f:20:77:28:e2:94:15:08:d8:91:40:7a:85:83:bf:18:37:95:dc:54:1a:9b:88:29:6c:73:ca:38:b4:04:f1:56:b9:f2:42:9d:52:1b:29:29:b4:4f:fd:c9:2d:af:47:d2:40:76:30:f3:63:45:0c:d9:1d:43:86:0f:1c:70:e2:93:12:34:f3:ac:c5:0a:2f:14:50:66:59:f1:88:ee:c1:4a:e9:d1:9c:4e:46:f0:0e:47:6f:38:74:f1:44:a8'  # noqa: E501
-SIGNED_ED25519 = b'kufjk8JnhBZi+UR59+XOBo1Uhu9t1ciizCKG+iuuuoacJOLlQO/jGFJ10VhEjHzlabVhGAoRYmrpm5eXFrfyDQ=='  # noqa: E501
+SIGNED_RSA     = "20:d7:8a:31:21:cb:f7:92:12:f2:a4:89:37:f5:78:af:e6:16:b6:25:b9:97:3d:a2:cd:5f:ca:20:21:73:4c:ad:34:73:8f:20:77:28:e2:94:15:08:d8:91:40:7a:85:83:bf:18:37:95:dc:54:1a:9b:88:29:6c:73:ca:38:b4:04:f1:56:b9:f2:42:9d:52:1b:29:29:b4:4f:fd:c9:2d:af:47:d2:40:76:30:f3:63:45:0c:d9:1d:43:86:0f:1c:70:e2:93:12:34:f3:ac:c5:0a:2f:14:50:66:59:f1:88:ee:c1:4a:e9:d1:9c:4e:46:f0:0e:47:6f:38:74:f1:44:a8"  # noqa: E501,E221
+SIGNED_RSA_256 = "cc:06:60:e0:00:2c:ac:9e:26:bc:d5:68:64:3f:9f:a7:e5:aa:41:eb:88:4a:25:05:9c:93:84:66:ef:ef:60:f4:34:fb:f4:c8:3d:55:33:6a:77:bd:b2:ee:83:0f:71:27:41:7e:f5:07:05:00:a9:4c:07:80:6f:be:76:67:cb:58:35:b9:2b:f3:c2:d3:3c:ee:e1:3f:59:e0:fa:e4:5c:92:ed:ae:74:de:0d:d6:27:16:8f:84:a3:86:68:0c:94:90:7d:6e:cc:81:12:d8:b6:ad:aa:31:a8:13:3d:63:81:3e:bb:05:b6:38:4d:02:0d:1b:5b:70:de:83:cc:3a:cb:31"  # noqa: E501
+SIGNED_RSA_512 = "87:46:8b:75:92:33:78:a0:22:35:32:39:23:c6:ab:e1:06:92:ad:bc:7f:6e:ab:19:32:e4:78:b2:2c:8f:1d:0c:65:da:fc:a5:07:ca:b6:55:55:31:83:b1:a0:af:d1:95:c5:2e:af:56:ba:f5:41:64:0f:39:9d:af:82:43:22:8f:90:52:9d:89:e7:45:97:df:f3:f2:bc:7b:3a:db:89:0e:34:fd:18:62:25:1b:ef:77:aa:c6:6c:99:36:3a:84:d6:9c:2a:34:8c:7f:f4:bb:c9:a5:9a:6c:11:f2:cf:da:51:5e:1e:7f:90:27:34:de:b2:f3:15:4f:db:47:32:6b:a7"  # noqa: E501
+SIGNED_ED25519 = b"kufjk8JnhBZi+UR59+XOBo1Uhu9t1ciizCKG+iuuuoacJOLlQO/jGFJ10VhEjHzlabVhGAoRYmrpm5eXFrfyDQ=="  # noqa: E501
 
 RSA_PRIVATE_OUT = """\
 -----BEGIN RSA PRIVATE KEY-----
@@ -251,17 +253,25 @@ class KeyTest(unittest.TestCase):
         self.assertTrue(not pub.can_sign())
         self.assertEqual(key, pub)
 
-    def test_sign_rsa(self):
-        # verify that the rsa private key can sign and verify
+    def _sign_and_verify_rsa(self, algorithm, saved_sig):
         key = RSAKey.from_private_key_file(_support('test_rsa.key'))
-        msg = key.sign_ssh_data(b'ice weasels')
-        self.assertTrue(type(msg) is Message)
+        msg = key.sign_ssh_data(b"ice weasels", algorithm)
+        assert isinstance(msg, Message)
         msg.rewind()
-        self.assertEqual(msg.get_text(), 'ssh-rsa')
-        self.assertEqual(msg.get_binary(), unhexlify(SIGNED_RSA.replace(':', '')))
+        assert msg.get_text() == algorithm
+        assert msg.get_binary() == unhexlify(saved_sig.replace(':', ''))
         msg.rewind()
         pub = RSAKey(data=key.asbytes())
-        self.assertTrue(pub.verify_ssh_sig(b'ice weasels', msg))
+        self.assertTrue(pub.verify_ssh_sig(b"ice weasels", msg))
+
+    def test_sign_and_verify_ssh_rsa(self):
+        self._sign_and_verify_rsa("ssh-rsa", SIGNED_RSA)
+
+    def test_sign_and_verify_rsa_sha2_256(self):
+        self._sign_and_verify_rsa("rsa-sha2-256", SIGNED_RSA_256)
+
+    def test_sign_and_verify_rsa_sha2_512(self):
+        self._sign_and_verify_rsa("rsa-sha2-512", SIGNED_RSA_512)
 
     def test_sign_dss(self):
         # verify that the dss private key can sign and verify

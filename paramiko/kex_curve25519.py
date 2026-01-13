@@ -183,7 +183,10 @@ class KexCurve25519(object):
         self.transport._set_K_H(K, H)
 
         # Compute signature
-        sig = self.transport.get_server_key().sign_ssh_data(H)
+        sig = self.transport.get_server_key().sign_ssh_data(
+            H, self.transport.host_key_type
+        )
+
         # construct reply
         m = Message()
         m.add_byte(c_MSG_KEXC25519_REPLY)

@@ -203,8 +203,9 @@ class KexGex (object):
         self.f = pow(self.g, self.x, self.p)
         K = pow(self.e, self.x, self.p)
         key = self.transport.get_server_key().asbytes()
+
         # okay, build up the hash H of
-        # (V_C || V_S || I_C || I_S || K_S || min || n || max || p || g || e || f || K)  # noqa
+        # (V_C || V_S || I_C || I_S || K_S || min || n || max || p || g || e || f || K)
         hm = Message()
         hm.add(self.transport.remote_version, self.transport.local_version,
                self.transport.remote_kex_init, self.transport.local_kex_init,
@@ -221,8 +222,12 @@ class KexGex (object):
         hm.add_mpint(K)
         H = self.hash_algo(hm.asbytes()).digest()
         self.transport._set_K_H(K, H)
+
         # sign it
-        sig = self.transport.get_server_key().sign_ssh_data(H)
+        sig = self.transport.get_server_key().sign_ssh_data(
+            H, self.transport.host_key_type
+        )
+
         # send reply
         m = Message()
         m.add_byte(c_MSG_KEXDH_GEX_REPLY)
@@ -239,8 +244,9 @@ class KexGex (object):
         if (self.f < 1) or (self.f > self.p - 1):
             raise SSHException('Server kex "f" is out of range')
         K = pow(self.f, self.x, self.p)
+
         # okay, build up the hash H of
-        # (V_C || V_S || I_C || I_S || K_S || min || n || max || p || g || e || f || K)  # noqa
+        # (V_C || V_S || I_C || I_S || K_S || min || n || max || p || g || e || f || K)
         hm = Message()
         hm.add(self.transport.local_version, self.transport.remote_version,
                self.transport.local_kex_init, self.transport.remote_kex_init,
