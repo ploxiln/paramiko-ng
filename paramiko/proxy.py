@@ -50,7 +50,7 @@ class ProxyCommand(ClosingContextManager):
         from subprocess import Popen, PIPE
         self.cmd = command_line
         self.process = Popen(self.cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-                             bufsize=0, shell=True)
+                             bufsize=0, shell=True, preexec_fn=os.setsid)
         self.timeout = None
 
     def send(self, content):
